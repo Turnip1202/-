@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 无论数据怎样，multiple均可以让下拉选框变为可以多选 -->
+			<select v-model="select" multiple>
+				<option>萝卜</option>
+				<option>白菜</option>
+				<option>辣椒</option>
+			</select>
+			<p>{{select}}</p>
+			<select v-model="selects" multiple>
+				<option>萝卜</option>
+				<option>白菜</option>
+				<option>辣椒</option>
+			</select>
+			<p>{{selects}}</p>
+			<select v-model="msg">
+				<option v-for="item in options" :value="item">{{item}}</option>
+			</select>
+			<p>{{msg}}</p>
+	
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					select:"",
+					selects:[],
+					options:["萝卜","白菜","辣椒"],
+					msg:"萝卜"
+					
+				}
+			
+			})
+		</script>
+	</body>
+</html>

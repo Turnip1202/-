@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>javaScript复习</title>
+		<script src="./js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//各种定义、实例化、声明问题
+			//定义变量
+			var v1=1;
+			var v2,v3,v4,v5;
+			v2=2,v3=3,v4=4,v5=5;
+			//亦可v2=2;v3=3;v4=4;v5=5;
+			console.log(v1,v2,v3,v4,v5);
+			//定义数组
+			var arr1=new Array();
+			arr1[0]=1;arr1[1]=2
+			var arr2=new Array(3);
+			arr2[0]=2;
+			var arr3=[1,2,3]
+			var arr4=new Array(1,2,3,4)
+			console.log(arr1,arr2,arr3,arr4);
+			//实例化对象
+			var ob1=new Object();
+			ob1={
+				name:"Turnip",
+				age:18
+			};
+			ob1.sex="男";
+			ob1["sex"]="女";
+			var ob2={
+				name:"Turnip",
+				age:18
+			}
+			console.log(ob1,ob2);
+			//声明函数
+			var f1=function(){};
+			function f2(){};
+			
+			
+			
+			//toFixed()的基本用法
+			var k=12.6666;
+			var s=k.toFixed(2);
+			console.log(s);
+			
+			//toExponential()的基本用法
+			var t=6666666;
+			var a=t.toExponential(3);
+			console.log(a);
+				
+			//boolean的辨析开始
+			var bool1;//变量的默认值为Undefined
+			console.log(Boolean(bool1));//false
+			
+			var bool2=null;
+			console.log(Boolean(bool2));//false
+			
+			var bool3=false;
+			var bool4="false";
+			console.log(Boolean(bool3));//false
+			console.log(Boolean(bool4));//true
+			
+			var bool5=0;
+			var bool6="0";
+			console.log(Boolean(bool5))//false
+			console.log(Boolean(bool6));//true
+			
+			var bool7=NaN;
+			var bool8="NaN";
+			console.log(Boolean(bool7));//false
+			console.log(Boolean(bool8));//true
+			
+			var bool9="";
+			console.log(Boolean(bool9));//false
+			//boolean的辨析结束
+			
+			//null类型
+			var nul1=document.getElementById("nul1")
+			console.log("未获取到DOM对象，即",nul1)//null
+			var nul2=new Object();
+			nul2={
+				name:null
+			};
+			console.log(typeof(nul2),nul2);//null
+			
+			//Undefined类型
+			var unde1;
+			console.log("只定义未赋值",unde1);
+			function fun1(x){
+				console.log("函数形参不传值",x)//Undefined
+			}
+			fun1();
+			var obj1=new Object();
+			console.log("对象无相应属性",obj1.da)//Undefined
+			// var arr=new Array();
+			// arr[0]=1;
+			// console.log("find找不到",arr.find())
+			
+			//变量
+			var v1=1;
+			var v2,v3,v4,v5;
+			v2=2,v3=3,v4=4,v5=5;
+			//v2=2;v3=3;v4=4;v5=5;
+			console.log(v1,v2,v3,v4,v5);
+			
+			//全局变量
+			var Global_variable1=1;
+			console.log("全局变量",Global_variable1);
+			function f1(){
+				var Local_variable=1;
+				console.log("局部变量1",Local_variable);
+			}while(Global_variable1!=1);
+			f1();
+			// console.log("局部变量2",Local_variable);报错
+			
+			//计算器__用于熟悉运算符
+			window.onload=function(){
+				//计算器开启/关闭功能
+			var cal=document.getElementById("cal");
+			var open1=document.getElementById("open1");
+			open1.onclick=function(){
+					if(open1.innerText=="Open the calculator"){
+						cal.style.display="block";
+						open1.innerText="Turn off the calculator";
+					
+					}
+					else{
+						cal.style.display="none";
+						open1.innerText="Open the calculator";
+						document.location.reload();//刷新当前页面
+					}
+				//计算功能
+				var sel=document.getElementById("sel");//获取运算符
+				var tex1=document.getElementById("tex1");//获取第一个文本框
+				var tex2=document.getElementById("tex2");//获取第二个文本框
+				var tex3=document.getElementById("tex3");//获取第三个文本框
+				var equal1=document.getElementById("equal1");//获取等号按钮
+				equal1.onclick=function(){
+					switch(sel.value){
+						case "0":
+							tex3.value=parseInt(tex1.value.trim())+parseInt(tex2.value.trim());//加法
+							var node=document.createElement("p")							//创建p元素
+							var textnode=document.createTextNode("加法\t实现成功")			//创建内容
+							node.appendChild(textnode)										//给元素添加节点内容
+							cal.appendChild(node);											//给元素添加节点内容
+							break;
+						case "1":
+							tex3.value=parseInt(tex1.value.trim())-parseInt(tex2.value.trim());//减法
+							var node=document.createElement("p")							//创建p元素
+							var textnode=document.createTextNode("减法\n实现成功")				//给元素添加节点内容
+							node.appendChild(textnode)
+							cal.appendChild(node);
+							break;
+						case "2":
+							tex3.value=parseInt(tex1.value.trim())*parseInt(tex2.value.trim());//乘法
+							var node=document.createElement("p")							//创建p元素
+							var textnode=document.createTextNode("乘法\r实现成功")				//给元素添加节点内容
+							node.appendChild(textnode)
+							cal.appendChild(node);
+							break;
+						case "3":
+							tex3.value=parseInt(tex1.value.trim())/parseInt(tex2.value.trim());//除法
+							var node=document.createElement("p")							//创建p元素
+							var textnode=document.createTextNode("除法\r实现成功")				//给元素添加节点内容
+							node.appendChild(textnode)
+							cal.appendChild(node);
+							break;
+						default:
+							document.write("系统被恶意修改，请关闭重试");//检查运算系统
+							break;
+					}
+				}
+			}
+			
+			}
+			
+			//数据类型转换
+			//类型转换typeof()
+			var ty1=new Object()
+			console.log(typeof ty1);//Object
+			console.log(typeof(ty1));//Object
+			
+			//string转number
+			//显然无法转换时均为NaN
+			var s1="123a456";
+			var s2="123.456";
+			var s3="123";
+			var s4="kang";
+			var s5="123.45a6"
+			//123  123.456 123 NaN 123.45
+			console.log(parseFloat(s1),parseFloat(s2),parseFloat(s3),parseFloat(s4),parseFloat(s5));
+			//123 123 123 NaN 123
+			console.log(parseInt(s1),parseInt(s2),parseInt(s3),parseInt(s4),parseInt(s5));
+			
+			//number转string
+			var n1=123;
+			var n2=123.456;
+			var n3=NaN;
+			//123  123.456 NaN
+			console.log(n1.toString(),n2.toString(),n3.toString());
+			
+			//强制转换
+			//Number
+			var n1="123";
+			var n2="12a3";
+			var n3=true;
+			//123 NaN 1
+			console.log(Number(n1),Number(n2),Number(n3));
+			//Boolean
+			var b1="1a2";
+			var b2="12";
+			var b3=123;
+			//true true true
+			console.log(Boolean(b1),Boolean(b2),Boolean(b3))
+			//string
+			 var s1=123;
+			 var s2=NaN;
+			 var s3=true;
+			 //123 NaN true
+			 console.log(String(s1),String(s2),String(s3));
+			 
+			//数组方法
+			var arr1=[1,2,3,4,5];
+			console.log(arr1.valueOf());//返回数组数据和长度
+			console.log(arr1.toLocaleString());//1,2,3,4,5
+			console.log(arr1.toString());//1,2,3,4,5
+			console.log(arr1.concat(arr1,"123",8))
+			console.log(arr1.push(2,3,))//7(5+2)
+			console.log(arr1.unshift(8,7))//9
+			console.log(arr1.pop());//3
+			console.log(arr1.shift());//8
+			console.log(arr1.slice(3,5));//3,4
+			console.log(arr1.join("-"));//7-1-2-3-4-5-2
+			console.log(arr1.reverse());//2,5,4,3,2,1,7
+			console.log(arr1.sort());//1,2,3,4,5,7
+			
+			//数组遍历
+			for(var i=0;i<arr1.length;i++){
+				console.log(arr1[i]);
+			}
+			for(var i in arr1){
+				console.log(arr1[i])
+			}
+			arr2=[[1,2],[3,4],[5,6]];
+			for(var i=0;i<arr2.length;i++){
+				for(var j=0;j<arr2[i].length;j++){
+					console.log(arr2[i][j])
+				}
+			}
+			for(var i in arr2){
+				console.log(arr2[i])
+			}
+			
+			//字符串方法
+			var str1="kang";
+			var str2="KANG";
+			console.log(str1.charAt(2));//n
+			console.log(str1.charCodeAt(2))//110
+			console.log(str1.concat(str1,"qi",str1))//kangkangqikang
+			console.log(str1.indexOf("g"),str1.indexOf("m"))//3,-1
+			console.log(str2.lastIndexOf("n"))//2(虽然是从后向前找，但索引是没变的)
+			console.log(str2.slice(1,3));//AN
+			console.log(str2.split("N",3))//KA,G(意思是以字符串中的字符作为分隔符)
+			console.log(str2.substr(1,3));//ANG
+			console.log(str2.substring(1,3));//AN
+			console.log(str2.toLowerCase());//kang
+			console.log(str2.toLowerCase().toUpperCase());//KANG
+			console.log(str2.toString());//KANG
+			console.log(str2.search("K"));//0,找不到返回-1
+			console.log(str2.match("N"));//["N", index: 2, input: "KANG", groups: undefined]，找不到返回null
+			console.log(arr1.length);
+			
+			
+				
+				
+		</script>
+	</head>
+	<body>
+		<button type="button" id="open1">Open the calculator</button>
+		<div id="cal" style="display: none;">
+			<input type="text" id="tex1" />
+			<select id="sel">
+				<option value="0">+</option>
+				<option value="1">-</option>
+				<option value="2">*</option>
+				<option value="3">/</option>
+			</select>
+			<input type="text" id="tex2" />
+			<button type="button" id="equal1">=</button>
+			<input type="text" id="tex3" />
+		</div>
+		
+	</body>
+</html>

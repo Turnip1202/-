@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-if="tab==1">首页</h1>
+			<h1 v-else-if="tab==2">发现</h1>
+			<h1 v-else>个人中心</h1>
+			
+			<button @click="tabChange" data-id="1">首页</button>
+			<button @click="tabChange" data-id="2">发现</button>
+			<button @click="tabChange" data-id="3">个人中心</button>
+		</div>
+		
+		<script type="text/javascript">
+			let app = new Vue({
+				el:"#app",
+				data:{
+					tab:1
+				},
+				methods:{
+					tabChange:function(e){
+						let tabid=e.target.dataset.id;
+						console.log(e)
+						console.log(tabid)
+						// app.tab=tabid//与this.tab=tabid等价
+						this.tab=tabid;
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

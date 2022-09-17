@@ -1,0 +1,85 @@
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)/* 清除点击高亮 */
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	padding: 0;
+	margin: 0;
+}
+html,
+body {
+	font: 14px "微软雅黑", sans-serif;
+	color: #333;
+	height: 100%;
+	background: #e1e5ee;
+}
+
+.clearfix:after {
+	content: "";
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+input {
+	font-family: "微软雅黑", sans-serif;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	/* 清除IOS下，表单元素原生样式  */
+	appearance: none;
+}
+img {
+	width: 100%;
+	vertical-align: middle;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+em {
+	font-style: normal;
+}
+ul,
+li {
+	list-style: none;
+}

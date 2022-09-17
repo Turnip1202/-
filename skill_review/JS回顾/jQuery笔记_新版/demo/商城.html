@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>商城</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			li{list-style: none;color: black;}
+			nav .nav{background-color: #E38D13;}
+			nav .nav ul{width: 980px;margin: 0 auto;}
+			nav .nav ul li{float: left;padding: 5px 20px;}
+			nav .nav ul li a{padding: 5px 30px;}
+			nav .nav ul li a:hover{background-color: #01AAED;}
+			.main{
+				width: 980px;
+				margin: 0 auto;
+				margin-top: 5px;
+			}
+			.main .left{
+				width: 200px;
+				height: 300px;
+				float: left;
+				background-color: #AFB9C3;
+			}
+			.main .left ul{text-align: center;}
+			.main .left ul li a{color: black;padding: 5px 20px;}
+			.main .left ul li a:hover{background-color: #009E94;}
+			.main .left ul li{padding-top: 20px;margin-right: 20px;
+				margin-top: 10px;
+			}
+			.right{
+				width: 700px;
+				height: 300px;
+				float: left;
+				margin-left: 5px;
+				background-color: #01AAED;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<div class="nav">
+				<ul>
+					<li><a href="javascript:viod()">天猫</a></li>
+					<li><a href="javascript:viod()">聚划算</a></li>
+					<li><a href="javascript:viod()">天天特卖</a></li>
+					<li><a href="javascript:viod()">当下流行</a></li>
+					<li><a href="javascript:viod()">飞猪旅行</a></li>
+					<li><a href="javascript:viod()">拍卖</a></li>
+				</ul>
+			</div>
+		</nav>
+		<mian>
+			<div class="main">
+				<div class="left">
+					<ul style="color: #000000;">
+						<li><a href="">女装/男装/鞋帽</a></li>
+						<li><a href="">女装/男装/鞋帽</a></li>
+						<li><a href="">女装/男装/鞋帽</a></li>
+						<li><a href="">女装/男装/鞋帽</a></li>
+					</ul>
+				</div>
+				<div class="right">
+					<h1>首页</h1>
+				</div>
+			</div>
+			
+		</mian>
+	</body>
+</html>
+<script type="text/javascript">
+	$(()=>{	
+		var arr=[];
+		// console.log($(".main .left ul li").length)
+		for(var i=0; i<$(".main .left ul li").length;i++ ){
+			arr.push($(".main .left ul li:eq("+i+")"))
+		}
+		//第一个li元素
+		arr[0].on("mouseenter",function(){
+			$(".right h1").remove();
+			$(".right").append($("<h1>鞋帽专区</h1>"))
+			$(".right").show();
+		})
+		arr[0].on("mouseleave",function(){
+			$(".right").hide()
+		})
+		//第二个li
+		arr[1].on("mouseenter",function(){
+			$(".right h1").remove();
+			$(".right").append($("<h1>鞋帽专区</h1>"))
+			$(".right").show();
+		})
+		arr[1].on("mouseleave",function(){
+			$(".right").hide()
+		})
+	})
+</script>

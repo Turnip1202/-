@@ -1,0 +1,21 @@
+div, span, p {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border: #000 1px solid;
+    float: left;
+    font-size: 17px;
+    font-family: Verdana;
+    border-radius: 50%;
+    padding: 35px 0 0 35px;
+    background:white;
+}
+    div.small {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        padding: 15px 0 0 15px;
+    }
+  div.hide { 
+    display:none;
+  }

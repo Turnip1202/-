@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var xmlHttp;
+
+        function createXMLHttpRequest() {
+            if (window.ActiveXObject) //IE5.或IE6的IE内核
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } else //新版浏览器
+            {
+                xmlHttp = new XMLHttpRequest();
+            }
+        }
+
+        function GetResult() {
+            //创建XMLHttpRequest对象
+            createXMLHttpRequest();
+            //创建get请求，请求地址data.txt
+            xmlHttp.open("get", "test.txt", true);
+            //处理服务器端响应
+            xmlHttp.onreadystatechange = RequestCallBack;
+            //发送请求
+            xmlHttp.send(null);
+        }
+
+        function RequestCallBack() {
+            //判断服务器端响应状态
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                alert(xmlHttp.responseText);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" name="Button1" id="Button1" value="读取数据" onclick="GetResult()" />
+</body>
+
+</html>

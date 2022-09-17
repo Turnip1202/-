@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组方法练习</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	// //直接赋值法
+	// var mycars = new Array();
+	// mycars[0] = "Saab";
+	// mycars[1] = "Volvo";
+	// mycars[2] = "BMW";
+	// //追加数组
+	// var mycars = new Array();
+	// mycars.push("Saab");
+	// mycars.push("Volvo");
+	// mycars.push("BMW")
+	// document.write(mycars);
+	// //删除元素
+	// //pop方法
+	// var mycars=["Saab","Volvo","BMW"];
+	// var car = mycars.pop();
+	// document.write(mycars)
+	// document.write("<br/>");
+	// document.write(car)
+	// //shift方法
+	// var mycars = ["Saab","Volvo","BMW"];
+	// var car=mycars.shift();
+	// document.write(car);
+	// document.write("<br/>");
+	// document.write(car);
+	// //splice方法
+	// var mycars = ["Saab","Volvo","BMW"];
+	// var car = mycars.splice(1,2);
+	// document.write(car);
+	// document.write('<br/>')
+	// document.write(mycars);
+	// 插入元素
+	// unshift()方法
+	// var mycars=["Saab","Volvo","BMW"];
+	// //从数组头部插入一个新元素，返回新的数组长度
+	// var newlen = mycars.unshift("奔驰");
+	// document.write(newlen);				//打印新的数组长度
+	// document.write('<br/>');
+	// document.write(mycars);				//打印新的数组元素
+	// var mycars=["Saab","Volvo","BMW"];
+	// mycars.splice(1,0,"宝马","奇瑞","奔驰");//从索引1位置删除0个并插入3个元素
+	// document.write(mycars);
+	// var arr=[1,3,5];
+	// var arr1=[2,4,6];
+	// var arr2 = [7,8,9];
+	// var newArr=arr.concat(arr1,arr2);//合并数组
+	// document.write(newArr);//输出
+	// var mycars=['宝马','奔驰','奇瑞','标志','捷达'];
+	// var cars = mycars.join("|");//用|连接
+	// document.write(typeof(cars)+" "+cars);
+	// var mycars = ['宝马','奔驰','奇瑞','标志','捷达'];
+	// mycars.reverse();
+	// document.write(mycars);
+	//数组排序
+	// var arr = new Array();
+	// arr[0]="George";
+	// arr[1]="John";
+	// arr[2]="Thomas";
+	// arr[3] = "James";
+	// arr[4] = "Adrew";
+	// arr[5] = "Martin";
+	// document.write('排序前:'+ arr +"<br />");
+	// document.write('排序后:'+ arr.sort());
+	
+	
+	// //字符串方法练习
+	//length()
+	// var mystr = "qingchenghuwogouxiansheng,woaishenghuo,woaiziji";
+	// var arrLength = mystr.length; //47
+	// document.write(arrLength);
+	
+	//字符串连接
+	
+	// var mystr1 = "Hello";
+	// var mystr2 = "world!";
+	// var newStr = mystr1+" "+mystr2; //Hello world!
+	// var mystr1 = "Hello";
+	// var mystr2 = "world,";
+	// var mystr3 = "Hello";
+	// var mystr4 = "guoxiansheng";
+	// //Hello world, Hello qingchenghuwogouxiansheng
+	// var newStr=mystr1.concat(mystr2+mystr3+" "+mystr4);
+	
+	// //indexOf()
+	// var str = 'abcdeabcde';
+	// console.log(str.indexOf('a'));	//返回0
+	// console.log(str.indexOf('a',3));	//返回5
+	// console.log(str.indexOf('bc'));		//返回1
+	
+	//lastIndexOf()
+	// var str = 'abcdeabcde';
+	// console.log(str.lastIndexOf('a'));   //返回5
+	// console.log(str.lastIndexOf('a',3));	//返回0，从索引3的位置往前检索，注意：返回的是索引		
+	//  var str = 'abcDEF';
+	//  console.log(str.search('c'));	//返回2
+	//  console.log(str.search('d'));	//返回-1
+	//  console.log(str.search(/d/i));	//返回3，正则语法/i表示忽视大小写，正则表达式后续学习
+	
+	//match()
+	// var str = '1a2b3c4d5e';
+	// console.log(str.match('h'));	//返回null
+	// console.log(str.match('b'));	//返回["b",index:3,input:"1a2b3c4d5e"]
+	// console.log(str.match(/b/));	//返回["b",index:3,input:"1a2b3c4d5e"]
+	
+	//字符串截取
+	
+	//substring()
+	// var str = 'abcdefg';
+	// console.log(str.substring(1, 4));	//返回abcdeabcde
+	// console.log(str.substring(1));		//返回bcdefg
+	// console.log(str.substring(-1));		//返回abcdefg, 传入负值时会视为0
+	
+	//slice()
+	// var str = 'abcdefg';
+	// console.log(str.slice(1,4));//返回bcd
+	// console.log(str.slice(-3,-1));//返回ef
+	// console.log(str.slice(1,-1));//返回bcdef
+	// console.log(str.slice(-1,-3));//返回空字符串
+	
+	//substr()
+	// var str='abcdefg';
+	// console.log(str.substr(1,3));//返回bcd
+	// concsole.log(str.substr(2));//返回cdefg
+	// console.log(str.substr(-2,4));//返回fg，如果目标长度较大，则以实际截取的长度为准
+	
+	//replace()
+	// var str = 'abcdeabcde';
+	// console.log(str.replace('a','A'));
+	// console.log(str.replace(/a/,'A'));
+	
+	//split()
+	// var str = 'a|b|c|d|e';
+	// //返回["a","b","c","d","e"]
+	// console.log(str.split('|'));
+	// //返回["a","b","c"]
+	// console.log(str.split('|',3));
+	// //返回["a","|","b","|","c","|","d","|","e"]
+	// console.log(str.split(""));
+	
+	
+	// //正则表达式
+	// var str = '138i26579287';//定义一个字符串
+	// var reg = /[^0-9]/;//查看电话号码中是否含有数字以外的字符
+	// document.write(str.search(reg));//若找到，则返回找到的位置；若没有找到，则返回-1
+	
+	// var tel = '我的电话号码是：131456709287';
+	// var reg=/[\d]{11}/;//含有11个数字的正则
+	// document.write(tel.search(reg));//若符合，则返回0；若不符合，则返回-1
+	
+	// //定义一个字符串
+	// var str = '2019-2-123';
+	// //数字{4}个开头-数字{1个或者2个}-数字{1个或者2个}结尾
+	// var reg = /^[\d]{4}-[\d]{1,2}-[\d]{1,2}$/;
+	// //改为用正则对象的test校验，符合返回ture，不符合返回false
+	// document.write(reg.test(str));
+	
+	// var str = '16+5=21';//定义一个字符串
+	// var reg=/[\+]/;//校验含有+号
+	// document.write(reg.test(str));
+	
+	// var str = '16+5=21';//定义一个字符串
+	// //校验所有数字，g表示通配整个字符串，无g会找到第一个匹配的字符后停止
+	// var reg = /[0-9]+/g;
+	// document.write(str.match(reg));//将所有符合正则的字符串放进一个数组
+	
+	// var a=3.1;
+	// var b=3.9;
+	// var ceil = Math.ceil(a);//向上取整
+	// document.write('向上取整：'+ceil+"<br/>");
+	// var floor=Math.floor(b);//向下取整
+	// document.write('向下取整：'+floor+"<br/>");
+	// var min = Math.min(a,b);//获得a和b中较小的那个数
+	// document.write('较小的值是：'+min+'<br/>');
+	// var max = Math.max(a,b);//获得a和b中较大的那个数
+	// document.write('较大的值是：'+max+'<br/>');
+	// var c=3.5;
+	// var round=Math.round(c);//返回c四舍五入的值；
+	// document.write('四舍五入：'+round+"<br/>");
+	// document.write('3的二次方是'+Math.pow(3,2)+"<br/>");//返回二次方值
+	// document.write('4的开平方是：'+Math.sqrt(4)+"<br/>");//返回开平方后的值
+	// for(i=0;i<5;i++){
+	// 	document.write(Math.random()+"<br/>");//随机值在0~1之间
+	// 	//可均衡获取1~10的随机整数
+	// 	document.write((1+Math.floor(Math.random()*10))+"<br/>");
+	// }
+	
+	// 日期函数
+	 var mydate = new Date();//获取当前时间的日期对象
+	 var mydate  = new Date('2018-12-28 15:19:15');//直接指定时间的日期对象
+	 document.write('年：'+mydate.getFullYear()+"<br/>");//返回年份
+	 //月份为0~11，所以必须加1
+	 document.write("月："+(mydate.getMonth()+1)+"<br/>");
+	 document.write('日：'+mydate.getDate()+"<br/>");//日
+	 document.write('星期：'+mydate.getDay()+"<br/>");//星期几
+	 //从1970年1月1日0点0分0秒到现在的毫秒数
+	 document.write('时间戳：'+mydate.getTime()+"<br/>");
+	 document.write('小时：'+mydate.getHours()+"<br/>");//时
+	 document.write('分：'+mydate.getMinutes()+"<br/>");//分
+	 document.write('秒：'+mydate.getSeconds()+"<br/>");//秒
+	 document.write('日期：'+mydate.toLocaleDateString()+"<br/>");//时期
+	 document.write('时间：'+mydate.toLocaleTimeString()+"<br/>");//时间
+	 document.write('日期与时间：'+mydate.toLocaleString()+"<br/>");//日期与时间
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>

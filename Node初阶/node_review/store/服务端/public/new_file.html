@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+		$.ajax({
+			type:"get",
+			url:"http://localhost:3001/goods",
+			async:true,
+			beforeSend:function(request){
+				let token = localStorage.getItem("token");
+				//貌似一次只能设置一个
+				request.setRequestHeader("authorization","Beare "+token)
+			},
+			success:function(result){
+				if(result.errCode==401){
+					$("body").appendTo($("<h1>请重新登录</h1>"))
+				}else{
+
+					$("body").appendTo($("<h1>即将进入goods页面</h1>"))
+				}
+				console.log(result);
+				
+			}
+		});
+	</script>
+	</body>
+</html>

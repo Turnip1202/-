@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选择器大全</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h3>基本选择器</h3>
+		<!-- 控制按钮 -->
+		<button type="button">1选择 id为one的元素</button>
+		<button type="button">2选择 class为small的所有元素</button>
+		<button type="button">3选择 元素名是div的所有元素</button>
+		<button type="button">4选择 所有元素</button>
+		<button type="button">5选择 所有的span元素及id为two的元素</button>
+		<button type="button">6选择 body内所有的div法一</button>
+		<button type="button">7选择 body内所有的div法二</button>
+		<button type="button">8选择 class为one的下一个div元素</button>
+		<button type="button">9选择 id为two的后面的所有div元素</button>
+		<button type="button">10选择 id为two的所有同级div元素</button>
+		<br /><br />
+		<!-- div元素 -->
+		<div class="one" id="one">
+			id为one<br/>class为one的div
+			<div class="small">
+				class为small
+			</div>
+		</div>
+		<div class="one" id="two" title="test">
+			id为two，class为one 	<br>title为test的div
+			<div class="small" title="other">
+				class为small，title为other
+			</div>
+			<div class="small" title="test">
+				class为small，title为test
+			</div>
+		</div>
+		<div class="one">
+			class为noe
+			<div class="small">
+				class为small的div
+			</div>
+			<div class="small">
+				class为small的div
+			</div>
+			<div class="small">
+				class为small的div
+			</div>
+			<div class="small" title="tesst">
+				class为small的div
+				title为tesst
+			</div>
+		</div>
+		<div class="none">
+			style的display为“none”的div
+		</div>
+		<div class="hide">
+			style的display为“hide”的div
+		</div>
+		<div>
+			包含input且input的type为hidden的div <input type="hidden" size="8" />
+		</div>
+		<span id="mover">
+			span元素,id为mover
+		</span>
+		
+	</body>
+</html>
+
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("button:lt(1)").click(() => {
+			$("#one").css("background-color","red")
+		})
+		$("button:eq(1)").click(()=>{
+			$(".small").css("background-color","green");
+		})
+		$("button:eq(2)").click(()=>{
+			$("div").css("background-color","yellow")
+		})
+		$("button:eq(3)").click(() => {
+			$("*").css("background-color","black")
+		})
+		$("button:eq(4)").click(() => {
+			$("span,#two").css("background-color","black")
+		})
+		$("button:eq(5)").click(() => {
+			// $("body div").css("background-color","aqua")
+			$("body").find("div").css("background-color","aqua")
+		})
+		$("button:eq(6)").click(() => {
+			$("body>div").css("background-color","purple")
+			// $("body").children("div").css("background-color","purple")
+			// $("body").children("div").children("div").css("background-color","purple")//子元素的子元素
+			// $("body").find("div").find("div").css("background-color","purple")//子元素的子元素
+		})
+		$("button:eq(7)").click(() => {
+			// $(".one+div").css("background-color","yellow")
+			$(".one").next("div").css("background-color","yellow")
+		})
+		$("button:eq(8)").click(() => {
+			// $("#two~div").css("background-color","yellow")
+			$("#two").nextAll("div").css("background-color","yellow")
+		})
+		$("button:gt(8)").click(() => {
+			$("#two").siblings().css("background-color","blue")
+			// $("#two").siblings("span").css("background-color","blue")
+		})
+	})
+</script>

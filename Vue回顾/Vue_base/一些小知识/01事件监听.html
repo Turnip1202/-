@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div>
+    <!-- 当事件监听时，没有参数可以不写小括号 -->
+    <!-- 当不写“小括号”时，会默认传入事件对象 -->
+    <!-- 当多个参数时，$event代表事件对象 -->
+    <button @click='tement(msg,$event)'>点击</button>
+  </div>
+  <script>
+    let app = new Vue({
+      el: document.querySelector('div'),
+      data: {
+        msg: '萝卜'
+      },
+      methods: {
+        tement() {
+          console.log(arguments)
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

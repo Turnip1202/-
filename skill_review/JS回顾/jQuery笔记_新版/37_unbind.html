@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件解除</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<button type="button">3个事件</button>
+		<button type="button">解除click事件</button>
+		<button type="button">解除click事件的fun函数</button>
+		<button type="button">解除所有事件</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		$("button:eq(0)").click(()=>{
+			$("body").append("<p>click事件</p>")
+		})
+		$("button:eq(0)").one("click",()=>{
+			$("body").append("<p>one方法</p>")
+		})
+		$("button:lt(1)").bind("click",fun = function(){
+			$("body").append("<p>fun函数</p>")
+		})
+		$("button:eq(1)").click(()=>{
+			$("button:eq(0)").unbind("click")
+		})
+		$("button:eq(2)").click(()=>{
+			$("button:eq(0)").unbind("click",fun)
+		})
+
+		$("button:eq(3)").click(()=>{
+			$("button:eq(0)").unbind()
+		})
+		
+
+	})
+</script>

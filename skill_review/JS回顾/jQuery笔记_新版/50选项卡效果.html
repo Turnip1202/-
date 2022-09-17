@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <style>
+        ul,li{
+            padding: 0;margin: 0;
+        }
+        .content{
+            width: 380px;
+        }
+        .content #div0,#div1,#div2{
+            border: 2px solid pink;
+        }
+        #div0 ul,#div1 ul,#div2 ul{
+            padding-left: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .content #ul1{
+            list-style: none;overflow: hidden;height: 38px;line-height: 38px;
+        }
+        #ul1 li{
+            width: 80px;height: 38px;line-height: 38px;text-align: center;font-weight: bold;float: left;
+        }
+        .cur{background: red;color: white;}
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul id="ul1">
+            <li class="cur">国内</li>
+            <li>国际</li>
+            <li>体育</li>
+        </ul>
+        <div id="div0">
+            <ul>
+                <li>
+                    <a href="javascript:void(0)">[国内]标题一</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">[国内]标题二</a>
+                </li>
+            </ul>
+        </div>
+        <div id="div1" style="display: none;">
+            <ul>
+                <li>
+                    <a href="javascript:void(0)">[国际]标题一</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">[国际]标题二</a>
+                </li>
+            </ul>
+        </div>
+        <div id="div2" style="display: none;">
+            <ul>
+                <li>
+                    <a href="javascript:void(0)">[体育]标题一</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">[体育]标题二</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(document).ready(()=>{
+            $("#ul1 li").each(function(index){
+                //index是每个li的索引下标
+                $(this).mouseenter(function(){
+                    $("#div0,#div1,#div2").css('display','none');
+                    //由索引。拼接字符串，确定div
+                    $(`#div${index}`).css('display','block');
+                    //将每个li的cur样式去掉
+                    $("#ul1 li").removeClass('cur');
+                    $(`#ul1 li:eq(${index})`).addClass("cur");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

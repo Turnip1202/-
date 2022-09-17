@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div>
+    <!-- Vue底层使用了diff算法，即Vue会根据真实DOM构建virtual DOM， -->
+    <!-- 当Virtual DOM发生改变，Vue更新真实DOM，更新时会对比DOM节点，只会渲染其中不同的部分 -->
+    <!-- 增加key属性，即可解决 -->
+    <span v-if='isshow' key=1><label for="count">账号</label><input type="text" placeholder="密码"></span>
+    <span v-else key=2><label for="email">邮箱</label><input type="text" placeholder="邮箱"></span>
+    <button @click='isshow = !isshow'>点击</button>
+  </div>
+  <script>
+    let app = new Vue({
+      el: document.querySelector('div'),
+      data: {
+        msg: '萝卜',
+        isshow: true
+      },
+      methods: {
+
+      }
+    });
+  </script>
+
+</body>
+
+</html>

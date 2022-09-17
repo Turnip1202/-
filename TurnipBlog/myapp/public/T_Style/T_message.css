@@ -1,0 +1,201 @@
+/* 留言板 */
+
+
+/* .T_message_board {} */
+
+
+/* 头部 */
+
+.T_message_board_hd {
+    width: 880px;
+    height: 100px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+.T_message_board_hd p {
+    font-size: 30px;
+    line-height: 100px;
+}
+
+
+/* 写字区 */
+
+.T_message_board_write textarea {
+    width: 860px;
+    max-width: 860px;
+    min-width: 860px;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid rgba(110, 207, 246, 0.5);
+    margin-top: 10px;
+}
+
+.T_message_board_write input {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    padding-left: 5px;
+    border: 1px solid rgba(110, 207, 246, 0.5);
+}
+
+.T_message_board_write_btn {
+    width: 860px;
+    margin: 10px 0;
+}
+
+.T_message_board_write_btn span {
+    float: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.T_message_board_write_btn button {
+    float: right;
+    border: none;
+    width: 60px;
+    height: 30px;
+    background-color: rgba(110, 207, 246, 0.5);
+}
+
+.T_message_board_write_btn button:hover {
+    background-color: rgb(110, 207, 246);
+}
+
+
+/* 留言内容 */
+
+.T_message_board_text {
+    padding-top: 5px;
+    margin: 20px 0;
+    border-radius: 7px;
+}
+
+
+/* 内容头部 */
+
+.T_message_board_text h3 {
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    margin: 10px;
+}
+
+
+/* 单个评论样式 */
+
+.T_message_board_text__item_ul {
+    float: left;
+    width: 860px;
+    margin-bottom: 20px;
+}
+
+.T_message_board_text_item {
+    margin: 35px 0;
+}
+
+.T_message_img {
+    display: inline-block;
+    margin-left: 10px;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+}
+
+.T_message_item_text_hd {
+    display: inline-block;
+    position: relative;
+    width: 90%;
+    margin-left: 5px;
+    margin-bottom: 30px;
+}
+
+.T_message_span1 {
+    display: inline-block;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+.T_message_span1 label {
+    position: absolute;
+    width: 150px;
+    left: 10px;
+    top: 25px;
+}
+
+.T_message_sapn2 {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.T_message_em1 {
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    cursor: pointer;
+}
+
+.T_message_board_text_item_visitor {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 5px;
+    background-color: rgba(110, 207, 246, 0.5);
+    border-radius: 7px;
+    color: #000;
+}
+
+.T_message_board_text_item_content {
+    margin-left: 80px;
+    font-size: 16px;
+}
+
+.T_message_items {
+    width: 860px;
+    margin: 35px 0;
+}
+
+.T_message_items ol li {
+    margin-left: 60px;
+}
+
+.T_message_items_img {
+    display: inline-block;
+    margin-left: 10px;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+
+/* 评论底部页数 */
+
+.T_message_board_page {
+    width: 860px;
+    height: 50px;
+}
+
+.T_message_board_page ul {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.T_message_board_page li {
+    float: left;
+    margin: 0 1px;
+}
+
+.T_message_board_page li a {
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 16px;
+}
+
+.T_message_board_page li a:hover {
+    background-color: rgba(90, 200, 243, 0.5);
+    color: #fff;
+}
+
+.T_message_page_active {
+    background-color: rgba(90, 200, 243, 0.5);
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <p>{{age}}</p>
+        <p>{{sex}}</p>
+        <p>{{arr}}</p>
+        <button type="button" @click="up">点击</button>
+        <button type="button" onclick="aa()">点击</button>
+        <button type="button" onclick="bb()">点击</button>
+    </div>
+    <script type="text/javascript">
+        var obj = {
+            name: "turnip",
+            age: 18,
+            sex: "男",
+            arr: [12, 13, 14]
+        }
+
+        //点击事件执行后，不会改变vue的数据，因为数据已经被加载、创建到vue实例中了
+        function aa() {
+            obj.age = 16;
+        }
+
+        //通过点击事件改变vue数据
+        function bb() {
+            Vue.set(obj, "sex", "女")
+                //数组的实质是堆内存的内存地址，因此数组仅可通过这种方式，vue才会渲染
+            Vue.set(obj.arr, 2, 66)
+        }
+        let app = new Vue({
+            el: "#app",
+            data: obj,
+            methods: {
+                up: function() {
+                    //当前对象属性名获取
+                    console.log(this.name)
+                        //对象属性名获取
+                    console.log(obj.age)
+                    console.log(obj["name"])
+                        //var会存在windows对象内
+                    console.log(window.obj.name)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM操作</title>
+		<style type="text/css">
+			.bgrren{background: #00ff00;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				mytable = document.getElementById("mytable");//找到页面上的table节点
+				flag = true;
+				for(i=0;i<3;i++){
+					tr = document.createElement("tr");
+					for(
+					j=0; j<3;j++){
+						td = document.createElement("td");
+						text = document.createTextNode("文本"+j);//创建一个文本节点
+						if(flag){
+							class1 = document.createAttribute("class");//创建一个属性节点
+							class1.value = 'bgrren';	//为属性设置值
+							td.setAttributeNode(class1);//将属性节点设置给td
+							flag = false;//隔行设置
+						}
+						else{
+							flag = true;
+						}
+						td.appendChild(text);//将文本节点添加给td
+						tr.appendChild(td);//将td添加给tr
+					}
+					mytable.appendChild(tr);
+					console.log(mytable);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!-- 页面上添加一个空节点 -->
+		<table id="mytable" align="center" width="80%" border="1" >
+		</table>
+	</body>
+</html>

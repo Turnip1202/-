@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- input事件是自带的，就像button的click一样 -->
+        <!-- v-model的原理就是input事件会实时触发，将绑定的value值赋值给data内数据，而动态value有会将数据渲染value -->
+        <input type="text" @input="user = $event.target.value" :value="user" name="" id="" value="" />
+        <p>{{user}}</p>
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#app",
+            data: {
+                user: ""
+            }
+        })
+    </script>
+</body>
+
+</html>

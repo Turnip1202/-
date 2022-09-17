@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div>
+    <p v-for="(item,index) in arr" :key="index+item">{{item}}</p>
+    <button @click='btnclick'>点击</button>
+  </div>
+  <script>
+    let app = new Vue({
+      el: document.querySelector('div'),
+      data: {
+        msg: '萝卜',
+        arr: ['a', 'b', 's', 'd']
+      },
+      methods: {
+        btnclick() {
+          // this.arr.push('e','f');
+          // this.arr.pop();
+          // this.arr.unshift('f', 'g');
+          // splice(start, end, item)
+          // this.arr.splice(1, 2, 't', 'w')
+          // this.arr.reverse();
+          // this.arr.sort();//排序
+
+          // 非响应式
+          this.arr[0] = 'turnip';
+          Vue.set(this.arr, 1, 'turnip')
+          console.log(this.arr)
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

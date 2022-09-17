@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<title>商品详情</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+	</head>
+	<body>
+		<!--头部-->
+			<header>
+				<span class="icon-back back"><a href="index.html"></a></span>
+				<em>商品详情</em>
+			</header>
+		<div class="container">
+			<div class="goods-info">
+				<div class="goods-banner">
+					<img id="good-pic" src="img/goods-banner.png"/>
+				</div>
+				<div class="goods-explain">
+					<h1 id="goods-name">C#编程基础-由武汉格莱科技有限公司联合湖北银河信息技术学院倾力打造</h1>
+					<ul>
+						<li>商品价格：<em>￥<span id="goods-price">980.00</span></em></li>
+						<li>专业：<span id="goods-major">移动互联开发</span></li>
+						<li>数量：<input type="number" value="1" id="num"/>套（共13册）</li>
+					</ul>
+				</div>
+			</div>
+			<div class="goods-details">
+					<div class="detail-hd">
+						<ul>
+							<li class="active"><a href="javascript:void(0)">图文详情</a></li>
+							<li><a href="javascript:void(0)">规格参数</a></li>
+							<li><a href="javascript:void(0)">评价<span id="good-discuss-num">(199)</span></a></li>
+						</ul>
+					</div>
+					<div class="detail-content" id="good-detail1">
+						
+					</div>
+					<div class="detail-content" id="good-detail2">
+						<img src="img/loading.gif" class="loading"/>
+						<p>等待加载 规格参数……</p>
+					</div>
+					<div class="detail-content" id="good-detail3">
+						<div id="gooddiscusser">
+							小格说：
+						</div>
+						<div id="gooddiscusscon">
+							挺好哒！！
+						</div>
+						
+						<div id="gooddiscusser">
+							小格说：
+						</div>
+						<div id="gooddiscusscon">
+							挺好哒！！
+						</div>
+					</div>
+			</div>
+		</div>
+		<!--底部-->
+			<footer>
+				<span>
+					<a href="#" class="icon-fav fav">收藏</a>
+					<a href="#" class="icon-secCart secCart">购物车</a>
+				</span>
+				<button class="gopay">去结算</button>
+				<button class="addCart">加入购物车</button>
+			</footer>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/galaxy.js"></script>
+		<script src="js/detail.js"></script>
+		<script src="js/url.js"></script>	
+	</body>
+</html>

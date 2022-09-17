@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选择器对象</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p class="c1">段落1</p>
+		<p class="c1" id="p2">
+			<a href="" id="a1">段落2.1</a>
+			</p>
+		<p class="c2">段落3</p>
+	</body>
+</html>
+<script type="text/javascript">
+	$(".c1").each(index =>{
+		alert(this)
+	});//选择器中放的是节点对象
+</script>

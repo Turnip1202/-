@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" readonly>
+    <p id="help">Helpful notes will appear here</p>
+    <p>E-mail: <input type="text" id="email" name="email"></p>
+    <p>Name: <input type="text" id="name" name="name"></p>
+    <p>Age: <input type="text" id="age" name="age"></p>
+
+    <script>
+        //start
+        // var Counter = (function() {
+        //     var privateCounter = 0;
+
+        //     function changeBy(val) {
+        //         privateCounter += val;
+        //     }
+        //     return {
+        //         increment: function() {
+        //             changeBy(1);
+        //         },
+        //         decrement: function() {
+        //             changeBy(-1);
+        //         },
+        //         value: function() {
+        //             return privateCounter;
+        //         }
+        //     }
+        // })();
+        // console.log(Counter.value()); /* logs 0 */
+        // Counter.increment();
+        // Counter.increment();
+        // console.log(Counter.value()); /* logs 2 */
+        // Counter.decrement();
+        // console.log(Counter.value()); /* logs 1 */
+        //end
+
+
+
+
+        // start  词法作用域
+        // function showHelp(help) {
+        //     document.getElementById('help').innerHTML = help;
+        // }
+
+        // function setupHelp() {
+        //     var helpText = [{
+        //         'id': 'email',
+        //         'help': 'Your e-mail address'
+        //     }, {
+        //         'id': 'name',
+        //         'help': 'Your full name'
+        //     }, {
+        //         'id': 'age',
+        //         'help': 'Your age (you must be over 16)'
+        //     }];
+
+        //     for (var i = 0; i < helpText.length; i++) {
+        //         //var进行声明的变量不具有块级作用域，
+        //         //由于变量提升，导致item的提升到函数作用域顶部，使得item的值在循环到最后一次时被固定
+        //         var item = helpText[i];
+        //         document.getElementById(item.id).onfocus = function() {
+        //             showHelp(item.help);
+        //         }
+        //     }
+        // }
+
+        // setupHelp();
+        // end
+
+
+
+        function showHelp(help) {
+            document.getElementById('help').innerHTML = help;
+        }
+
+        function makeHelpCallback(help) {
+            return function() {
+                showHelp(help);
+            };
+        }
+
+        function setupHelp() {
+            var helpText = [{
+                'id': 'email',
+                'help': 'Your e-mail address'
+            }, {
+                'id': 'name',
+                'help': 'Your full name'
+            }, {
+                'id': 'age',
+                'help': 'Your age (you must be over 16)'
+            }];
+
+            for (var i = 0; i < helpText.length; i++) {
+                var item = helpText[i];
+                document.getElementById(item.id).onfocus = makeHelpCallback(item.help);
+            }
+        }
+
+        setupHelp();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // let arr= [1,2,3];
+        // let arr1 = [1];
+        // arr1.push(arr)
+        // console.log(arr1)//[1,[1,2,3]]
+        // let arr3 = [1,432,43,543,23]
+        // arr3.sort((a,b)=> {
+        // 	// return a-b;
+        // 	return b-a;
+        // })
+        // console.log(arr3);
+        let str = "abaasdffggghhjjkkgfddsssss3444343";
+        console.log(str.length);
+        let arr = [];
+        arr.push(str.charAt(0))
+        arr.push(str.charAt(3))
+        arr.push(str.charAt(5))
+        arr.push(str.charAt(9))
+        console.log(arr)
+        if (str.indexOf('i') !== -1) {
+            console.log("i存在")
+        }
+        if (str.indexOf('c') !== -1) {
+            console.log("c存在")
+        }
+        if (str.indexOf('b') !== -1) {
+            console.log("b存在")
+        }
+        str = str.replace('g', '22')
+        console.log(str)
+        str = str.replace('ss', 'b')
+
+        console.log(str)
+
+
+        document.addEventListener("keydown", (e) => {
+            console.log(e.code); //键盘名称
+            console.log(e.keyCode); //键盘的ASCII码
+        })
+    </script>
+</body>
+
+</html>

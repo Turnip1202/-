@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>元素的宽和高</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#div1{
+				width: 500px;
+				height: 300px;
+				border: 5px solid orange;
+				padding: 20px;
+				margin: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		let w = $("#div1").width()
+		let h = $("#div1").height()
+		let inner_w = $("#div1").innerWidth()
+		let inner_h = $("#div1").innerHeight()
+		let outer_w = $("#div1").outerWidth()
+		let outer_h = $("#div1").outerHeight()
+		
+		alert("width()="+w+"---height()="+h);
+		alert("innerWidth()="+inner_w+"---innerHeight()="+inner_h);
+		alert("outerWidth()="+outer_w+"---outerHeight()="+outer_h);
+		//浏览器窗口的宽、高
+		
+		alert("窗口宽"+$(window).width()+"---窗口高"+$(window).height())
+	})
+</script>

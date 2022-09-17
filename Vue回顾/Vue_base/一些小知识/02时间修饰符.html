@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div>
+    <!-- .stop阻止冒泡 -->
+    <!-- .prevent阻止默认行为 -->
+    <div @click='divclick'>哈哈哈
+      <button @click.stop='btnclick(msg,$event)'>点击</button>
+    </div>
+    <!-- 键盘Code，别名和ascii码 -->
+    <input type="text" @keyup.enter='keyup'>
+    <input type="text" @keyup.65='keyup'>
+    <!-- 只触发一次 -->
+    <input type="text" @keyup.once='keyup'>
+  </div>
+  <script>
+    let app = new Vue({
+      el: document.querySelector('div'),
+      data: {
+        msg: '萝卜'
+      },
+      methods: {
+        btnclick() {
+          console.log(arguments)
+        },
+        divclick() {
+          console.log('div')
+        },
+        keyup() {
+          console.log('keyup')
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

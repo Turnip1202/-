@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 貌似若不是数组。则这里的v-model是将值转换为逻辑值了。 -->
+			<input type="checkbox" v-model="likes" value="写字">写字
+			<input type="checkbox" v-model="likes" value="读书">读书
+			<input type="checkbox" v-model="likes" value="画画">画画
+			<!-- 选中后，value会传入到v-model -->
+			<p>{{likes}}</p>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					likes:[]
+				}
+			
+			})
+		</script>
+	</body>
+</html>

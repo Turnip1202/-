@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BOM对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//window对象
+			var h1=window.innerHeight;//浏览器窗口的内部高度
+			console.log(h1);
+			var w1=window.innerWidth;//浏览器窗口的内部宽度,即DOM页面
+			console.log(w1);
+			//IE版1
+			var h2=document.documentElement.clientHeight;
+			console.log(h2);
+			var w2=document.documentElement.clientWidth;
+			console.log(w2);
+			//IE版2
+			var h3=document.body.clientHeight;
+			console.log(h3);
+			var h4=document.body.clientWidth;
+			//打开新窗口
+			// window.open("javaScript复习.html");//弹出一个新的窗体
+			//关闭当前窗口
+			// window.close();//关闭当前窗体
+			// //调整当前窗口的尺寸
+			// window.resizeTo(100,200);//好像没用
+			
+			//BOM对象
+			//跨浏览器兼容获取屏幕宽度
+			// var w=window.innerWidth  ||  document.documentElement.clientWidth  ||document.body.clientWidth;
+			// var h=window.innerHeight  ||  document.documentElement.clientHeight  ||  document.body.clientHeight;
+			// alert(w+":"+h)
+			
+			// window.onload=function(){		//网页加载完成
+			// 	document.bgColor = "#0fff00"; //设置网页背景色
+			// 	document.fgColor = "#0000ff"; //设置网页前景色(页面上的文字颜色)
+			// }
+			
+			
+			window.onload=function(){	//网页加载完毕后调用
+			// // alert(location.href);//弹出当前页面的URL链接
+			// // alert(location.port);//弹出当前页面访问的端口
+			// //返回浏览器的名称
+			// document.write(navigator.appName+"<br/>");
+			// //返回浏览器的平台和版本信息
+			// document.write(navigator.appVersion+"<br/>");
+			// //返回指明浏览器中是否启用cookie的布尔值
+			// document.write(navigator.cookieEnabled+"<br/>");
+			// //返回运行浏览器的操作系统平台
+			// document.write(navigator.platform+"<br/>");
+			// document.write(screen.availHeight+"<br/>");//返回浏览器显示屏幕的高度
+			// document.write(screen.availWidth+"<br/>");//返回浏览器显示屏幕的宽度
+			// document.write(screen.height+"<br/>");//返回显示器屏幕的高度
+			// document.write(screen.width+"<br/>");//返回显示器屏幕的宽度
+		    var	len=history.length;//获取网页访问过的网页链接的长度
+			alert(len);
+			// history.back();//回到上一次访问的页面
+			// history.forward();//如果回去过了，就前进到下一个访问过的页面
+			// history.go(-2);//回到上上次访问的页面
+			}
+			
+			 
+			
+			
+			
+			
+		</script>
+		Hello, world
+	</body>
+</html>

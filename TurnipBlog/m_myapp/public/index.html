@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+  <title>Trunip起始页-父亲节</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>
+      We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to continue.
+    </strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  let i = 0
+  setInterval(() => {
+    if (i % 10 == 0) {
+      axios
+        .post('http://turnip.ren/Yu', {
+          code: 10,
+        })
+        .then(function (response) {
+          if (response.data == '3') {
+            console.log('唐伟康正在看着你')
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    i++
+  }, 1000)
+</script>

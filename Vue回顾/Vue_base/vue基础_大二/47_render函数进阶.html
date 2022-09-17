@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip>
+            萝卜
+        </turnip>
+
+
+    </div>
+    <!-- 此时这个template已经无用了，况且也未挂载 -->
+    <template id="tem">
+			<div id="" >
+			
+			</div>
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            render(createElement) {
+                return createElement(
+                    "div", {
+                        class: "div",
+                        attrs: {
+                            title: "我是div",
+                            id: "div"
+                        },
+                        style: {
+                            width: "400px",
+                            height: "200px",
+                            backgroundColor: this.color
+                        },
+                        domProps: {
+                            innerHTML: "luobo"
+                        },
+                        on: {
+                            click: this.up
+                        }
+                    },
+                    this.$slots.default
+                )
+            },
+            data() {
+                return {
+                    color: "blue"
+                }
+            },
+            methods: {
+                up: function() {
+                    this.color = "#00FFFF";
+                }
+            }
+
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "萝卜"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

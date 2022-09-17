@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Load加载</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="div1">
+			<h2>将要显示的内容</h2>
+			<button type="button">获取文本文档内容</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("#div1").load("./test.txt")
+		})
+	})
+</script>

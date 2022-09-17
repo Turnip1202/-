@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件绑定</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="text" id="" value="" />
+		<p>单机输入框获取焦点</p>
+		<span style="display: none;">请输入你的电话</span>
+	</body>
+</html>
+<script type="text/javascript">
+	// $(document).ready(()=>{
+	// 	$("input").bind("focus",()=>{
+	// 		$("span").show()
+	// 	})
+	// })
+	$(document).ready(()=>{
+		$("input").focus(()=>{
+			$("span").show()
+		})
+	})
+</script>

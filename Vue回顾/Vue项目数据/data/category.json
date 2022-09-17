@@ -1,0 +1,112 @@
+{
+  "_id": "5bae350c51aef27460032630",
+  "data": {
+    "category": {
+      "context": {
+        "currentTime": 1538143484
+      },
+      "isEnd": true,
+      "list": [
+        {
+          "miniWallkey": "10062603",
+          "maitKey": "3627",
+          "acm": "3.mce.1_10_1ia3k.117330.0.gkhzdr4X3j1mh.pos_0-m_426420-sd_119",
+          "title": "正在流行"
+        },
+        {
+          "miniWallkey": "50003",
+          "maitKey": "582",
+          "acm": "3.mce.1_10_1ia3m.117330.0.gkhzdr4X3j1mi.pos_1-m_426421-sd_119",
+          "title": "上衣"
+        },
+        {
+          "miniWallkey": "50005",
+          "maitKey": "596",
+          "acm": "3.mce.1_10_1ia3o.117330.0.gkhzdr4X3j1mj.pos_2-m_426422-sd_119",
+          "title": "裤子"
+        },
+        {
+          "miniWallkey": "50004",
+          "maitKey": "595",
+          "acm": "3.mce.1_10_1ia3q.117330.0.gkhzdr4X3j1mk.pos_3-m_426423-sd_119",
+          "title": "裙子"
+        },
+        {
+          "miniWallkey": "50006",
+          "maitKey": "598",
+          "acm": "3.mce.1_10_1ia3s.117330.0.gkhzdr4X3j1ml.pos_4-m_426424-sd_119",
+          "title": "内衣"
+        },
+        {
+          "miniWallkey": "50532",
+          "maitKey": "597",
+          "acm": "3.mce.1_10_1ia3u.117330.0.gkhzdr4X3j1mm.pos_5-m_426425-sd_119",
+          "title": "女鞋"
+        },
+        {
+          "miniWallkey": "51716",
+          "maitKey": "599",
+          "acm": "3.mce.1_10_1ia3w.117330.0.gkhzdr4X3j1mn.pos_6-m_426426-sd_119",
+          "title": "男友"
+        },
+        {
+          "miniWallkey": "50675",
+          "maitKey": "600",
+          "acm": "3.mce.1_10_1ia3y.117330.0.gkhzdr4X3j1mo.pos_7-m_426427-sd_119",
+          "title": "包包"
+        },
+        {
+          "miniWallkey": "10056587",
+          "maitKey": "5253",
+          "acm": "3.mce.1_10_1ia40.117330.0.gkhzdr4X3j1mp.pos_8-m_426428-sd_119",
+          "title": "运动"
+        },
+        {
+          "miniWallkey": "50797",
+          "maitKey": "609",
+          "acm": "3.mce.1_10_1ia42.117330.0.gkhzdr4X3j1mq.pos_9-m_426429-sd_119",
+          "title": "配饰"
+        },
+        {
+          "miniWallkey": "50010",
+          "maitKey": "594",
+          "acm": "3.mce.1_10_1ia46.117330.0.gkhzdr4X3j1mr.pos_10-m_426431-sd_119",
+          "title": "美妆"
+        },
+        {
+          "miniWallkey": "52378",
+          "maitKey": "830",
+          "acm": "3.mce.1_10_1ia48.117330.0.gkhzdr4X3j1ms.pos_11-m_426432-sd_119",
+          "title": "个护"
+        },
+        {
+          "miniWallkey": "10057031",
+          "maitKey": "602",
+          "acm": "3.mce.1_10_1ia4a.117330.0.gkhzdr4X3j1mt.pos_12-m_426433-sd_119",
+          "title": "家居"
+        },
+        {
+          "miniWallkey": "10060232",
+          "maitKey": "606",
+          "acm": "3.mce.1_10_1ia4c.117330.0.gkhzdr4X3j1mu.pos_13-m_426434-sd_119",
+          "title": "百货"
+        },
+        {
+          "miniWallkey": "20003089",
+          "maitKey": "603",
+          "acm": "3.mce.1_10_1ia4e.117330.0.gkhzdr4X3j1mv.pos_14-m_426435-sd_119",
+          "title": "母婴"
+        },
+        {
+          "miniWallkey": "52014",
+          "maitKey": "605",
+          "acm": "3.mce.1_10_1ia4k.117330.0.gkhzdr4X3j1mw.pos_15-m_426438-sd_119",
+          "title": "食品"
+        }
+      ],
+      "nextPage": 1
+    }
+  },
+  "returnCode": "SUCCESS",
+  "success": true
+}

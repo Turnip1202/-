@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-show="msg">萝卜</h1>
+        <h1 v-show="!msg">萝卜</h1>
+    </div>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: true
+            }
+        })
+    </script>
+</body>
+
+</html>

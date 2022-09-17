@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>从DOM中删除被选元素及其子元素</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="div1" style="width: 200px;height: 100px;border: 1px solid red;">
+			<p title="1">div中的段落1</p>
+			<p title="2">div中的段落2</p>
+		</div>
+		<br>
+		<button type="button" id="bu1">移除div元素</button>
+		<button type="button" id="bu2">恢复div元素</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("#bu1").click(() => {
+			return	$(".div1").remove();
+		})
+		
+		
+	 //    var d1 =(function(){
+		// 	$("#bu1").click(() => {
+		// 		return	$(".div1").remove();
+		// 	})
+		// 	return {click:$("#bu1").click};
+		// })()
+		// console.log(d1)
+		// $("bu2").click(() =>{
+		// 	$("body").append(d1.click)
+		// })
+		
+		
+		
+	})
+</script>

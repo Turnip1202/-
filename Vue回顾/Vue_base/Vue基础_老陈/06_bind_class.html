@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.active{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 会把对象的active解析成类名，值是true的话会显示active -->
+			<div class="page" :class="{active:istrue}"></div><br>
+			<!-- 直接放置对象 -->
+			<div class="page" :class="objClass"></div><br>
+			<!-- 直接放置数组 -->
+			<div class="page" :class="arr"></div><br>
+		</div>
+		<script type="text/javascript">
+			let app = new Vue({
+				el:"#app",
+				data:{
+					istrue:true,
+					objClass:{active:true,page:true,"col-md-6":true},
+					arr:["turnip","active"]
+				}
+			}) 
+		</script>
+	</body>
+</html>

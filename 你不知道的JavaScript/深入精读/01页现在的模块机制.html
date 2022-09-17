@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        let MyModules = (function Manager() {
+            let modules = {};
+
+            function define(name, deps, impl) {
+                //对传入的数组进行遍历
+                //将数组元素替换为modules内与之对应的属性值，
+                for (let i = 0; i < deps.length; i++) {
+                    deps[i] = modules[deps[i]];
+                };
+                console.log(deps);
+                // 再把执行impl，并把deps传入进impl函数
+                modules[name] = impl.apply(impl, deps);
+            };
+            //经过上述操作之后，
+            function get(name) {
+                return modules[name];
+            };
+            return {
+                define,
+                get
+            }
+
+        })();
+        // 总结上述函数：name是传入后，modules创建属性name，name值为回调函数执行后返回的值，deps为传入进回调函数的数据
+        // 注意:若deps元素的在modules内有与之对应，则将元素内容替换为其属性值，再传入回调函数
+        MyModules.define('bar', [], function() {
+            function hello(who) {
+                return 'Let me introduce:' + who;
+            }
+            return {
+                hello: hello
+            };
+        });
+        MyModules.define('foo', ['bar'], function(bar) {
+            let hungry = 'hippo';
+
+            function awesome() {
+                console.log(bar.hello(hungry).toUpperCase());
+            }
+            return {
+                awesome
+            };
+        });
+        let bar = MyModules.get('bar');
+        console.log(bar)
+        let foo = MyModules.get('foo');
+        console.log(bar.hello('hippo'));
+        foo.awesome();
+
+
+
+
+
+        // var MyModules = (function Manager() {
+        //     var modules = {};
+
+        //     function define(name, deps, impl) {
+        //         for (var i = 0; i < deps.length; i++) {
+        //             deps[i] = modules[deps[i]];
+        //         };
+        //         modules[name] = impl.apply(impl, deps);
+        //     };
+
+        //     function get(name) {
+        //         return modules[name];
+        //     };
+        //     return {
+        //         define: define,
+        //         get: get,
+        //     }
+        // })();
+        // MyModules.define('bar', [], function() {
+        //     function hello(who) {
+        //         return 'Let me introduce: ' + who;
+        //     };
+        //     return { //返回的是对象
+        //         hello: hello
+        //     };
+        // });
+        // MyModules.define('foo', ['bar'], function() {
+        //     var hungry = 'hippo';
+
+        //     function awesome() {
+        //         console.log(bar.hello(hungry).toUpperCase());
+        //     };
+        //     return { //返回的是对象
+        //         awesome: awesome
+        //     };
+        // });
+        // var bar = MyModules.get('bar');
+        // var foo = MyModules.get('foo');
+        // console.log(bar.hello('hippo')); //Let me introduce:hippo
+        // foo.awesome();
+    </script>
+
+</body>
+
+</html>

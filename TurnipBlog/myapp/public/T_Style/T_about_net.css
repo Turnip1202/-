@@ -1,0 +1,18 @@
+.T_upload_item {
+    width: 840px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.T_upload_item h5 {
+    height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.T_upload_item p {
+    font-size: 16px;
+    line-height: 30px;
+}

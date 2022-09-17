@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //默认绑定
+    // var a = 3;//var会连接到window对象
+    // let foo = function () {
+    //   console.log(this.a);
+    // }
+    // foo();//3
+
+    // 隐式绑定
+    // var a = 3;
+    // let obj = {
+    //   a: 2,
+    //   foo() {
+    //     console.log(this.a);
+    //   }
+    // };
+    // obj.foo();//2
+    // 或
+    // function foo() {
+    //   console.log(this.a);
+    // };
+    // let obj = {
+    //   a: 2,
+    //   foo: foo
+    // };
+    // obj.foo();//2
+
+
+    // // 隐式丢失
+    // var a = 3;
+    // function foo() {
+    //   console.log(this.a);
+    // };
+    // let obj = {
+    //   a: 2,
+    //   foo: foo
+    // };
+    // obj.foo();//2
+    // let bar = obj.foo;
+    // bar();//3,丢失了obj
+
+    // 显示绑定
+    // var a = 3;
+    // function foo() {
+    //   console.log(this.a);
+    // }
+    // let obj = {
+    //   a: 2
+    // }
+    // foo.call(obj);//2
+    // foo.apply(obj);//2
+
+    //硬绑定
+    // function foo() {
+    //   console.log(this.a);
+    // }
+    // var obj = {
+    //   a: 2
+    // }
+    // var bar = function () {
+    //   foo.call(obj);
+    // }
+    // bar();//2
+    // bar.call(window);//2
+
+    //new
+    // function foo() {
+    //   this.a = a;
+    // }
+    // //即此时new调用会创建一个新对象，并返回，即此时bar就是new调用所建的新对象了
+    // var bar = new foo(2);
+    // console.log(bar.a);//2
+  </script>
+
+</body>
+
+</html>

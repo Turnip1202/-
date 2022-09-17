@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 组件递归，即组件自己调用自己 -->
+    <div id="app">
+        <turnip :count="1"></turnip>
+    </div>
+    <template id="tem">
+    <div class="child">
+        <p>{{count}}</p>
+        <turnip :count="count+1" v-if="count<3"></turnip>
+    </div>
+</template>
+    <script>
+        Vue.component("turnip", {
+            name: 'turnip',
+            template: "#tem",
+            props: {
+                count: {
+                    type: Number,
+                    default: 1
+                }
+            }
+
+
+        });
+        let app = new Vue({
+            el: "#app"
+        });
+    </script>
+
+
+
+</body>
+
+</html>
+<script>
+    function Date(n) {
+        return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][n % 7 || 0];
+    }
+
+    function runCodeWithDateFunction(obj) {
+        return Function('"use strict";return (' + obj + ')')()(
+            Date //相当于上面的Date函数，这里相当于将此函数传入下面的字符串函数
+        );
+    }
+    console.log(runCodeWithDateFunction(
+        "function(Date){ return Date(5) }" //字符串函数
+    ))
+</script>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trunip起始页--友情链接</title>
+    <meta name="description" content="Turnip博客TURNIP.REN-专注技术分享，原创技术教程，原创文章,囊括JavaScript，
+    C语言，Cpp语言，C#语言，Java语言，php语言，Go语言">
+    <meta name="Keywords" content="网站博客，个人博客，技术分享，技术讨论，原创教程" />
+    <!-- 引入favicon.ico网页图标 -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <!-- 去除默认样式 -->
+    <link rel="stylesheet" href="./T_Style/T_base.css">
+    <!-- 引入字体样式 -->
+    <link rel="stylesheet" href="./T_Style/T_fonts.css">
+    <!-- 引入公共样式 -->
+    <link rel="stylesheet" href="./T_Style/T_common.css">
+    <!-- 引入首页样式 -->
+    <link rel="stylesheet" href="./T_Style/T_index.css">
+    <!-- 引入当前页的css文件 -->
+    <link rel="stylesheet" href="./T_Style/T_friend.css">
+
+    <!-- 引入字体图标 -->
+    <!-- <link rel="stylesheet" href="./T_font/icon/iconfont.css"> -->
+    <!-- deferJS文件的加载与文档解析并行（异步），
+        待到文档解析DOM构建完成，脚本才会执行（在DOMContentLoaded事件触发之前），
+        即不需要DOMContentLoaded -->
+    <script defer src="./T_font/icon/iconfont.js"></script>
+    <!-- 引入ajax封装库 -->
+    <script src="../T_JavaScript/axios.min.js"></script>
+    <!-- 自定义封装函数 -->
+    <script defer src="./T_JavaScript/T_pack_fn.js"></script>
+    <!-- 引入共同js文件 -->
+    <script src="./T_JavaScript/T_common.js"></script>
+    <!-- 引入当前js -->
+    <script defer src="./T_JavaScript/T_friend.js"></script>
+
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="T_nav nav_bg">
+            <div class="T_nav_item ">
+                <div class="T_nav_item_l">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-shouye"></use>
+                                </svg> 首页</a>
+                        </li>
+                        <li>
+                            <a href="javascript:alert('还未写此页面');">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-xuexi"></use>
+                                </svg> 爱学习</a>
+                        </li>
+                        <li>
+                            <a href="javascript:alert('还未写此页面');">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-lubiao"></use>
+                                </svg> 学习径</a>
+                        </li>
+                        <li>
+                            <a href="javascript:alert('还未写此页面');">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-yunxiazai"></use>
+                                </svg> 下载域</a>
+                        </li>
+                        <li>
+                            <a href="/friend">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-tubiao-"></use>
+                                </svg> 友情链接</a>
+                        </li>
+                        <li>
+                            <a href="/about_me">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-guanyuwomen1"></use>
+                                </svg> 关于我</a>
+                        </li>
+                        <li>
+                            <a href="/about_net">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-guanyuwomen"></use>
+                                </svg> 关于网站</a>
+                        </li>
+                        <li>
+                            <a href="/message">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-liuyanmoban"></use>
+                                </svg> 留言区</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="T_nav_item_r"><span id="back_system">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-houtaiguanli-"></use>
+                        </svg>后台管理</span></div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- 头部 -->
+    <header>
+
+        <div class=" header_bg">
+            <div class="T_header T_w">
+                <div class="T_header_l">
+                    <h1>
+                        <span style="display: none;">这里是Turnip的博客</span>
+                        <a href="/" class="qr_code"><img src="./T_Image/T_logo.png" alt="Trunip的博客"></a>
+                    </h1>
+                    <h2 class="qr_code T_QR">Turnip的博客</h2>
+                    <div class="qr_code_img">
+                        <p>添加时要说明来自博客</p>
+                        <img src="./T_Image/qr_code.jpg" alt="">
+                    </div>
+                    <div class="T_search">
+                        <input type="search" name="" id="">
+                        <button><svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-sousuo"></use>
+                            </svg>搜索</button>
+                    </div>
+
+                </div>
+                <div class="T_header_r">
+                    <h4>当前用户组：<em>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-guanliyuan-yonghuchaxun"></use>
+                            </svg>超级管理员</em></h4>
+
+                    <h3>
+                        <a href=""><img src="./T_Image/Turnip.jpg" alt=""></a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- 页面内容 -->
+    <main>
+        <div class="T_main T_w clearfix">
+            <article class="T_main_content_left">
+                <div class="T_show_item">
+                    <ul class="T_show clearfix">
+                        {{#each arr_friend}}
+                        <li>
+                            <a href="{{this.t_link}}">
+                                <img src="{{this.t_default}}" alt="">
+                                <em>{{this.t_name}}</em>
+                                <span>{{this.t_describe}}</span>
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <h3 class="T_friend">友情链接区 (后台会自动验证，显示提交后刷新即可)</h3>
+                <ul class="example">
+                    <h3>例如：</h3>
+                    <li>名称：Turnip起始页</li>
+                    <li>链接：http://turnip.ren</li>
+                    <li>描述：不到最后，决不放弃。</li>
+                    <li>头像：http://turnip.ren/image/turnip.jpg</li>
+                    <li>提示说明：</li>
+                    <li>1.后台会自动对网站地址请求，若网址正确，会自动添加并渲染，刷新即可，提交按钮也会变成"成功，请刷新"字样</li>
+                    <li>2.刚添加时，头像为随机默认头像，我会检查并换回对应头像，地址一定要能得到头像，得不到头像我会直接删除</li>
+                    <li>3.无排名之分，均是按添加先后进行排序的</li>
+                </ul>
+                <div class="T_form">
+                    <input type="text" placeholder="名称">
+                    <input type="text" placeholder="链接">
+                    <input type="text" placeholder="描述">
+                    <input type="text" placeholder="头像">
+                    <button id="f_btn">提交</button>
+                </div>
+            </article>
+            <aside class="T_main_content_right">
+                <div class="T_notice notice_bg">
+                    <div class="T_notice_item_hd clearfix">
+                        <ul>
+                            <li data-text="notice" class="T_notice_active">
+                                <span>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-gonggao"></use>
+                                    </svg>网站公告</span>
+                            </li>
+                            <li data-text="vip">
+                                <span>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-huiyuan"></use>
+                                    </svg>会员登陆</span>
+                            </li>
+                            <li data-text="contact">
+                                <span>
+                                    <svg class="icon" aria-hidden="true">
+                                        <use xlink:href="#icon-lianxi"></use>
+                                    </svg>联系站长</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="T_notice_item_bd">
+                        <div class="T_net_note">
+                            <ul>
+                                <li>
+                                    欢迎访问Turnip的博客
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="T_vip_login">
+                            <form action="post">
+                                <input class="text" type="text" placeholder="账户">
+                                <input class="text" type="password" placeholder="密码">
+                                <input type="submit">
+                            </form>
+
+                        </div>
+                        <div class="T_contact">
+                            <ul>
+                                <li>
+                                    邮箱：2276157075@qq.com
+                                </li>
+                                <li>
+                                    QQ：2276157075
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="T_daily daily_bg">
+                    <h3>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-meirigengxin"></use>
+                        </svg>每日一句
+                    </h3>
+                    <p>The situation is not quite so cut and dried. </p>
+                </div>
+                <div class="T_message message_bg">
+                    <h3>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-zuixinlianzai"></use>
+                        </svg>最新留言
+                    </h3>
+                    <ul>
+                        {{#each arr_message1}}
+                        <li class="T_message_item">
+                            <a href="/message">
+                                <img src="./T_Image/Turnip.jpg" alt="">
+                                <div class="T_message_item_text clearfix">
+                                    <span>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-touxiang"></use>
+                                        </svg>{{this.t_name}}</span>
+                                    <label>
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-riqi1"></use>
+                                        </svg>{{this.t_date}}</label>
+                                    <em>{{this.t_text}}</em>
+                                </div>
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+    <!-- 底部 -->
+    <footer>
+        <div class="T_footer T_w footer_bg">
+            <div class="T_footer_item">
+                <ul>
+                    <li>
+                        <a href="/about_me">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-guanyuwomen1"></use>
+                            </svg> 关于我</a>
+                    </li>
+                    <li>
+                        <a href="/about_net">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-guanyuwomen"></use>
+                            </svg> 关于网站</a>
+                    </li>
+                    <li>
+                        <a href="/message">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-liuyanmoban"></use>
+                            </svg> 留言区</a>
+                    </li>
+                </ul>
+                <div class="copyright">
+                    <p class="web_font">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-banquan"></use>
+                        </svg>备案/许可证编号为：豫ICP备2021008689号
+                    </p>
+                    <p class="web_font">联系我，
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-youxiang1"></use>
+                        </svg>邮箱：2276157075@qq.com
+                    </p>
+                </div>
+                <span style="text-align: center;display:block;font-size:20px;">
+                    网站运行了<em id="day">0</em>天
+                </span>
+                <script>
+                    let day = document.querySelector("#day");
+                    day.innerHTML = parseInt((+new Date() - 1627031090703) / 86400000)
+                </script>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 昼夜切换 -->
+    <button id="night" style="position: fixed;bottom: 60px;right: 60px; background: #ccc;font-size: 30px;"><svg
+            class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yewan"></use>
+        </svg></button>
+
+
+
+
+</body>
+
+</html>

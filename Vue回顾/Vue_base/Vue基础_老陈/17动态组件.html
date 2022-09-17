@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<component :is="com"></component>
+			<button type="button" @click="change" data-id="1">首页</button>
+			<button type="button" @click="change" data-id="2">发现</button>
+			<button type="button" @click="change" data-id="3">新闻</button>
+		</div>
+		<script type="text/javascript">
+			let turnip1  = Vue.component("meIndex",{
+				template:'<h1>首页</h1>'
+			})
+			let turnip2  = Vue.component("meFind",{
+				template:'<h1>发现</h1>'
+			})
+			let turnip3  = Vue.component("meNew",{
+				template:'<h1>新闻</h1>'
+			})
+			
+			let app  = new Vue({
+				el:"#app",
+				data:{
+					com:"turnip1"
+				},
+				components:{
+					turnip1,turnip2,turnip3
+				},
+				methods:{
+					change(e){
+						console.log(this)
+						this.com=this.$options.components["turnip"+e.target.dataset.id]
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

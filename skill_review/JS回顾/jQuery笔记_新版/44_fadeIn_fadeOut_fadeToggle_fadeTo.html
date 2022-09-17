@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>淡入和淡出</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+			}
+			.div1{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				top: 50px;
+				left: 10px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="btn1">淡出</button>
+		<button type="button" id="btn2">淡入</button>
+		<button type="button" id="btn3">淡出/入互切</button>
+		<button type="button" id="btn4">透明度</button>
+		<div class="div1">
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		//单击btn1，实现慢慢淡出
+		$("#btn1").click(() => {
+			$(".div1").fadeOut()
+		})
+		//单击btn2，实现慢慢淡入
+		$("#btn2").click(()=>{
+			$(".div1").fadeIn()
+		})
+		//单击btn3，出入互切
+		$("#btn3").click(()=>{
+			$(".div1").fadeToggle(()=>{
+				$(".div1").before("<p>动画结束</p>")
+			})
+		})
+		// $("#btn4").click(()=>{
+		// 	$(".div1").fadeTo(0.1);//不知道怎么用
+		// })
+	})
+</script>

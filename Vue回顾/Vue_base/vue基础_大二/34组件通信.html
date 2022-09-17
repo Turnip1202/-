@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <turnip @event_turnip="fun"></turnip>
+        <!-- v-modle会自动创建一个input的事件。会把传来的值赋值给msg -->
+        <turnip v-model="msg" @event_turnip="fun"></turnip>
+        <p>{{msg}}</p>
+    </div>
+    <template id="temp">
+			<div id="">
+				<button type="button" @click="func">点击</button>
+				<button type="button" @click="add">++</button>
+			</div>
+
+		</template>
+    <script type="text/javascript">
+        //子组件向父组件传值使用  自定义事件，
+        // 过程:1.父组件内对已注册的子组件标签设置 自定义事件，并绑定父组件内的函数
+        // 2.子组件触发自定义事件,并传入相应的数据。事件触发相当于监听click事件一样，回调函数相当于事件触发的函数
+        // 3.数据会传进父组件内对应标签事件绑定的父组件内的函数，
+        Vue.component("turnip", {
+            template: "#temp",
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                func: function() {
+                    console.log("子组件")
+                    this.count--;
+                    this.$emit("event_turnip", this.count);
+                },
+                add() {
+                    this.count++;
+                    this.$emit("input", this.count)
+                }
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "123"
+            },
+            methods: {
+                fun: function(val) {
+                    this.msg = val
+                    console.log("父组件")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

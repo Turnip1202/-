@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>显示和隐藏</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;padding: 0;
+			}
+			.div1{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				top: 50px;
+				left: 10px;
+				background: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="btn1">瞬间显示</button>
+		<button type="button" id="btn2">延迟显示</button>
+		<button type="button" id="btn3">延迟隐藏</button>
+		<button type="button" id="btn4">显隐互切</button>
+		<div class="div1">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		//单击btn1，立即显示
+		$("#btn1").click(()=>{
+			$(".div1").show()
+		})
+		//单击btn2，延迟显示
+		$("#btn2").click(()=>{
+			$(".div1").show(2000,()=>{
+				console.log("延迟显示")
+			})
+		})
+		//单击btn3，延迟隐藏
+		$("#btn3").click(()=>{
+			$(".div1").hide(2000)
+		})
+		//单击btn4，隐显互切
+		$("#btn4").click(()=>{
+			$(".div1").toggle(2000,()=>{
+				$("body").append("<p>切换成功</p>")
+			})
+		})
+	})
+</script>

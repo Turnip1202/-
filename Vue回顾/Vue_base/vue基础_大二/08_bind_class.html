@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .fontColor {
+            color: red;
+        }
+        
+        .fontSize {
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class="fontColor fontSize">123456</p>
+        <p :class="b">adasdsaf</p>
+        <p v-bind:class="[a,b]">adasdsaf</p>
+        <p :class="{fontColor:isColor,fontSize:isSize}">adasdsaf</p>
+        <p :class="{fontColor:true,fontSize:true}">adasdsaf</p>
+        <p :class="c">萝卜</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                a: "fontColor",
+                b: "fontSize",
+                isColor: true,
+                isSize: true,
+                c: {
+                    fontColor: true,
+                    fontSize: true
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>双击事件</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p>双击鼠标左键，则下面的消失</p>
+		<p>双击我会显示</p>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		let n = 0;
+		$("body p:even").dblclick(()=>{
+			n++;
+			if(n%2!=0){
+				$("body>p:nth-child(2)").hide()
+			}else{
+				$("p:nth-child(2)").show();
+			}
+		})
+		$("p:odd").dblclick(()=>{
+			
+				$(this).hide()
+
+		})
+	})
+</script>

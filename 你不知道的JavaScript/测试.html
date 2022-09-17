@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./测试.js"></script>
+</head>
+
+<body>
+    <script>
+        // function foo() {
+        //     // 'use strict' //此时使用严格模式，则a会被绑定到undefined
+
+        //     console.log(this.a);
+        // }
+        // var a = 10;
+        // // foo(); //TypeError: Cannot read property 'a' of undefined
+        // (() => {
+        //     'use strict';
+        //     foo();
+        // })();
+
+
+        // function foo() {
+        //     console.log(this.a);
+        // }
+
+        // function doFoo(fn) {
+        //     fn();
+        // }
+        // var obj = {
+        //     a: 2,
+        //     foo: foo
+        // }
+        // var bar = obj.foo;
+        // var a = 'opps, global';
+        // // bar();
+        // doFoo(obj.foo)
+
+        // function foo() {
+        //     console.log(this.a);
+        // }
+        // var obj = {
+        //     a: 2
+        // };
+        // //将会绑定到传入的对象，若传入*一个原始值，则会自动实例化原始对象
+        // foo.call(obj);
+
+
+        // // bind源码
+        // function bind(fn, obj) {
+        //     return function() {
+        //         return fn.apply(obj, arguments)
+        //     }
+        // }
+
+        // function foo(el) {
+        //     console.log(el, this.id);
+        // }
+        // var obj = {
+        //     id: 'awesome'
+        // };
+        // [1, 2, 3].forEach(foo, obj); //forEach也可以改变this指向
+
+
+        // function foo(something) {
+        //     this.a = something;
+        // };
+        // // console.log(foo)
+        // //this就如同一个指针，初始会指向某些地方（现在不做深究）
+        // var obj1 = {};
+        // var bar = foo.bind(obj1); //bind会改变this指针指向，同时返回本身
+        // bar(2)
+        // console.log(obj1.a)
+
+
+        // window.addEventListener('load', function() {
+        //         var keywords = document.querySelector('.keywords');
+        //         keywords.focus();
+        //         // 关键字搜索框调用我们自定义的按键方法，自动搜索歌曲，这样我们一进入首页就能看到一些歌曲名称
+        //         setTimeout(function a() {
+        //             keywords.pressKey(72);
+
+        //         }, 100)
+
+
+        //     })
+        //     // 我们自定义一个可以自动按键的方法，要按什么键，写在参数code里即可
+        // HTMLElement.prototype.pressKey = function(code) {
+        //     var evt = document.createEvent("UIEvents");
+        //     evt.keyCode = code;
+        //     evt.initEvent("keyup", true, true);
+        //     this.dispatchEvent(evt);
+        // }
+
+        // // 'use strict';//不可修改
+        // var myObject = {};
+        // Object.defineProperty(myObject, 'a', {
+        //     value: 2,
+        //     writable: false,
+        //     configurable: true,
+        //     enumerable: true
+        // });
+        // myObject.a = 3;
+        // console.log(myObject.a)
+
+        // // 禁止扩展
+        // // 'use strict';//报错
+        // let myObject = {
+        //     a: 2
+        // };
+        // Object.preventExtensions(myObject);
+        // myObject.b = 3;
+        // myObject.a = 3;
+        // console.log(myObject.b);
+        // console.log(myObject.a);
+
+        // //存在性
+        // let myObject = {
+        //     a: 2
+        // };
+        // // console.log(window.myObject)
+        // console.log('a' in myObject);
+        // console.log('b' in myObject);
+        // let my_a = myObject.hasOwnProperty('a');
+        // let my_b = myObject.hasOwnProperty('b');
+        // console.log(my_a);
+        // console.log(my_b)
+
+        // //是否可枚举
+        // var myObject = {};
+        // Object.defineProperty(myObject, 'a', {
+        //     enumerable: true,
+        //     value: 2
+        // });
+        // Object.defineProperty(myObject, 'b', {
+        //     enumerable: false,
+        //     value: 3
+        // });
+        // let my_a = myObject.propertyIsEnumerable('a');
+        // let my_b = myObject.propertyIsEnumerable('b');
+        // console.log(my_a);
+        // console.log(my_b);
+        // let my_k = Object.keys(myObject);
+        // let my_g = Object.getOwnPropertyNames(myObject);
+        // console.log(my_k)
+        // console.log(my_g)
+
+
+        // //遍历
+        // //数组内置了@@iterator方法，只有有这个方法才能使用for-of
+        // var myArray = ['a', '1', 2];
+        // for (var i of myArray) {
+        //     console.log(i)
+        // };
+        // //貌似就是for-of的原理
+        // var myArray = ['a', '1', 2];
+        // var it = myArray[Symbol.iterator]();
+        // console.log(it.next());
+        // console.log(it.next());
+        // console.log(it.next());
+        // console.log(it.next());
+
+
+        // var obj = {
+        //     a: 2,
+        //     b: 3
+        // };
+        // //下面代码的意义在于给obj定义一个Symbol.iterator属性，这个属性是一个函数，用来返回迭代器
+        // Object.defineProperty(obj, Symbol.iterator, {
+        //     enumerable: false,
+        //     writable: false,
+        //     configurable: true,
+        //     //看到了吗，这个属性值是一个函数
+        //     value: function() {
+        //         var o = this; //也就是这个对象本身，想一想为什么this是指向这个对象本身，我保证前面的this里面讲的知识，绝对可以分析出来这里的this指向哪里
+        //         var idx = 0;
+        //         var ks = Object.keys(o); //返回这个对象的键值列表
+        //         return {
+        //             next: function() {
+        //                 return {
+        //                     value: o[ks[idx++]],
+        //                     done: (idx > ks.length)
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+        // //使用for...of遍历
+        // for (var v of obj) {
+        //     console.log(v);
+        // }
+
+        //编造出来的伪语法，class伪代码
+        // class CoolGuy {
+        //     specialTrick = nothing
+        //     CoolGuy(trick) {
+        //         specialTrick = trick;
+        //     }
+        //     showOff() {
+        //         output("Here's  my  strick: ".specialTrick)
+        //     }
+        // };
+        // Joe = new CoolGuy('jumping rope');
+        // Joe.showOff();
+
+        // function foo(x) {
+        //     return function add(y) {
+        //         return x + y;
+        //     }
+        // }
+        // //其实也很好理解，函数foo执行之后，foo的使命完成了，内存中又加载了一个add函数
+        // //add函数加载的时候，引用了foo传入的值
+        // let bar = foo(3)
+        // console.log(bar(3)); //6
+
+        // let bat = foo(6)
+        // console.log(bat(3)); //9
+        // 1/v1===1/v2
+
+        // //严格检查
+        // function check(v1, v2) {
+        //     //严格检查-0和0
+        //     if (v1 === 0 && v2 === 0) {
+        //         return 1 / v1 === 1 / v2;
+        //     };
+        //     //让NaN===NaN，返回true
+        //     if (v1 !== v1) {
+        //         return v2 !== v2;
+        //     }
+        //     return v1 === v2;
+        // }
+        // console.log(check(0, 0))
+
+        // //词法作用域的理解
+        // function foo() {
+        //     console.log(a)
+        // }
+        // var a = 9;
+        // //词法作用域
+        // //JavaScript引擎是动态编译，即边编译边执行，
+        // //故此时foo执行时，JavaScript引擎会在从执行代码始向前查找运行时所需要的数据
+        // foo();
+
+        // function　 foo(a) {
+        //     console.log(a); //2
+        // };
+        // foo(2);
+        // let foo = null;
+        // foo(2);
+        // function foo(a){
+        //     console.log( a + b);
+        //     b=a;
+        // }
+        // foo(2)
+
+        // function foo (a){
+        //     var b = a;
+        //     return a + b;
+        // };
+        // var c = foo( 2 );
+        // var c;
+
+
+        // //  with欺骗词法
+        // function foo(obj) {
+        //     with(obj) { //会创建作用域气泡
+        //         var b = 3; //实际上会被定义在foo函数内
+        //         c = 6;
+        //         // let c = 6;//会被限制在with内
+        //         a = 2; //这个a会直接找obj的属性a
+        //         console.log(a); //2
+        //         console.log(obj.a); //undefined
+        //         console.log(b); //3
+        //         console.log(obj.b); //undefined
+
+        //     };
+        //     // console.log(a) //ReferenceError
+        //     console.log(b); //3
+        //     console.log(c);
+        // };
+        // var o1 = {
+        //     a: 3
+        // }
+        // var o2 = {
+        //     b: 3
+        // };
+        // foo(o1);
+        // console.log(o1.a); //2
+        // // console.log(a); //RHS查询，ReferenceError
+
+        // // foo(o2);
+        // // console.log(o2.a); //undefined
+        // // console.log(o2.b); //undefined
+        // // console.log(a); //2,window.a
+
+        // //eval欺骗词法
+        // function foo(str, a) {
+        //     eval(str); //欺骗
+        //     console.log(a, b);
+        // }
+        // var b = 2;
+        // foo('var b = 3;', 1)
+
+
+        // function foo() {
+        //     function bar(a) {
+        //         i = 3; //修改for循环中所属作用域中的i
+        //         for (var i = 0; i < 10; i++) {
+        //             bar(i * 2); //此时造成无限循环了
+        //         }
+        //     }
+        // }
+
+        // //注意，因为是表达式，所以结尾需要使用分号
+        // //匿名函数表达式
+        // (function() {
+        //     var a = 3;
+        //     console.log(a);
+        // });
+        // //具名函数表达式
+        // (function foo() {
+        //     var a = 3;
+        //     console.log(a);
+        // });
+        // //形式一
+        // (function foo(a) {
+        //     console.log(a);
+        // }(3));
+        // //形式二
+        // (function foo(a) {
+        //     console.log(a);
+        // })(3);
+
+
+        // undefined = true; //企图覆盖undeined
+        // console.log(undefined); //undefined,可见修改不成功
+        // (function IIFE(undefined) {
+        //     console.log(undefined) //undefined,
+        //     var a;
+        //     if (a === undefined) {
+        //         console.log('Undefined  is  safe  here!')
+        //     }
+        // })(); //没有传入参数
+
+        // var a = 2;
+        // (function IIFE(def) {
+        //     def(window);
+        // })(function def(global) {
+        //     var a = 3; //会有遮蔽效应
+        //     console.log(a); //3
+        //     console.log(global.a); //2
+        // });
+
+
+        // function foo() {
+        //     console.log(this.a); //2
+        //     console.log(a); //2
+        // }
+
+        // function bar() {
+        //     var a = 3;
+        //     foo();
+        // }
+        // var a = 2;
+        // bar();
+
+        // //写的是这
+        // foo();
+
+        // function foo() {
+        //     console.log(a); //undefined
+        //     var a = 2;
+        // }
+        // //实际运行的是这
+        // function foo() {
+        //     var a;
+        //     console.log(a);
+        //     a = 2;
+        // }
+        // foo();
+
+        // // foo(); //TypeError: foo is not a function
+        // var a = true;
+        // console.log(foo); //undefined
+        // if (a) { //实际上被提升到if块内了
+        //     function foo() {
+        //         console.log('a');
+        //     }
+        // } else {
+        //     function foo() {
+        //         console.log('b');
+        //     }
+        // }
+        // console.log(foo);
+
+        //函数名是一个变体
+        // (function() {
+        //     function foo() {
+        //         var a = 2;
+
+        //         function bar() {
+        //             console.log(a)
+        //         }
+        //         return bar;
+        //     }
+        //     console.log(foo); //函数foo
+        //     console.log(window.foo); //undefined
+
+        //     foo = 12;
+        //     console.log(foo) //12
+        //     console.log(window.foo); //undefined
+        // })();
+
+        // //闭包的深度解析
+        // function foo() {
+        //     var a = 2;
+
+        //     function bar() {
+        //         console.log(a)
+        //     }
+        //     return bar;
+        // }
+        // foo()(); //2
+        // var baz = foo(); //2
+        // baz();
+
+        // fss();
+        // function foo() {
+        //     var a = 2;
+        //     function baz() {
+        //         console.log(a)
+        //     };
+        //     bar(baz)
+        // }
+
+        // function bar(fn) {
+        //     fn();
+        // }
+
+        // function fss() {
+        //     foo()
+        // }
+
+        // function setupBot(name, selector) {
+        //     $(selector).click(function activator() {
+        //         console.log('Activating' + name);
+        //     })
+        // }
+        // setupBot('Closure Bot 1', '#bot_1')
+
+        // for (var i = 1; i <= 5; i++) {
+        //     // var j = i;
+        //     setTimeout(function timer() {
+        //         console.log(j)
+        //     }, i * 1000);
+        // }
+
+        // for (var i = 1; i <= 5; i++) {
+        //     (() => {
+        //         var j = i;
+        //         setTimeout(function timer() {
+        //             console.log(j)
+        //         }, i * 1000);
+        //     })();
+
+        // }
+
+        // for (var i = 1; i <= 5; i++) {
+        //     ((j) => {
+        //         setTimeout(function timer() {
+        //             console.log(j)
+        //         }, j * 1000);
+        //     })(i);
+
+        // }
+        // for (var i = 1; i <= 5; i++) {
+        //     setTimeout(function timer() {
+        //         console.log(i)
+        //     }, i * 1000);
+        // }
+
+
+        //闭包和模块
+        // var foo = (function CoolModule(id) {
+        //     function change() {
+        //         //修改公共API
+        //         publicAPI.identify = identify2;
+        //     };
+        //     function identify1() {
+        //         console.log(id);
+        //     };
+
+        //     function identify2() {
+        //         console.log(id.toUpperCase());
+        //     };
+        //     var publicAPI = {
+        //         change: change,
+        //         identify: identify1
+        //     };
+        //     return publicAPI; //返回模块
+        // })('foo module');
+        // //此时foo对其模块内部持续引用
+        // //故下述方法执行了模块内部的函数
+        // foo.identify();
+        // foo.change();
+        // foo.identify();
+
+
+        // //现代的模块机制
+        // var MyModules = (function Manager() {
+        //     var modules = {};
+
+        //     function define(name, deps, impl) {
+        //         for (var i = 0; i < deps.length; i++) {
+        //             deps[i] = modules[deps[i]];
+        //         };
+        //         modules[name] = impl.apply(impl, deps);
+        //     };
+
+        //     function get(name) {
+        //         return modules[name];
+        //     };
+        //     return {
+        //         define: define,
+        //         get: get,
+        //     }
+        // })();
+        // MyModules.define('bar', [], function() {
+        //     function heool(who) {
+        //         return 'Let me introduce: ' + who;
+        //     };
+        //     return { //返回的是对象
+        //         heool: heool
+        //     };
+        // });
+        // MyModules.define('foo', ['bar'], function() {
+        //     var hungry = 'hippo';
+
+        //     function awesome() {
+        //         console.log(bar.hello(hungry).toUpperCase());
+        //     };
+        //     return { //返回的是对象
+        //         awesome: awesome
+        //     };
+        // });
+        // var bar = MyModules.get('bar');
+        // var foo = MyModules.get('foo');
+        // console.log(bar.hello('hippo')); //Let me introduce:hippo
+        // foo.awesome();
+
+        // //附录C  this词法
+        // var obj = {
+        //     id: 'awesome',
+        //     cool: function coolFn() {
+        //         console.log(this.id);
+        //         // console.log(this);
+        //     }
+        // };
+        // var id = 'not awesome';
+        // obj.cool(); //awesome
+        // //this的绑定取决于调用位置，故这里是对coolFn函数的直接引用，即直接调用
+        // var foo = obj.cool;
+        // foo(); //not awesome
+
+        // // 可见这里也是直接引用
+        // setTimeout(obj.cool, 100); //not awesome
+        // // console.log(window.id)
+        // var obj = {
+        //     count: 0,
+        //     cool: function() {
+        //         if (this.count < 1) {
+        //             setTimeout(() => {
+        //                 this.count++;
+        //                 console.log('awesome');
+        //             }, 100)
+        //         }
+        //     }
+
+        // };
+        // obj.cool();
+        // (() => {
+        //     console.log(this); //window
+        // })();
+
+
+        // // 关于this
+        // function foo(num) {
+        //     console.log('foo: ' + num);
+        //     //记录foo被调用的次数
+        //     this.count++;
+        // };
+        // foo.count = 0;
+        // var i = null;
+        // for (i = 0; i < 10; i++) {
+        //     if (i > 5) {
+        //         foo(i);
+        //     }
+        // }
+        // console.log(foo.count); //0
+        // var obj = {}
+
+        // function foo() {
+        //     var a = 2;
+        //     this.bar();
+        // }
+
+        // function bar() {
+        //     // LHS查询对象的时候貌似会自动创建属性，应该时新改的。
+        //     console.log(this.a); //undefined
+        //     console.log(obj.a); //undefined
+        // }
+        // // this.foo(); //undefined
+        // //我觉得定义在全局作用域的函数也会成为全局对象的属性
+
+        // foo();
+
+        // function foo() {
+        //     console.log(this.a);
+        // }
+        // var a = 2;
+        // (function() {
+
+        //     foo();
+        // }());
+
+        // function foo() {
+        //     console.log(this.a)
+        // }
+        // var obj2 = {
+        //     a: 42,
+        //     foo: foo
+        // }
+        // var obj1 = {
+        //     a: 2,
+        //     obj2: obj2
+        // }
+        // obj1.obj2.foo(); //42
+
+        // window.addEventListener('load', function() {
+        //     console.log(this); //window
+        //     document.querySelector('p').addEventListener('click', function(e) {
+        //         function foo() {
+        //             console.log(this); //window
+
+        //         }
+        //         foo();
+        //         //这里就是绑定到触发的DOM元素上
+        //         console.log(this); //p
+        //         console.log(e.target); //p
+        //     })
+        // })
+        // $(function() {
+        //     console.log(this); //#document,貌似是jQuery的文档对象
+        //     $('p').on('click', function(e) {
+        //         function foo() {
+        //             console.log(this); //window
+        //         }
+        //         foo();
+        //         console.log(this); //p
+        //         console.log(e.target); //p
+        //     })
+        // })
+
+        // //硬绑定，
+        // function foo() {
+        //     console.log(this.a)
+        // }
+        // var obj = {
+        //     a: 2,
+        //     foo: foo
+        // };
+        // var a = 3;
+        // var bar = function() {
+        //     // foo();
+        //     return foo.call(obj); //2
+        // };
+        // bar();
+        // setTimeout(bar, 100); //2
+        // //硬绑定的bar不可能再修改它的this。
+        // //上面这句和废话一样，bar现在是一个新函数，这些操作均是对新函数的操作，怎么会修改foo的this
+        // bar.call(window); //2
+
+        // function foo(a) {
+        //     this.a = a;
+        // }
+        // var bar = new foo(2);
+        // //返回了一个新对象，因此可以bar.a访问新对象的属性
+        // console.log(bar.a); //2
+
+
+        // if (!Function.prototype.bind) { //检擦Function的原型是否有bind方法
+        //     Function.prototype.bind = function(OThis) { //定义bind方法
+        //         if (typeof this !== 'function') { //检查调用者是否是函数
+        //             //与 ECMAScript 5最接近的
+        //             //内部 IsCallacle 函数
+        //             throw new TypeError( //如果不是函数，则抛出一个错误，这个函数会停止后续代码的执行
+        //                 'Function.prototype.bind - what is trying' +
+        //                 'to be bound is not callable'
+        //             );
+        //         };
+        //         //分割bind函数的参数，slice可以分割arguments这个伪数组，1代表从第2个索引开始分割arguments
+        //         var aArgs = Array.prototype.slice.call(arguments, 1),
+        //             fToBind = this, //bind调用者
+        //             fNOP = function() {}, //
+        //             fBound = function() {
+        //                 return fTobind.apply(
+        //                     (
+        //                         this instanceof fNOP //fNOP的原型链是否在this原型链上
+        //                         &&
+        //                         OThis ? this : OThis //oThis是否存在
+        //                     ),
+        //                     aArgs.concat(
+        //                         Array.prototype.slice.call(arguments)
+        //                     )
+        //                 );
+        //             };
+        //         fNOP.prototype = this.prototype;
+        //         fBound.prototype = new fNOP();
+        //         return fBound;
+        //     }
+        // }
+
+        // function foo() {
+        //     let arr = [];
+        //     for (key in arguments) {
+        //         arr.push(arguments[key])
+        //     }
+        //     arr.forEach((item, index, arrName) => {
+        //         console.log(item, index, arrName)
+        //     })
+
+        // }
+        // let arr = [1, 2, 3, 4, 5, 6]; 
+        // // foo.apply(null, arr);
+        // let bar = foo.bind(null, arr); //此时传入的是数组，故第一次输出的item是数组
+        // bar(...arr); //同bar(1, 2, 3, 4, 5, 6)
+
+        // //软绑定
+        // if (!Function.prototype.softBind) {
+        //     Function.prototype.softBind = function(obj) {
+        //         var fn = this;
+        //         //捕获所欲curried参数
+        //         var curried = [].slice.call(arguments, 1);
+        //         var bound = function() {
+        //             return fn.apply(
+        //                 (!this || this === (window || global)) ?
+        //                 obj : this,
+        //                 curried.concat.apply(curried, arguments)
+        //             );
+        //         };
+        //         bound.prototype = Object.create(fn.prototype);
+        //         return bound;
+        //     }
+        // }
+
+        // function foo() {
+        //     console.log('name: ' + this.name);
+        // }
+        // var obj = {
+        //         name: 'obj'
+        //     },
+        //     obj2 = {
+        //         name: 'obj2'
+        //     },
+        //     obj3 = {
+        //         name: 'obj3'
+        //     };
+        // var fooOBJ = foo.softBind(obj); //绑定到了obj上
+        // fooOBJ(); //name:obj
+        // obj2.foo = foo.softBind(obj);//绑定到obj上
+        // obj2.foo(); //name:obj2，貌似和隐式绑定差不多
+        // fooOBJ.call(obj3); //name:obj3
+        // setTimeout(obj2.foo, 100); //name:obj
+
+        // //箭头函数
+        // function foo() {
+        //     //返回一个箭头函数
+        //     return (a) => {
+        //         //this继承自foo()
+        //         console.log(this.a)
+        //     }
+        // }
+        // var obj1 = {
+        //     a: 2
+        // };
+        // var obj2 = {
+        //     a: 3
+        // };
+        // var bar = foo.call(obj1);
+        // bar.call(obj2); //2
+
+        // var myArray = ['foo', 'turnip', 43];
+        // myArray['3'] = 'kkk';
+        // myArray.length; //4
+        // myArray[3]; //43
+
+        //Object.defineProperty介绍
+        // 'use strict' //修改只读属性，会报错
+        // var myObject = {};
+        // Object.defineProperty(myObject, 'a', {
+        //     value: 2,
+        //     writeable: false, //不可写,只读
+        //     configurable: true, //可配置的
+        //     enumerable: true //可枚举
+        // });
+        // myObject.a = 3;
+        // console.log(myObject.a); //2
+
+        // var myObject = {};
+        // Object.defineProperty(myObject, 'FAVORITE_NUMBER', {
+        //     value: 42,
+        //     writable: false,
+        //     configurable: false
+        // });
+        // var myObject = {
+        //     a: 2
+        // };
+        // Object.preventExtensions(myObject);
+        // myObject.b = 3;
+        // console.log(myObject.b); //undefined
+
+        // var myObject = {
+        //     //给a定义一个getter
+        //     get a() {
+        //         return this._a_;
+        //     },
+        //     set a(val) {
+        //         this._a_ = val * 2;
+        //     }
+        // }
+        // myObject.a = 2;
+        // console.log(myObject.a)
+        // console.log(myObject._a_); //创建了一个属性
+
+        // var myObject = {};
+        // Object.defineProperty(myObject, 'a',
+        //     //让a像普通属性一样可以枚举
+        //     {
+        //         enumerable: true,
+        //         value: 2
+        //     });
+        // Object.defineProperty(myObject, 'b',
+        //     //让a像普通属性一样可以枚举
+        //     {
+        //         enumerable: false,
+        //         value: 2
+        //     });
+        // console.log(myObject.b); //3
+        // console.log(('b' in myObject)); //true
+        // console.log(myObject.hasOwnProperty('b')); //true
+        // for (var key in myObject) {
+        //     console.log(key, myObject[key]);
+        // }; //'a' 2
+        // console.log(myObject.propertyIsEnumerable('a')); //true
+        // console.log(myObject.propertyIsEnumerable('b')); //false
+        // console.log(Object.keys(myObject)); //['a']
+        // console.log(Object.getOwnPropertyNames(myObject)); //['a','b']
+
+        // //自定义对象迭代器
+        // var myObject = {
+        //     a: 2,
+        //     b: 3
+        // };
+        // Object.defineProperty(myObject, Symbol.iterator, {
+        //         enumerable: false,
+        //         writable: false,
+        //         configurable: true,
+        //         value: function() {
+        //             var o = this;
+        //             var idx = 0;
+        //             var ks = Object.keys(o);
+        //             return {
+        //                 next: function() {
+        //                     return {
+        //                         value: o[ks[idx++]],
+        //                         done: (idx > ks.length)
+        //                     };
+        //                 }
+        //             };
+        //         }
+        //     })
+        //     //手动遍历myObject
+        // var it = myObject[Symbol.iterator]();
+        // console.log(it.next()); //{value:2,done:false}
+        // console.log(it.next()); //{value:3,done:false}
+        // console.log(it.next()); //{value:undefined,done:true}
+        // //for-of遍历
+        // for (var v of myObject) {
+        //     console.log(v)
+        // }; //2,3
+
+        // //编造的类语法
+        // class CoolGuy {
+        //     specialTrick = nothing;
+        //     CoolGuy() {
+        //         specialTrick = trick;
+        //     };
+        //     showOff() {
+        //         output("Here's my strick:", specialTrick)
+        //     }
+        // };
+        // Joe = new CoolGuy('jumping rope');
+        // Joe.showOff()
+
+        // var anotherObject = {
+        //     a: 2
+        // };
+        // //创建一个关联到anotherObject的对象
+        // var myObject = Object.create(anotherObject);
+        // //注意此时myObject.a并不存在，但是JavaScript引擎会在原型链上查找该属性
+        // console.log(myObject.a); //2
+
+
+        // var anotherObject = {
+        //     a: 2
+        // };
+        // var myObject = Object.create(anotherObject);
+        // console.log(anotherObject.a); //2
+        // console.log(myObject.a); //2
+        // console.log(anotherObject.hasOwnProperty('a')); //true
+        // console.log(myObject.hasOwnProperty('a')); //false
+        // console.log(anotherObject);
+        // console.log(myObject); //属于anotherObject下一级
+        // myObject.a++; //myObject.a= myObject.a + 1
+        // console.log(anotherObject.a); //2
+        // console.log(myObject.a); //3
+        // console.log(myObject.hasOwnProperty('a')); //true
+        // function Foo() {}
+        // var a = new Foo();
+        // //new操作后，都会被关联到Foo.prototype对象上
+        // console.log(Object.getPrototypeOf(a) === Foo.prototype); //true
+
+        // //兼容的Object.create
+        // if (!Object.create) {
+        //     Object.create = function(o) {
+        //         function F() {}; //声明空函数
+        //         F.prototype = o;
+        //         return new F();
+        //     }
+        // }
+
+        // var anotherObject = {
+        //     cool: function() {
+        //         console.log('cool!');
+        //     }
+        // }
+        // var myObject = Object.create(anotherObject);
+        // myObject.doCool = function() {
+        //     this.cool(); //内部委托
+        // }
+        // myObject.doCool();
+
+
+        // //类理论(伪代码)
+        // class Task {
+        //     id;
+        //     //函数Task()
+        //     Task(ID) {
+        //         id = ID;
+        //     }
+        //     outputTask() {
+        //         output(id);
+        //     }
+        // };
+        // class XYZ inherits Task {
+        //     label;
+        //     //构造函数XYZ
+        //     XYZ(ID, Label) {
+        //         super(ID);
+        //         label = Label;
+        //     }
+        //     outputTask() {
+        //         super();
+        //         output(label);
+        //     }
+        // };
+        // class ABC inherits Task {
+        //     //...
+        // };
+
+        // //委托理论
+        // Task = {
+        //     setID: function(ID) {
+        //         this.id = ID;
+        //     },
+        //     output: function() {
+        //         console.log(this.id)
+        //     }
+        // };
+        // // 让XYZ委托给Task
+        // XYZ = Object.create(Task);
+        // XYZ.prepareTask = function(ID, Label) {
+        //     this.setID(ID);
+        //     this.label = Label;
+        // }
+        // XYZ.outputTaskDetails = function() {
+        //     this.outputID();
+        //     console.log(this.label);
+        // };
+        // //ABC = Object.create(Task);
+        // //ABC ... = ...
+
+        //数组join方法实现原理
+        function fakeJoin(arr, connector) {
+            let str = "";
+            for (let i = 0; i < arr.length; i++) {
+                if (i > 0) str += connector;
+                if (arr[i] !== undefined) str += arr[i];
+            }
+            return str;
+        }
+        let arr = new Array(3);
+        fakeJoin(arr, '-'); //"--"
+    </script>
+    <p>萝卜</p>
+</body>
+
+</html>

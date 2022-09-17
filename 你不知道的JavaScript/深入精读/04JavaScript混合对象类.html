@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // //相当于实现实例化类的函数，实际上就是一种复制
+    // function mixin(sourceObj, targetObj) {
+    //   for (var key in sourceObj) {
+    //     //对不存在的情况进行复制
+    //     if (!key in targetObj) {
+    //       targetObj[key] = sourceObj[key];
+    //     }
+    //   }
+    //   return targetObj;
+    // };
+    // var Vehicle = {
+    //   engines: 1,
+    //   ignition: function () {
+    //     console.log('Turning on my engine.');
+    //   },
+    //   drive: function () {
+    //     this.ignition();
+    //     console.log('Steering and moving forward!');
+    //   }
+    // };
+    // var Car = mixin(Vehicle, {
+    //   wheels: 4,
+    //   drive: function () {
+    //     Vehicle.drive.call(this);
+    //     console.log('Rolling on all' + this.wheels + 'Wheels!')
+    //   }
+    // })
+
+    var something = {
+      cool: function () {
+        this.greeting = 'Hello World!';
+        this.count = this.count ? this.count + 1 : 1;
+      }
+    };
+    something.coll();
+    something.greeting;//Hello World!
+    something.count;//1
+    var Another = {
+      cool: function () {
+        // 隐式将this指向Another，这里cool的this是Another，即显示将something.cool的this指向了Another
+        something.cool.call(this);
+      }
+    }
+    Another.cool();
+    Another.greeting;//Hello World!
+    Another.count;//1(非共享的something)
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo3</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded',()=>{
+				let num =3;
+				document.querySelector('button').addEventListener('click',(e)=>{
+					document.querySelector('button').disabled = true;
+					e.target.innerHTML = num+'后可重试';
+					let clear = setInterval(()=>{
+						num--;
+						e.target.innerHTML = num+'后可重试';
+						if(num<=0){
+							clearInterval(clear);
+							num = 3;
+							document.querySelector('button').disabled = false;
+							e.target.innerHTML = '发送'
+						}
+					},1000)
+				})
+			})
+		</script>
+		<input type="text" name="" id="" value="" />
+		<button type="button">发送</button>
+	</body>
+</html>

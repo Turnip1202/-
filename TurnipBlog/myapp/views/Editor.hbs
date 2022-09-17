@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trunip起始页-后台-编辑器</title>
+     <!-- 引入favicon.ico网页图标 -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- 代码高亮样式 -->
+    <link rel="stylesheet" href="../Exterior/css/monokai_sublime.min.css">
+    <!-- 编辑器js -->
+    <script src="../Exterior/js/wangEditor.min.js"></script>
+    <!-- 代码高亮js -->
+    <script src="../Exterior/js/highlight.min.js"></script>
+    <!-- 数据提交js -->
+    <script defer src="../T_JavaScript/T_editor.js"></script>
+    <!-- AJAX封装库 -->
+    <script src="../Exterior/js/axios.min.js"></script>
+    <style>
+        .submit{
+            margin-top: 30px;
+            width: 100%;
+            flex: content;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>文本编辑器</h1>
+    <div id="div1">
+        <p>欢迎使用 <b>Turnip</b> 文本编辑器</p>
+    </div>
+    <div class="submit">
+    <input type="password" id="adminCode" placeholder="授权码" style="padding-left: 5px;height: 30px;outline: none;">
+     <input type="text" id="t_picture" value="./T_Image/articleImg/" placeholder="配图地址" style="padding-left: 5px;height: 30px;outline: none;">
+     <input type="text" id="t_tag" placeholder="标签" style="padding-left: 5px;height: 30px;outline: none;">
+     <input type="text" id="t_route" placeholder="路由名" style="padding-left: 5px;height: 30px;outline: none;">
+    <button id="btn" style="color: #fff;border: none; background-color: skyblue;outline: none;height: 30px;width: 100px;cursor: pointer;">点击提交</button>
+     <a href="/">返回首页</a>
+    </div>
+    <div>
+        <p class="show">查询</p>
+         <button id="show">查询</button>
+        <p>删除操作</p>
+        <input type="number" id="delete_val" style="padding-left: 5px;height: 30px;outline: none;">
+        <input type="text" id="delete_pro" style="padding-left: 5px;height: 30px;outline: none;">
+    
+        <button id="delete">删除</button>
+       
+  
+    </div>
+
+</body>
+
+</html>
+
+<!-- 引入 wangEditor.min.js -->
+<script type="text/javascript">
+    const E = window.wangEditor
+    const editor = new E('#div1');
+    // 或者 const editor = new E( document.getElementById('div1') )
+
+    // 挂载highlight插件
+    editor.highlight = hljs;
+    // 配置菜单栏，删减菜单，调整顺序
+    // editor.config.menus = [];
+    // 配置全屏功能按钮是否展示
+    editor.config.showFullScreen = true;
+    //插入代码语言配置
+    editor.config.languageType = [
+        'JavaScript',
+        'C',
+        'C#',
+        'C++',
+        'CSS',
+        'Java',
+        'Bash',
+        'JSON',
+        'TypeScript',
+        'Plain text',
+        'Html',
+        'XML',
+        'SQL',
+        'Go',
+        'Kotlin',
+        'Lua',
+        'Markdown',
+        'PHP',
+        'Python',
+        'Shell Session',
+        'Ruby',
+    ]
+    editor.create()
+</script>

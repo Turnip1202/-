@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <turnip></turnip>
+        <a is="turnips"></a>
+        <a is="turnips"></a>
+    </div>
+    <div id="app2">
+        <!-- <turnips></turnips> 报错 -->
+    </div>
+    <template id="tem">
+			<div id="">
+				<p>局部组件:{{msg}}</p>
+				<button type='button' @click='msg++'>点击</button>
+			</div>
+			
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: `<p>全局组件</p>`
+        })
+        let obj = {
+            msg: 0
+        }
+        let app = new Vue({
+            el: "#app",
+            components: {
+                turnips: {
+                    template: "#tem",
+                    data: function() {
+                        // return obj;//指向全局obj
+                        return {
+                            msg: 0 //每次使用组件，均会创建这个对象
+                        }
+                    }
+                }
+            }
+        })
+
+        let app2 = new Vue({
+            el: "#app2"
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+
+<body>
+    <script>
+        for (let num = 0; num <= 13; num++) {
+            document.querySelector(`#sel_score${num}`).querySelector('input').click();
+        }
+        setTimeout(() => {
+            document.querySelector('.but20').click();
+
+        }, 300)
+    </script>
+    <button type="button">显示当前系统时间</button>
+    <div id="div">某个时间</div>
+    <p>123</p>
+    <script type="text/javascript">
+        function getDate() {
+            let date = new Date();
+            let year = date.getFullYear(); //年
+            let mouth = date.getMonth() + 1; //月
+            let dates = date.getDate(); //日
+            let arr = ['周日', "周一", '周二', '周三', '周四', '周五', '周六']
+            let day = date.getDay(); //获取一周的天数
+            return year + '年' + mouth + '月' + dates + '日' + arr[day];
+        }
+        let btn = document.querySelector("button");
+        let div1 = document.querySelector('#div');
+        btn.onclick = function() {
+            // console.log(div1)
+            div1.innerHTML = getDate(); //注意自己的浏览器拓展
+        }
+
+        document.querySelector("p").innerHTML = getDate();
+    </script>
+</body>
+
+</html>

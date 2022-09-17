@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>attr获取各种属性值</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p title="p标签">锄禾日当午</p>
+		<button type="button">显示title属性值</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("button").click(() =>{
+			alert($('p').attr("title"));
+		});
+	});
+</script>

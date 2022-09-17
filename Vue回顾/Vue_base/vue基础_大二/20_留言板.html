@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .div1 {
+            width: 980px;
+            height: auto;
+            margin: auto;
+            border: 3px solid black;
+        }
+        
+        #Message {
+            width: 900px;
+            min-height: 60px;
+            margin: 20px auto;
+        }
+        
+        #Message #top {
+            min-height: 30px;
+            background-color: #cecece;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+        
+        #Message #top ul {
+            overflow: hidden;
+        }
+        
+        #Message #top ul li {
+            float: right;
+            list-style: none;
+            margin-right: 100px;
+        }
+        
+        #Message #top ul li:nth-child(1) {
+            float: left;
+        }
+        
+        #Message #top ul li:nth-child(2) {
+            float: left;
+        }
+        
+        #info {
+            width: 900px;
+            min-height: 60px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="div1">
+            <div id="Message">
+                <div id="top" v-for="arr in message">
+                    <ul>
+                        <li>发布人：{{arr.name}}</li>
+                        <li>发布类型：{{arr.msgType}}</li>
+                        <li>发布时间：{{arr.publicTime}}</li>
+                    </ul>
+                    <p style="margin-top: 10px;margin-bottom: 20px;">{{arr.msgContent}}</p>
+                </div>
+            </div>
+            <div id="info">
+                <label>昵称：</label><input type="text" v-model.tirm="name" placeholder="请输入昵称" />
+                <label>隐藏昵称：</label><input type="checkbox" v-model="show_hide" />
+                <label>发布类型</label>
+                <select v-model="pubType">
+					<option>原创</option>
+					<option>搬运</option>
+				</select>
+            </div>
+            <textarea placeholder="这里可以留言" v-model.tirm="content" style="resize: none;margin-left: 39px;" rows="10" cols="120"></textarea>
+            <p style="margin-left: 900px; "><button type="button" @click="send()">发送</button></p>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                message: [{
+                    name: "小格",
+                    msgType: "原创",
+                    msgContent: "小格已上线",
+                    publicTime: new Date().toLocaleString(),
+                }],
+                name: "",
+                show_hide: false,
+                pubType: "原创",
+                content: ""
+
+            },
+            methods: {
+                send: function() {
+                    let arr = {};
+                    if (!this.show_hide) {
+                        //注意使用let需要在块级作用域外先定义arr
+                        arr = {
+                            name: this.name,
+                            msgType: this.pubType,
+                            msgContent: this.content,
+                            publicTime: new Date().toLocaleString(),
+                        };
+
+                    } else {
+                        arr = {
+                            name: "***",
+                            msgType: this.pubType,
+                            msgContent: this.content,
+                            publicTime: new Date().toLocaleString(),
+                        };
+
+                    }
+                    this.message.push(arr);
+
+
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

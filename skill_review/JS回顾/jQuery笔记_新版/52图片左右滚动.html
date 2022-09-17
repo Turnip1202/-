@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            margin: 50px;
+            width: 660px;
+            border: 5px solid pink;
+            overflow: hidden;
+        }
+        .left{
+            background: #fff000;width: 30px;float: left;height: 150px;line-height: 150px;font-size: 30px;
+        }
+        .right{
+            background: #fff000;width: 30px;float: right;height: 150px;line-height: 150px;font-size: 30px;
+        }
+        #imgContent{
+            float: left;overflow: hidden;width: 600px;height: 150px;position: relative;
+        }
+        #showImages{
+            width: 1000px;position: absolute;left: 0px;top: 0px;
+        }
+        #showImages img{
+            width: 200px;height: 150px;display: block;float: left;
+        }
+    </style>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+
+    <script>
+        // 首先在箭头上绑定事件，然后用animate方法实现隐藏div中的div移动的效果
+        $(function(){
+            bindEvent();
+        })
+        function bindEvent(){
+            $(".left").bind("click",funLeft);
+            $(".right").bind("click",funRight);
+        }
+        function unbindEvent(){
+            $(".left").unbind("click",funLeft);
+            $(".right").unbind("click",funRight);
+        }
+        function funLeft(){
+
+            var L=parseInt($("#showImages").css("left"));
+            // console.log($("#showImages").css("left"))
+
+            var endL = L-200;
+            if(endL<=0 && endL>=-400){
+                endL=endL+'px';
+                unbindEvent();
+                $("#showImages").animate({left:endL},1000,bindEvent);
+            }
+        }
+        function funRight(){
+            var L=parseInt($("#showImages").css("left"));
+            var endL = L+200;
+            if(endL<=0){
+                endL=endL+"px";
+                unbindEvent();
+                $("#showImages").animate({left:endL},1000,bindEvent);
+            }
+        }
+
+        function bindEvent(){
+            $(".left").bind("click",funLeft);
+            $(".right").bind("click",funRight);
+            var L = parseInt($("#showImages").css('left'));
+            if(L<=-400){
+                $(".left").css('color','#ccc');
+                $(".right").css('color','red');
+            }
+            if(L>=0){
+                $(".left").css('color','red');
+                $(".right").css('color','#ccc');
+            }
+            if(L>-400 && L<0){
+                $(".left").css('color','red');
+                $(".right").css('color','red');
+            }
+        }
+    </script>
+
+</head>
+<body>
+    
+    <div class="content">
+        <div class="left">&lt;&lt</div>
+        <div id="imgContent">
+            <div id="showImages">
+                <img src="./img/QQ图片20210219192126.jpg" alt="">
+                <img src="./img/Snipaste_2021-05-09_18-30-20.png" alt="">
+                <img src="./img/QQ图片20210219192126.jpg" alt="">
+                <img src="./img/Snipaste_2021-05-09_18-30-20.png" alt="">
+                <img src="./img/QQ图片20210219192126.jpg" alt="">
+            </div>
+        </div>
+        <div class="right">&gt;&gt</div>
+    </div>
+    
+</body>
+</html>
+

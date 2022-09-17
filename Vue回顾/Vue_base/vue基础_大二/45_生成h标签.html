@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <!-- 此页面，使用了父组件向子组件传值，子组件通过父组件传过来的数据渲染插槽 -->
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip :level="2">
+            萝卜
+        </turnip>
+
+
+    </div>
+    <template id="tem">
+			<div id="">
+				<h1 v-if="level==1"><slot></slot></h1>
+				<h2 v-if="level==2"><slot></slot></h2>
+				<h3 v-if="level==3"><slot></slot></h3>
+				<h4 v-if="level==4"><slot></slot></h4>
+				<h5 v-if="level==5"><slot></slot></h5>
+				<h6 v-if="level==6"><slot></slot></h6>
+			</div>
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: "#tem",
+            props: {
+                level: {
+                    type: Number
+                }
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "萝卜"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

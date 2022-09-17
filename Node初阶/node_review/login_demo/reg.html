@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Reg</title>
+    <link rel="stylesheet" type="text/css" href="./css/Login.css" />
+</head>
+
+<body>
+    <script>
+        var object1 = {};
+
+        Object.defineProperty(object1, 'property1', {
+            value: 42,
+            writable: false
+        });
+
+        object1.property1 = 77;
+        // throws an error in strict mode
+
+        console.log(object1.property1);
+        // expected output: 42
+    </script>
+
+    <div class="login_box">
+        <h2>Reg</h2>
+        <form action="http://127.0.0.1:2000/reg" method="post">
+            <div class="user_box">
+                <input type="text" id="user1" name="username" value="" required="" />
+                <label>账户：</label>
+            </div>
+            <div class="user_box">
+                <input type="password" id="user2" name="password" value="" required="" />
+                <label>密码：</label>
+            </div>
+            <div class="user_box">
+                <input type="tel" id="user3" name="tel" value="" required="" />
+                <label>手机号：</label>
+            </div>
+            <div class="user_box">
+                <input type="email" id="user4" name="email" value="" required="" />
+                <label>邮箱：</label>
+            </div>
+            <input type="submit" id="sub" value="注册">
+            </input>
+        </form>
+
+    </div>
+</body>
+
+</html>

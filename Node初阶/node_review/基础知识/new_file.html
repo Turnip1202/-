@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>用户注册</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            margin-bottom: 10px;
+            width: 300px;
+            height: 45px;
+            background-color: #A9A9A9;
+            border: #000000 solid 1px;
+        }
+        
+        h1 {
+            color: #FFFFFF;
+        }
+        
+        form {
+            width: 300px;
+            text-align: right;
+        }
+        
+        label {
+            width: 100px;
+            text-align: center;
+            color: #A9A9A9;
+        }
+        
+        form>input {
+            width: 200px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #botton {
+            color: #FFFFFF;
+            margin-top: 10px;
+            width: 300px;
+            height: 45px;
+            background-color: #A9A9A9;
+            border: #000000 solid 1px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="" style="width: 980px; margin: 0 auto;">
+        <header class="mui-bar mui-bar-nav">
+            <h1 class="mui-title">用户注册</h1>
+        </header>
+
+        <form action="http://localhost:2008" method="get">
+            <label>账号:</label><input type="text" name="uname" value="" /><br />
+            <label>密码:</label><input type="password" name="upassword" /><br />
+            <label>重复密码:</label><input type="password" name="upassword" /><br />
+            <label>性别</label><input type="radio" name="radio" value="男" />男<br />
+            <input type="radio" name="radio" value="女" />女<br />
+            <label>邮箱:</label><input type="email" name="uemail" value="" /><br />
+            <label>手机号:</label><input type="tel" name="tel" value="" /><br />
+            <input type="submit" name="" id="botton" value="提交" />
+        </form>
+
+    </div>
+
+</body>
+
+</html>

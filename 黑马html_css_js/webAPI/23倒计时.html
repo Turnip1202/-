@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo2</title>
+		<style type="text/css">
+			div {
+				margin: 200px;
+			}
+			span {
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				background-color: #333;
+				font-size: 20px;
+				color: #fff;
+				text-align: center;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded',()=>{
+				let hour = document.querySelector('.hour');
+				let minus = document.querySelector('.minus');
+				let second = document.querySelector('.second');
+				let userTime = +new Date('2021-5-31 19:00:00');
+				console.log(userTime)//得到毫秒数
+				// let tiem = new Date();
+				// console.log(tiem.valueOf())//得到毫秒数
+				
+				function nowTime(){
+					let NTime = +new Date();
+					let tiem = (userTime-NTime) /1000;//得到秒
+					let h = parseInt(tiem/3600 % 24);//以24取余，即相当于以24为周期，得到几点
+					h = h>9?h:'0'+h;
+					let m = parseInt(tiem / 60 % 60);//得到分
+					m = m>9?m:'0'+m;
+					let s = parseInt(tiem % 60);//得到秒
+					s = s>9?s:'0'+s;
+					
+					hour.innerHTML = h;
+					minus.innerHTML = m;
+					second.innerHTML = s;
+				}
+				nowTime()
+				setInterval(nowTime,1000);
+				
+			})
+		</script>
+		<div>
+			<span class="hour">1</span>
+			<span class="minus">2</span>
+			<span class="second">3</span>
+		</div>
+	</body>
+</html>

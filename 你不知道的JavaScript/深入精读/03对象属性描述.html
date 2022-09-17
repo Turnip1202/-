@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 'use strict'
+    // let myObject = {};
+    // Object.defineProperty(myObject, 'a', {
+    //   // 默认值
+    //   value: 2,
+    //   // 是否可写
+    //   writable: false,
+    //   // 是否可配置
+    //   configurable: true,//false:不可配置只能单向操作，无法撤销
+    //   // configurable: false,//false:不可配置只能单向操作，无法撤销
+    //   // 是否可枚举
+    //   enumerable: true
+    // });
+    // myObject.a = 3;//严格模式会TypeError
+    // Object.defineProperty(myObject, 'a', {
+    //   value: 6,
+    //   writable: true,
+    //   configurable: true,
+    //   enumerable: true
+    // });//TypeError
+    // // 对象常量
+    // Object.defineProperty(myObject, 'B', {
+    //   value: 6,
+    //   writable: false,
+    //   configurable: false,
+    //   enumerable: true
+    // });
+
+    // 禁止扩展
+    // 'use strict'
+    // let myObject = {
+    //   a: 3,
+    // }
+    // Object.preventExtensions(myObject);
+    // myObject.b = 6;//非严格模式下静默，严格模式下TypeError
+
+    //get和set
+    // let myObject = {
+    //   get a() {
+    //     return this._a_ || 2;
+    //   },
+    //   set a(val) {
+    //     this._a_ = val;//this._a_为额外变量
+    //   }
+    // }
+    // Object.defineProperty(myObject, 'b', {
+    //   //给b设置get
+    //   get: function () { return this.a * 2 },
+    //   enumerable: true
+    // });
+    // //由于只定义了get，故set操作会被忽略
+    // myObject.b = 6;//会被忽略
+
+    // for in遍历
+    // let myObject = {};
+    // Object.defineProperty(myObject, 'a', {
+    //   // 默认值
+    //   value: 2,
+    //   // 是否可写
+    //   writable: false,
+    //   // 是否可配置
+    //   configurable: true,//false:不可配置只能单向操作，无法撤销
+    //   // configurable: false,//false:不可配置只能单向操作，无法撤销
+    //   // 是否可枚举
+    //   enumerable: true
+    // });
+    // Object.defineProperty(myObject, 'b', {
+    //   value: 6,
+    //   writable: true,
+    //   configurable: true,
+    //   enumerable: false
+    // });
+    // // console.log(myObject.b)//6
+    // //b不可枚举，则无法 for--in遍历
+    // for (key in myObject) {
+    //   console.log(myObject[key]);//2
+    // }
+    // for (item in myObject) console.log(item);
+    // console.log(Object.keys(myObject));
+    // let myArray = [1, 2, 3];
+    // let it = myArray[Symbol.iterator]();//iterator迭代器函数
+    // it.next();
+
+    //自定义对象迭代器
+    var myObject = {
+      a: 2,
+      b: 3
+    };
+    Object.defineProperty(myObject, Symbol.iterator, {
+      enumerable: false,
+      writable: false,
+      configurable: true,
+      value: function () {
+        var o = this;
+        var idx = 0;
+        var ks = Object.keys(o);
+        return {
+          next: function () {
+            return {
+              value: o[ks[idx++]],
+              done: (idx > ks.length)
+            };
+          }
+        };
+      }
+    })
+    //手动遍历myObject
+    var it = myObject[Symbol.iterator]();
+    console.log(it.next()); //{value:2,done:false}
+    console.log(it.next()); //{value:3,done:false}
+    console.log(it.next()); //{value:undefined,done:true}
+    //for-of遍历
+    for (var v of myObject) {
+      console.log(v)
+    }; //2,3
+
+  </script>
+
+</body>
+
+</html>

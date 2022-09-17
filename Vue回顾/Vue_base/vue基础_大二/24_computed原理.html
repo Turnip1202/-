@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      a:
+      <input v-model="a" />
+      b:
+      <input v-model="b" />
+      sum:
+      <input v-model="sum" />
+      {{sum}}
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: '#app',
+        data: {
+          a: 12,
+          b: 13,
+        },
+        //之所以计算属性只会执行一次，是因为计算属性的本质是对象computed的一个属性，
+        // 即调用计算属性时，内部会把属性sum解析成get和set，默认执行get
+        computed: {
+          // sum:function(){//默认get
+          // 	return this.a+this.b;
+          // }
+          //计算属性就是数据,其数据是get方法的返回值，当此数据改变时，触发set方法，
+          // 若此时get方法关联了data内的数据，
+          // 当data内的数据改变会触发get方法
+          //计算属性就是数据，动自己触发set，动data触发get
+          sum: {
+            get: function () {
+              console.log('我是get方法')
+              return this.a + this.b
+            },
+            set: function (val) {
+              console.log('我是set方法' + val)
+            },
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

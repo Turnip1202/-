@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>被选元素的结尾插入内容</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ol class="o1">
+			<li>高等数学</li>
+			<li>线性代数</li>
+			<li>概率统计</li>
+		</ol>
+		<button type="button" class="bu1">结尾追加</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("button:eq(0)").click(() => {
+			$("body>.o1").append("<li>大学英语</li>");
+		})
+	})
+</script>

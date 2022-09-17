@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-color>{{msg}}</p>
+        <input type="text" v-model="msg" />
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "123"
+            },
+            directives: {
+                //自定义指令的钩子函数
+                color: {
+                    bind: function(el) {
+                        console.log("绑定时调用bind")
+                    },
+                    inserted: function(el) {
+                        console.log("插入时调用inserted")
+                    },
+                    update: function(el) {
+                        console.log("更新时调用update")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

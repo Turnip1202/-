@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>XML的使用</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		省：<select name="province"></select>
+		市：<select name="city"></select>
+	</body>
+</html>
+<script type="text/javascript">
+	//自定义函数，注意要像这样写在前面
+	function getCity(){
+		//获取对应的省名
+		let pid = $("[name='province']").val();
+		//定义cityId，cityName接收XML对应的数据
+		let cityId,cityName;
+		//操作XML数据
+		$.ajax({
+			ulr:'123.xml',
+			dataType:'xml',
+			success:function(re){
+				//清空城市的文本
+				$("[name='city']").empty();
+				//找到数据并遍历
+				$(re).find("[id="+pid+"] city").each(function(){//每次遍历，则均执行下述
+					//获取当前对象的id
+					cityId=$(this).attr('id');
+					//获取当前对象的name
+					cityName=$(this).attr('name');
+					//对城市下拉选框添加数据
+					$("[name='city']").append("<option value='"+cityId+"'>"+cityName+"</option>")
+					
+				})
+			}
+		})
+	}
+	$(function(){
+		var id,name;
+		$.ajax({
+			url:'123.xml',
+			dataType:'xml',
+			success:function(re){
+				alert("你好111");
+				//弹出XML数据
+				alert(re);
+				//找出XML下所有省份对应的城市，下面又调用了getCity，故此步貌似无意义
+				$(re).find('province').each(function(){
+					id=$(this).attr('id');
+					name=$(this).attr('name')
+					$("[name='province']").append("<option value='"+id+"'>"+name+"</ option>")
+					//弹出当前对象
+					alert(this);
+				})
+				//调用getCity，把或者省份对应数据
+				getCity();
+			}
+		})
+		//追加change事件，实现省市联动
+		$("[name='proc=vince']").change(getCity);
+	})
+	
+</script>

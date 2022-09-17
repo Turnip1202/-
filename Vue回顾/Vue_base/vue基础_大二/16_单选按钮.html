@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 貌似若不是数组。则这里的v-model是将值转换为逻辑值了。 -->
+			<input type="radio" v-model="sex" name="sex" value="男"><label>男</label>
+			<input type="radio" v-model="sex" name="sex" value="女"><label>女</label>
+			<!-- 选中后，value会传入到v-model -->
+
+			<p>{{sex}}</p>
+	
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					sex:"",
+				}
+			
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        .div1 {
+            width: 300px;
+            height: 300px;
+            background-color: #42B983;
+        }
+        
+        .div2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        .div3 {
+            width: 60px;
+            height: 60px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 阻止冒泡 -->
+        <!-- .stop加在第几层就是阻止到第几层(闭区间)的冒泡 -->
+        <div class="div1" @click="a">
+            <div class="div2" @click.stop="d">
+                <!-- 不写stop，会连续触发 按钮>div2>div1 -->
+                <button @click.stop="b" type="button">按钮</button>
+            </div>
+        </div>
+
+
+        <!-- 清除默认行为 -->
+        <!-- 不加precent会跳转到百度 -->
+        <a href="https://www.baidu.com" @click.prevent="c">百度一下</a>
+        <!-- 不加precent会刷新页面 -->
+        <form action="" method="">
+            <input type="text" id="" value="" />
+            <input type="submit" @click.prevent="c" value="提交" />
+        </form>
+
+
+        <!-- 事件捕捉 -->
+        <!-- 如果加在div1上，触发顺序  div1>按钮>div2;即捕捉到div1，但是后续触发遵循冒泡 -->
+        <!-- 经实验，每个加了捕捉的事件会由外至内，未捕捉到的事件仍是冒泡 -->
+        <div class="div1" @click.capture="a">
+            <div class="div2" @click="d">
+                <div class="div3" @click.capture="e">
+                    <button @click="b" type="button">按钮</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 仅触发直接接触元素 -->
+        <!-- 即加了.self的仅先触发本体，未加的执行冒泡顺序 -->
+        <div class="div1" @click.self="a">
+            <div class="div2" @click.self="d">
+                <button @click.self="b" type="button">按钮</button>
+            </div>
+        </div>
+
+        <!-- 仅触发一次 -->
+        <button @click.once="b" type="button">按钮</button>
+
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {},
+            methods: {
+                a: function() {
+                    alert("div1")
+                },
+                b: function() {
+                    alert("按钮")
+                },
+                c: function() {
+                    alert("a标签")
+                },
+                d: function() {
+                    alert("div2")
+                },
+                e: function() {
+                    alert("div3")
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

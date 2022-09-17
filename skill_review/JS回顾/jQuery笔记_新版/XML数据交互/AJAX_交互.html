@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    //变量保存服务器接口
+    var xmlHttp;
+
+    function createXMLHttpRequest() {
+        if (window.ActiveXObject) //IE5.或IE6的IE内核
+        {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } else //新版浏览器
+        {
+            xmlHttp = new XMLHttpRequest();
+        }
+    }
+
+    function GetResult() {
+        //创建XMLHttpRequest对象
+        createXMLHttpRequest();
+        //创建get请求，请求地址XML_date.xml
+        xmlHttp.open("post", "XML_date.xml", true);
+        //设置请求类型
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-from-urlencoded");
+        //处理服务器端响应
+        xmlHttp.onreadystatechange = RequestCallBack;
+        //发送请求
+        xmlHttp.send(null);
+    }
+
+    function RequestCallBack() {
+        //判断服务器端响应状态
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            var list = xmlHttp.responseXML.getElementsByTagName("Student");
+            var data = "";
+            for (var i = 0; i < list.length; i++) {
+                data += "<tr><td>" +
+                    list[i].getElementsByTagName("number")[0].innerHTML + "</td><td>" +
+                    list[i].getElementsByTagName("name")[0].innerHTML + "</td><td>" +
+                    list[i].getElementsByTagName("age")[0].innerHTML + "</td></tr>";
+                console.log(data);
+            }
+            document.getElementsByTagName("tbody")[0].innerHTML = data;
+        };
+    };
+</script>

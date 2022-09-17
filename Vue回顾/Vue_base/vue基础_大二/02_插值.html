@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{}}代表插值表达式 -->
+        <p :style="{'font-size': '50px'}">{{msg}}</p>
+        <p :style="{'fontSize': '50px'}">{{msg}}</p>
+        <p :style="{fontSize: '50px'}">{{msg}}</p>
+    </div>
+    <script type="text/javascript">
+        //浏览器会创建Vue()构造函数
+        var vm = new Vue({
+            //挂载标签
+            el: "#app",
+            //处理数据
+            data: {
+                msg: "hello world",
+            }
+        })
+    </script>
+</body>
+
+</html>

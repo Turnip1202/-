@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- component的is属性可以渲染组件 -->
+    <div id="app">
+        <component :is="msg"></component>
+        <button @click="up('turnip1')">更新</button>
+        <button @click="up('turnip2')">更新</button>
+        <button @click="up('turnip3')">更新</button>
+    </div>
+
+    <script>
+        Vue.component('turnip1', {
+            template: "<p>组件1</p>"
+        });
+        Vue.component('turnip2', {
+            template: "<p>组件2</p>"
+        });
+        Vue.component('turnip3', {
+            template: "<p>组件3</p>"
+        });
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "turnip1"
+            },
+            methods: {
+                up: function(val) {
+                    this.msg = val
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

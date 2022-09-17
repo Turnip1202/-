@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="text" id="username" name="username" value="" /><br />
+			<input type="password" id="password" name="password" value="" /><br />
+			<input type="button" onclick="GetResult()" value="登录"/>
+			<input type="button" onclick="GetResult()" value="注册"/>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	//变量保存服务器接口
+	let web_url = "";
+	   var xmlHttp;
+
+        function createXMLHttpRequest() {
+            if (window.ActiveXObject) //IE5.或IE6的IE内核
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } else //新版浏览器
+            {
+                xmlHttp = new XMLHttpRequest();
+            }
+        }
+
+        function GetResult() {
+        	var username = $("#username")
+        	var password = $("#password")
+            //创建XMLHttpRequest对象
+            createXMLHttpRequest();
+            //创建get请求，请求地址data.txt
+            xmlHttp.open("post",web_url+ "api/Login", true);
+            //设置请求类型
+            xmlHttp.setRequestHeader("Content-type","application/x-www-from-urlencoded")
+            //处理服务器端响应
+            xmlHttp.onreadystatechange = RequestCallBack;
+            //发送请求
+            xmlHttp.send("username"+username.val()+"&password"+password.val());
+        }
+
+        function RequestCallBack() {
+            //判断服务器端响应状态
+            if (xmlHttp.readyState == 4) {
+
+            	if(xmlHttp.status == 200){
+            		$("<span style='color: red;'>登录成功</span>").insertAfter(password)
+            	}else{
+            		
+            		$("<span id='sp'  style='color: red;'>账户或密码错误</span>").insertAfter(password)
+            	}
+               
+            }
+        }
+</script>

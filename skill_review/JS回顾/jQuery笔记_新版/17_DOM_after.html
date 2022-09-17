@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在被选元素之后插入内容</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h1>标题1</h1>
+		<h2>标题2</h2>
+		<h3>标题3</h3>
+		<button type="button">之后插入</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("button[type='button']").click(()=>{
+			$("h2").after("<p>元素</p>");
+		})
+	})
+</script>

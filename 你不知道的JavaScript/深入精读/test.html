@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.log(a); //undefined
+    // var a = 3;
+    // function bar() {
+    //   console.log(a) //3
+    // }
+    // var a = 3
+    // bar()
+    // function foo(a, b) {
+    //   console.log('a:' + a + ',b:' + b)
+    // }
+    // foo.apply(null, [2, 3])
+    // let bar = foo.bind(null, ...[2, 3]) //es6展开数组
+    // bar()
+
+    // function Use() {
+
+    // };
+    // Use.prototype.show = function () {
+    //   console.log('萝卜')
+    // }
+    // let hd = new Use();
+    // hd.show();
+    // console.log(Use.prototype)
+    // console.log(hd)
+    // console.log(Use.prototype == hd.__proto__)
+
+    //此时我向把admin的原型委托给user，即在不更改admin原型的情况下，实现使用user的方法
+    // 显然这样做并不行,因为对象只有一个原型，且上一级就是Object了,即顶级对象
+    //而此时看的后盾人使用的函数就可以，函数有两个原型，即隐式原型和显示原型
+    // 虽然函数有两个原型，但也是不能修改显示原型委托给user
+    // 因为，首先隐式原型不能修改，改了就没法使用Function的方法了，其次若是改显示原型，那么函数本身的原型就会被破坏，
+    // 这就违背了我们的本意：让函数既具有Function的方法，又有自己的原型，并且还要委托给别的对象
+    //故隐式原型不能动，显示原型也不能修改，但是显示的隐式原型可以改。修改之后也是达到了我们的预期
+    // 因为函数的显示原型的隐式原型就指向Object，我们改变函数显示原型的隐式原型即可
+    // 函数的隐式原型指向的是内置对象Function
+    let User = {
+      show() {
+        console.log('用户')
+      }
+    }
+    let admin = {};
+    function turnip() { };
+    console.log(User)
+    console.log(admin)
+    console.dir(turnip)
+    console.log(turnip.prototype);//得到的是专属与函数的原型，即显示原型
+    console.dir(Object.getPrototypeOf(turnip))//得到的是函数上级委托,隐式原型，即内置对象Function
+    let ad = Object.getPrototypeOf(admin);//直接得到了对象的原型，即隐式原型
+    // 现在我们把admin的原型直接委托给use（显然此时无法进行）
+
+
+    // 由此下面代码，达到了我们的需求，即不改变bar原型效果上，委托给foo
+    function foo() {
+    }
+    foo.prototype.show = function () {
+      console.log('foo的show')
+    }
+    function bar() { }
+    bar.prototype.hide = function () {
+      console.log('bar的hide')
+    }
+    // 我们要bar可以访问foo的show方法，但是foo不能访问bar的hide
+    console.log(bar.prototype)
+    console.log(foo.prototype)
+    // 更改显示原型的隐式原型
+    Object.setPrototypeOf(bar.prototype, foo.prototype); //bar.prototype的“隐式原型”指向了foo.prototype
+    let f = new foo();
+    let b = new bar();
+    f.show();//foo的show
+    // f.hide();//TypeError
+    b.show();//foo的show
+    b.hide();//bar的hide
+
+
+
+  </script>
+</body>
+
+</html>

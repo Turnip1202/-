@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM操作</title>
+		<script type="text/javascript">
+			window.onload=function(){
+				mytable = document.getElementById("mytable");
+				//获取mytable中标签名为tr的子节点
+				trs = mytable.getElementsByTagName("tr");
+				len = trs.length;
+				flag = true;							//开关变量
+				for(var  i=0;i<len;i++){
+					if(flag){
+						trs[i].setAttribute('bgcolor','#cccccc');//每隔一行设置背景色
+						flag = false;
+					}
+					else{
+						flag=true;
+					}
+				}
+				//获取table的width的属性值
+				var ww = mytable.getAttribute('width');
+				console.log(ww)
+			}
+		</script>
+	</head>
+	<body>
+		<table id="mytable" align="center" width="80%" border="1">
+			<tr bgcolor="#cccccc">
+				<td>aaa</td><td>aaa</td><td>aaa</td>
+			</tr>
+			<tr>
+				<td>bbb</td><td>bbb</td><td>bbb</td>
+			</tr>
+			<tr>
+				<td>ccc</td><td>ccc</td><td>ccc</td>
+			</tr>
+		</table>
+	</body>
+</html>

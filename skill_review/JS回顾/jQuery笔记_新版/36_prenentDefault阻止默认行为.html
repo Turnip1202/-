@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>阻止默认行为</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="text" id="user" value="" />
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		$("input[type='submit']").click((event)=>{
+			var user = $("#user").val();
+			if(user==""){
+				$("body").append("<p>文本框不能为空</p>")
+				event.preventDefault();
+			}
+		})
+	})
+</script>

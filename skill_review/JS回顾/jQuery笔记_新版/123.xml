@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+	<province id='1' name='河北'>
+		<city id='11' name='石家庄'></city>
+		<city id='12' name='承德'></city>
+	</province>
+	<province id='2' name='山东'>
+		<city id='21' name='济南'></city>
+		<city id='22' name='青岛'></city>
+	</province>
+</list>

@@ -1,0 +1,32 @@
+.about_me {
+    width: 860px;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.about_me h3 {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 7px;
+    background-color: #ccc;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.about_me ul {
+    float: left;
+    width: 700px;
+}
+
+.about_me li {
+    font-size: 16px;
+    line-height: 45px;
+}
+
+.about_me img {
+    float: right;
+    margin-right: 20px;
+    width: 100px;
+    height: 100px;
+}

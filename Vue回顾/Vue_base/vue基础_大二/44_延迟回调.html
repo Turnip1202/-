@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="show">123</p>
+        <button @click="sel">点击</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                show: ""
+            },
+            methods: {
+                sel() {
+                    this.show = true;
+                    //获取不到，因为还未渲染到页面
+                    // let el = document.querySelector("p");
+                    // console.log(el.innerHTML);
+                    this.$nextTick(() => {
+                        let el = document.querySelector("p");
+                        console.log(el.innerHTML);
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

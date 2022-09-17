@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <turnip :tur="msg" :bg-color="[12,32,56,45]"></turnip>
+    </div>
+    <template id="temp">
+		<div id="">
+			<p>{{tur}}</p>
+			<p>{{bgColor[3]}}</p>
+		</div>
+		
+    </template>
+    <script>
+        //父组件向子组件传值使用自定义属性传递，
+        //过程：1.父组件内对已注册的子组件标签设置自定义属性，
+        //2.子组件使用props接收父组件传来的属性值（注意此时的值可是vue变量）
+        Vue.component('turnip', {
+            template: "#temp",
+            //props存放着子组件的所有属性
+            props: ["tur", "bgColor"]
+        });
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "kang"
+            }
+        })
+    </script>
+
+</body>
+
+</html>

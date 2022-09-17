@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <style>
+        .big-link{
+            display: block;margin-top: 100px;font-size: 70px;color: #06f;
+        }
+        .mask{position: absolute; top: 0px;background-color: #777;left: 0px;opacity: 0.5;}
+        .reveal-modal{
+            display: none;top: 100px;left: 50%;margin-left: -300px;width: 520px;background: #eee;position: absolute;z-index: 101;padding: 30px 40px 34px;
+            -moz-border-radius:5px;-webkit-border-radius:5px;border-radius: 5px;-moz-box-shadow:0 0 10px rgba(0,0,0,.4);
+            -webkit-box-shadow:0 0 10px rgba(0,0,0,.4);-box-shadow:0 0 10px rgba(0,0,0,.4);
+        }
+        #myModal h1{
+            background: red;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" class="big-link" onclick="s()"><h3>登陆</h3></a>
+    <div id="mask" class="mask"></div>
+    <div id="myModal" class="reveal-modal">
+        <h1><span>登陆</span><a href="JavaScript:h()">X</a></h1>
+        <p>你好，请输入个人信息</p>
+    </div>
+    <script>
+    function s(){
+        $("#mask").css("height",$(document).height());
+        $("#mask").css("width",$(document).width());
+        $("#mask").show();
+        $("#myModal").show();
+    }
+    function h(){
+        //搞不懂已经隐藏了，为什么还要在设置一次
+        // $("#mask").css("height",$(document).height());
+        // $("#mask").css("width",$(document).width());
+        $("#mask").hide();
+        $("#myModal").hide();
+    }
+    </script>
+</body>
+</html>

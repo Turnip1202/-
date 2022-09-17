@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item,index in arr" @click="clickEvent(index,item,$event)">索引--{{index}}--数据--{{item}}</li>
+			</ul>
+			<!-- 自定义修饰符 -->
+			<input type="text" @keydown.up="alert" value="按钮">
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.config.keyCodes.up=38;
+			let app = new Vue({
+				el:"#app",
+				data:{
+						arr:["萝卜","Turnip","康康"]
+				},
+				methods:{
+					clickEvent:function(index,value,event){
+						console.log(index);
+						console.log(value);
+						console.log(event)
+					},
+					alert:function(){
+						alert("自定义修饰符")
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标穿过元素时和鼠标指针离开时</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p>第一行：鼠标经过此处第二行背景色变为黄色</p>
+		<p>第二行：鼠标经过此处第一行背景色变为蓝色</p>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		$("p:even").mouseenter(()=>{
+			$("p:nth-child(2)").css("background","yellow")
+		})
+		$("p:lt(1)").mouseleave(()=>{
+			$("p:eq(1)").css("background","none")
+		})
+		$("p:odd").mouseenter(()=>{
+			$("p:nth-child(1)").css("background","blue")
+		})
+		$("p:gt(0)").mouseleave(()=>{
+			$("p:eq(0)").css("background","none")
+		})
+	})
+</script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>样式操作</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p style="color: blue;">窈窕淑女</p>
+		<p style="color: green;">君子好逑</p>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		//得到第一个p的颜色
+		alert($("p:first").css("color"))//rgb数据
+		$("p").css("background","red")
+	})
+	
+</script>

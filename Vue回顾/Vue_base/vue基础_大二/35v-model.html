@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>点击即变的子组件数据{{msg}}</p>
+        <turnip v-model="msg"></turnip>
+    </div>
+    <template id="temp">
+			<div id="">
+				<p>父组件数据{{value}}</p>
+				<button type="button" @click="emit">触发父组件事件</button>
+			</div>
+			
+		</template>
+    <script type="text/javascript">
+        //  v-model的原理就是input事件会实时触发，将绑定的value值赋值给data内数据，而动态value有会将数据渲染value
+
+        Vue.component("turnip", {
+            template: "#temp",
+            props: ["value"],
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                emit: function() {
+                    this.count++;
+                    this.$emit("input", this.count) //触发后会在input内更改其绑定的数据
+                }
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: 3
+            },
+
+        })
+    </script>
+</body>
+
+</html>

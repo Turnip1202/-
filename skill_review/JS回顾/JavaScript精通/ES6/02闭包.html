@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var myFunc;
+
+        function makeFunc() {
+            var name;
+
+            function displayName() {
+                console.log(name);
+            }
+            name = 'Mozilla';
+            return displayName; //猜想：函数可能在被这里执行的
+            //这里形成词法作用域
+            //即displayName为一个函数，然后形成函数气泡，
+        }
+        myFunc = makeFunc();
+        //为什么会形成函数气泡?
+        //因为，makeFunc()即被执行，
+        //return 返回的时候会返回整个函数，故此是会隐士创建一个词法作用域
+        //此时myFunc就是函数displayName
+        //此时myFunc()执行后，函数在return的位置的displayName函数词法作用域生效
+
+        myFunc();
+
+
+        // var ll;
+
+        // function a() {
+        //     alert(ll)
+        // }
+
+        // ll = 'ss'
+        // a()
+
+        var Counter = (function() {
+            var privateCounter = 0;
+
+            function changeBy(val) {
+                privateCounter += val;
+            }
+            return {
+                increment: function() {
+                    changeBy(1);
+                },
+                decrement: function() {
+                    changeBy(-1);
+                },
+                value: function() {
+                    return privateCounter;
+                }
+            }
+        })();
+
+        console.log(Counter.value()); /* logs 0 */
+        Counter.increment();
+        Counter.increment();
+        console.log(Counter.value()); /* logs 2 */
+        Counter.decrement();
+        console.log(Counter.value()); /* logs 1 */
+    </script>
+
+</body>
+
+</html>

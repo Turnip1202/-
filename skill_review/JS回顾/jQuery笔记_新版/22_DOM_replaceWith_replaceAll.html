@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>替换HTML元素</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul>
+			<li>锄禾日当午</li>
+			<li>汗滴禾下土</li>
+			<li>谁知盘中餐</li>
+			<li>粒粒皆辛苦</li>
+		</ul>
+		<button type="button">替换HTML元素1</button>
+		<button type="button">替换HTML元素2</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("button:eq(0)").click(() => {
+			$("ul li:eq(0)").replaceWith("<li>可口可乐</li>");
+		})
+		$("button:eq(1)").click(() => {
+			$("<li>可口可乐</li>").replaceAll($("ul li:eq(2)"));
+		})
+		
+	})
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动画效果滑动</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul,li{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.nav{
+				height: 35px;
+				background: #F3F3F3;
+			}
+			.nav>li{text-align: center;float: left;width: 100px;height: 35px;line-height: 2.1875rem;
+			background: #abcdfe;border-right: 1px solid white;}
+			a{text-decoration: none;}
+			.nav ul{background: #fedabc;display: none;}
+			
+		</style>
+	</head>
+	<body>
+		<ul class="nav">
+			<li><a href="">首页</a></li>
+			<li id="son1"><a href="">产品</a>
+			<ul>
+				<li><a href="">产品1</a></li>
+				<li><a href="">产品2</a></li>
+			</ul>
+			</li>
+			<li><a href="">咨询</a></li>
+		</ul>
+		<button type="button">滑上滑下</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(()=>{
+		$("#son1").mouseenter(()=>{
+			$("#son1 ul").slideDown()
+		})
+		$("#son1").mouseleave(()=>{
+			$("#son1 ul").slideUp()
+		})
+		$("button").click(()=>{
+			$("#son1 ul").slideToggle()
+		})
+	})
+</script>

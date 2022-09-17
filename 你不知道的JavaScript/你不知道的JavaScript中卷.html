@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你不知道的JavaScript中卷</title>
+</head>
+
+<body>
+    <script>
+        //2.4.3特殊的数字
+        //1.不是数字的数字
+        // var a = 2 / 'foo';
+        // console.log(a); //NaN
+        // console.log(typeof a === 'number'); //true
+        // console.log(a == NaN); //false
+        // console.log(a === NaN); //false
+        // console.log(isNaN(a)); //true
+        // var b = 'foo';
+        // console.log(window.isNaN(b)); //true
+
+        //手写兼容的ES6新增Number.isNaN()
+        // if (!Number.isNaN) {
+        //     Number.isNaN = function(n) {
+        //         return (typeof n === 'number' && window.isNaN(n));
+        //     };
+        // }
+        // var a = 2 / 'foo';
+        // var b = 'foo';
+        // console.log(Number.isNaN(a)); //true
+        // console.log(Number.isNaN(b)); //false
+        // //升级版
+        // if (!Number.isNaN) {
+        //     Number.isNaN = n => n !== n;
+        // }
+
+        //2.无穷数
+        // console.log(1 / 0); //Infinity
+        // console.log(-1 / 0); //-Infinity
+        // console.log(Number.MAX_VALUE); //1.7976931348623157e+308
+        // console.log(Number.MAX_VALUE + Number.MAX_VALUE); //Infinity
+        // console.log(Number.MAX_VALUE + Math.pow(2, 970)); //Infinity
+        // console.log(Number.MAX_VALUE + Math.pow(2, 969)); //1.7976931348623157e+308
+        // console.log(Infinity / Infinity); //NaN
+        // var a = 0 / -3;
+        // console.log(0 / -3); //-0
+        // console.log(0 * -3); //-0
+        // console.log(a.toString()); //'0'
+        // console.log(a + ''); //'0'
+        // console.log(String(a)); //'0'
+        // console.log(JSON.stringify(a)); //'0'
+        // a = a.toString();
+        // console.log(+'-0')
+        // console.log(Number('-0'));
+        // console.log(JSON.parse('-0'));
+        // console.log(JSON.stringify(0))
+        // //判断负零的函数
+        // function isNegZero(n) {
+        //     n = Number(n);
+        //     return (n === 0) && (1 / n === -Infinity);
+        // };
+        // //Object.is(v1,v2)的兼容函数
+        // if (!Object.is) {
+        //     Object.is = function(v1, v2) {
+        //         //判断是否是-0
+        //         if (v1 === 0 && v2 === 0) {
+        //             return 1 / v1 === 1 / v2;
+        //         }
+        //         //判断是否时NaN
+        //         if (v1 !== v1) {
+        //             return v2 !== v2;
+        //         }
+        //         //其他情况
+        //         return v1 === v2;
+        //     }
+        // }
+        // function foo(x) { //将x指向引用
+        //     x.push(4);
+        //     console.log(x);
+        //     //将x指向了另一个引用
+        //     x = [4, 5, 6];
+        //     x.push(7);
+        //     console.log(x);
+        // };
+        // let a = [1, 2, 3]; //将a指向一个引用
+        // foo(a)
+        // console.log(a);
+
+        // function foo(x) { //将x指向引用
+        //     x.push(4);
+        //     console.log(x);
+        //     //将x指向了a指向的引用
+        //     x = a;
+        //     //清空
+        //     x.length = 0;
+        //     x.push(4, 5, 6, 7);
+        //     console.log(x);
+        // };
+        // let a = [1, 2, 3]; //将a指向一个引用
+        // foo(a);
+        // console.log(a);
+        //标量修改
+        // function foo(wrapper) {
+        //     wrapper.a = 42;
+        // }
+        // var obj = {
+        //     a: 2
+        // }
+        // foo(obj);
+        // console.log(obj)
+        // function foo(x) {
+        //     x = x + 1;
+        //     console.log(x);
+        // }
+        // var a = 2;
+        // //数字对象进行运算时，会使用原始值进行运算
+        // var b = new Number(a); //创建数字对象,原始值为2
+        // console.log(b)
+        // foo(b);
+        // console.log(b)
+
+        //第三章  原生函数
+        // var s = new String('Hello World!');
+        // console.log(s);
+        // console.log(s.toString());
+        // var a = new String('abc'); //new创建的是字符串的封装对象，而非字符串
+        // console.log(typeof a); //object
+        // console.log(a instanceof String); //true
+        // console.log(Object.prototype.toString.call(a)); //[Object String]
+        // console.log(a);
+        //内部属性Class,目前来看，均是其原生函数名，E6貌似发生了变化
+        // console.log(Object.prototype.toString.call([1, 2, 3])); //[object Array]
+        // console.log(Object.prototype.toString.call(/regex-literal/i)); //[object RegExp]
+        // console.log(Object.prototype.toString.call(null)); //[object Null]
+        // console.log(Object.prototype.toString.call(undefined)); //[object Undefined]
+        // console.log(Object.prototype.toString.call('abc')); //[object String]
+        // console.log(Object.prototype.toString.call(42)); //[object Number]
+        // console.log(Object.prototype.toString.call(true)); //[object Boolean]
+        // var a = new Boolean(false);
+        // console.log(a); //得到的是封装后的对象
+        // console.log(a.toString()); //使用toSting()的到字符串数据
+        // console.log(a.valueOf()); //使用toSting()的到原始数据
+        //3.2封装对象包装
+        // var a = 'abc';
+        // var b = new String(a);
+        // var c = Object(a);
+        // console.log(typeof a); //'String'
+        // console.log(typeof b); //'Object'
+        // console.log(typeof c); //'Object'
+        // console.log(b instanceof String); //true
+        // console.log(c instanceof String); //true
+        // console.log(Object.prototype.toString.call(b)); //[object String]
+        // console.log(Object.prototype.toString.call(c)); //[object String]
+        // // 3.3拆封
+        // var a = new String('abc');
+        // var b = new Number(42);
+        // var c = new Boolean(true);
+        // console.log(a.valueOf()); //'abc'
+        // console.log(b.valueOf()); //42
+        // console.log(c.valueOf()); //true
+        // var a = new String('abc');
+        // var b = a + ''; //b的值为'abc'
+        // console.log(typeof a); //'object'
+        // console.log(typeof b); //'string'  发生了强制类型转换
+        // 3.4原生函数作为构造函数
+        // var a = new Array(1, 2, 3);
+        // console.log(a);
+        // var b = [1, 2, 3];
+        // console.log(b);
+        // var arr = Array(3);
+        // console.log(arr, arr.length)
+        // var a = new Array(3);
+        // var b = [undefined, undefined, undefined];
+        // var c = [];
+        // c.length = 3; //会隐式的制造三个空单元
+        // console.log(a.join('-')); // '- -'
+        // console.log(b.join('-')); //'- -'
+        // console.log(a.map((v, i) => i)); // [empty × 3]
+        // console.log(b.map((v, i) => i)); //[0, 1, 2]
+        // //join的原理
+        // function fakeJoin(arr, connector) {
+        //     var str = '';
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (i > 0) str += connector;
+        //         if (arr[i] !== undefined) str += arr[i];
+        //     }
+        //     return str;
+        // };
+        // var a = new Array(3);
+        // console.log(fakeJoin(a, '-'));
+        // var a = Array.apply(null, {
+        //     length: 3
+        // }); //通过apply创建undefined数组
+        // console.log(a);
+        // 静态函数Date,now()
+        // if (!Date.now) Date.now = () => (new Date()).getTime();
+        // // 3.4.4Symbol
+        // var mysym = Symbol('my own symbol');
+        // console.log(mysym); //Symbol(my own symbol)
+        // console.log(mysym.toString()); //'Symbol(my own symbol)'
+        // console.log(mysym.valueOf()); //Symbol(my own symbol)
+        // console.log(typeof mysym); //'symbol'
+        // var a = {};
+        // a[mysym] = 'foobar';
+        // console.log(Object.getOwnPropertySymbols(a)); //[Symbol(my own symbol)]
+
+        // function foo(x) {
+        //     console.log(foo.a = x);
+        // };
+        // let fn = new foo(3); //3
+        // //当我们直接输出fn
+        // console.log(fn); //foo {}
+        // console.log(fn.__proto__.constructor === fn.__proto__.constructor.prototype.constructor); //true
+        // console.log(fn.__proto__.__proto__ === fn.__proto__.constructor.prototype.__proto__); //true
+        // console.log(fn.prototype === fn.prototype); //true
+        // console.log(fn.prototype === fn.__proto__); //false
+        // console.log(typeof Function.prototype);
+        // Function.prototype();
+        // console.log(RegExp.prototype.toString());
+        // let reg = RegExp.prototype
+        // console.log(reg);
+        // console.log('abc'.match(reg.toString())); //null
+
+        // function isThisCool(vals, fn, rx) {
+        //     vals = vals || Array.prototype;
+        //     fn = fn || Function.prototype;
+        //     rx = rx || eval(RegExp.prototype.toString());
+        //     return rx.test(vals.map(fn).join(""));
+        // }
+        // console.log(isThisCool());
+        // console.log(isThisCool(['a', 'b', 'c'], function(v) {
+        //     return v.toUpperCase()
+        // }, /D/));
+
+        //第四章强制类型转换
+        // console.log(JSON.stringify("42"));
+        //JSON.stringify()对循环的引用
+        // var o = {};
+        // var a = {
+        //     b: 42,
+        //     c: o,
+        //     d: function() {}
+        // };
+        // //在a中创建一个循环引用
+        // o.e = a;
+        // //JSON字符串化这个循环引用，就会产生错误
+        // // console.log(JSON.stringify(a));
+        // //此时，自定义JSON序列化
+        // a.toJSON = function() { //此函数会被优先调用
+        //     //序列化包含b
+        //     return {
+        //         b: this.b
+        //     };
+        // }
+        // console.log(JSON.stringify(a));
+        // var a = {
+        //     val: [1, 2, 3],
+        //     //可能是我们想要的结果
+        //     toJSON: () => { //这里是箭头函数，因此指向window
+        //         console.log(this)
+        //         return a.val.slice(1)
+        //     }
+        // }
+        // var b = {
+        //     val: [1, 2, 3],
+        //     //可能不是我们想要的结果
+        //     toJSON: () => "[" + this.val.slice(1).join() + "]"
+        // }
+        // console.log(JSON.stringify(a))
+        // var a = {
+        //     b: 42,
+        //     c: '42',
+        //     d: [1, 2, 3]
+        // };
+        // // console.log(JSON.stringify(a, ['b', 'c']));
+        // console.log(JSON.stringify(a, function(k, v) {
+        //     console.log(k, v);
+        //     if (k !== 'c') return v;
+        // }));
+        // console.log(JSON.stringify(a, null, 3));
+        // console.log(JSON.stringify(a, null, '---'));
+        // var a = {
+        //     valueOf: function() {
+        //         return '42';
+        //     }
+        // };
+        // var b = {
+        //     toString: function() {
+        //         return '42';
+        //     }
+        // };
+        // var c = [4, 2];
+        // c.toString = function() {
+        //     return this.join('');
+        // }
+        // console.log(Number(a)); //42
+        // console.log(Number(b)); //42
+        // console.log(Number(c)); //42
+        // console.log(Number("")); //0
+        // console.log(Number([])); //0
+        // console.log(Number(['abc'])); //NaN
+        // var a = new Boolean(false);
+        // var b = new Number(0);
+        // var c = new String("");
+        // var d = Boolean(a && b && c);
+        // console.log(d); //true
+        // console.log(document.all);
+        // console.log(Boolean(document.all));
+        // // ES5的Date.new()的polyfill
+        // if (!Date.now) {
+        //     Date.now = () => +new Date;
+        // }
+        // function onlyOne(a, b, c) {
+        //     return !!((a && !b && !c) || (!a && b && !c) || (!a && !b && c));
+        // }
+        // var a = true;
+        // var b = false;
+        // console.log(onlyOne(a, b, b)); //true
+        // console.log(onlyOne(a, b, a)); //true
+        //函数的意思就是只能有一个true
+        //隐式版，非布尔值不可，如onlyOne('42',0)
+        // function onlyOne() {
+        //     var sun = 0;
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         if (arguments[i]) { //跳过假植，防止NaN
+        //             //会进行隐式类型转换
+        //             sun += arguments[i];
+        //         }
+        //     }
+        //     // console.log(sun)
+        //     return sun == 1;
+        // }
+        // //显式版，非布尔值亦可
+        // function onlyOne() {
+        //     var sun = 0;
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         if (arguments[i]) { //跳过假植，防止NaN
+        //             //这里第一次取反，会得到当前数据反应的布尔值，第二次取反会的到当前数据对应的布尔值
+        //             sun += Number(!!arguments[i]);
+        //         }
+        //     }
+        //     // console.log(sun)
+        //     return sun == 1;
+        // }
+        // var a = true;
+        // var b = false;
+        // console.log(onlyOne(b, a)); //true
+        // console.log(onlyOne(b, a, b, b, b)); //true
+        // console.log(onlyOne(b, a, b, b, b, a)); //false
+        //||和&&的用法
+        // function foo(a, b) {
+        //     a = a || 'hello';
+        //     b = b || 'world';
+        //     console.log(a + ' ' + b);
+        // }
+        // foo();
+        // foo('year', 'year');
+        // foo("That't it!");
+        // function foo() {
+        //     console.log(a);
+        // };
+        // var a = 42;
+        // a && foo(); //只有a的布尔值为true时，才会执行函数。短路运算符
+        // Number.prototype.valueOf = function() {
+        //     return 3;
+        // };
+        // console.log(new Number(2) == 3)
+        //标签语句的实例
+        // foo: for (var i = 0; i < 4; i++) {
+        //     debugger;
+        //     for (var j = 0; j < 4; j++) {
+        //         if (j == i) {
+        //             continue foo;
+        //         }
+        //         if ((j * i) % 2 == 1) {
+        //             continue;
+        //         }
+        //         console.log(i, j);
+
+        //     }
+        //     //给跳过了
+        //     // console.log(i, j);
+
+        // }
+
+        // function foo() {
+        //     debugger;
+        //     bar: {
+        //         console.log('hello'); 
+        //         break bar;
+        //         console.log('never runs');
+        //     }
+        //     console.log('world');
+        // }
+        // foo();
+        // console.log({
+        //     "a": 42
+        // });//{a: 42}
+        // function foo({
+        //     a,
+        //     b,
+        //     c
+        // }) {
+        //     //不再需要这样
+        //     //var a = obj.a,  b = obj.b,  c = obj.c
+        //     // console.log(a, b, c);
+        // }
+        // foo({
+        //     a: [1, 2, 3],
+        //     b: 42,
+        //     c: "foo"
+        // }); //(3) [1, 2, 3] 42 "foo"
+        // // 强制异步
+        // function asyncify(fn) {
+        //     var orig_fn = fn,
+        //         intv = setTimeout(function() {
+        //             intv = null;
+        //             if (fn) fn();
+        //         }, 0);
+        //     fn = null;
+        //     return function() {
+        //         if (intv) {
+        //             fn = orig_fn.bind.apply(
+        //                 orig_fn, [this].concat([].slice.call(arguments))
+        //             );
+        //         } else orig_fn.apply(this, arguments);
+        //     }
+        // }
+        // //Promise回调
+        // debugger;
+        // var p3 = new Promise(function(resolve, reject) {
+        //     resolve('B');
+        // });
+        // var p1 = new Promise(function(resolve, reject) {
+        //     resolve(p3);
+        // });
+        // var p2 = new Promise(function(resolve, reject) {
+        //     resolve('A');
+        // })
+        // p1.then(function(v) {
+        //     console.log(v);
+        // });
+        // p2.then(function(v) {
+        //     console.log(v);
+        // });
+    </script>
+
+
+</body>
+
+</html>

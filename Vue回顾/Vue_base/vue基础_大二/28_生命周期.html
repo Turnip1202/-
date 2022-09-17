@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model.lazy="msg" />
+			<p id="p1">{{msg}}</p>
+			<button type="button" @click="kill">销毁</button>
+		</div>
+		<script type="text/javascript">
+				
+			let app = new Vue({
+				el:"#app",
+				data:{
+					msg:"123456"
+				},
+				methods:{
+					kill:function(){
+						// app.$destroy();
+						this.$destroy();
+					}
+				},
+				beforeCreate:function(){
+					console.log("对象初始化前"+this.msg);
+				},
+				created:function(){
+					console.log("对象初始化后"+this.msg);
+				},
+				beforeMount:function(){
+					console.log("挂载前"+document.querySelector("#p1").innerHTML);
+				},
+				mounted:function(){
+					// document.getElementById("p1").onclick=function(){
+					// 	alert("sss")
+					// }
+					console.log("挂载后"+document.querySelector("p").innerHTML);
+				},
+				beforeUpdate:function(){
+					console.log("更新前"+document.querySelector("p").innerHTML);
+				},
+				updated:function(){
+					console.log("更新后"+document.querySelector("p").innerHTML);
+				},
+				beforeDestroy:function(){
+					console.log("销毁前"+document.querySelector("p").innerHTML);
+				},
+				destroyed: () => {
+					console.log("销毁后"+document.querySelector("p").innerHTML);
+				}
+				
+			})
+		</script>
+	</body>
+</html>

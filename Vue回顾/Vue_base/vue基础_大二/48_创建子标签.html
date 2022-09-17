@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<turnip></turnip>
+		</div>
+		<script type="text/javascript">
+			Vue.component("turnip",{
+				render(createElement) {
+					return createElement(
+					"div",
+					[createElement(
+					"p",
+					{
+						domProps:{
+							innerHTML:"我是p标签"
+						}
+					}
+					)]
+					)
+				}
+			})
+			let app = new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>

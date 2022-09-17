@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<product-com v-for="item,index in proList" @turnip="check" :index="index" :product="proList" :key="'turnip'+index"></product-com>
+			</ul>
+			<h2>选中的商品:{{goods}}</h2>
+		</div>
+		<script type="text/javascript">
+			// 产品组件
+			Vue.component("productCom",{//驼峰命名法，html需要使用-
+				props:['product','index'],//拿到循环内容，相当于原循环内容的传递
+				template:`<li>
+							<h3>产品名称:{{product[index].title}}</h3>
+							<h4>产品描述:{{product[index].brief}}</h4>
+							<p>产品描述:{{product[index].price}}</p>
+							<button type="button" @click="checked(index)">选中</button>
+						</li>
+						
+						`,
+				methods:{
+					checked:function(e){
+						console.log(this.product[e].title)
+						this.$emit("turnip",this.product[e].title)
+					}
+				}
+			})			
+			// 根组件
+			let app = new Vue({
+				el:"#app",
+				data:{
+					proList:[
+						{
+							title:"产品一",
+							price:"10",
+							brief:"产品描述"
+						},
+						{
+							title:"产品二",
+							price:"20",
+							brief:"产品描述"
+						},
+						{
+							title:"产品三",
+							price:"30",
+							brief:"产品描述"
+						}
+					],
+					goods:""
+				},
+				methods:{
+					check(item){
+						this.goods=item;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

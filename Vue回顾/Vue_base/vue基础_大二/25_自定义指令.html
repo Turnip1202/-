@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <p v-color>萝卜</p>
+    </div>
+    <div id="app2">
+        <p v-colors>Turnip</p>
+    </div>
+    <script type="text/javascript">
+        //全局指令
+        Vue.directive("color", {
+            // 自定义指令具有钩子函数
+            //bind函数：在元素绑定指令时调用，且仅调用一次，用于初始化
+            bind: function(el) {
+                el.style.color = "blue";
+            }
+        })
+        let app1 = new Vue({
+            el: "#app1"
+        })
+        let app2 = new Vue({
+            el: "#app2",
+            // 局部指令
+            directives: {
+                //指令名
+                colors: {
+                    bind: function(el) {
+                        el.style.color = "blue";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

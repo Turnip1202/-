@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/cart.css"/>
+	</head>
+	<body>
+		<!--头部-->
+			<header>
+				<span class="icon-back back"><a href="index.html"></a></span>
+				<em>购物车</em>
+			</header>
+		<div class="container">
+			<div class="cart-list">
+				<div class="cart-hd">
+					<input type="checkbox" name="" id="" value="" />
+					<em>C#编程基础</em>
+				</div>
+				<div class="cart-items">
+					<dl>
+						<dt><img src="img/book1.png"/></dt>
+						<dd>名称：C#编程基础</dd>
+						<dd>编著：武汉格莱科技有限公司</dd>
+						<dd>出版：中国地质大学出版社</dd>
+						<dd>简介：当你第一次见到C#时，千万不要傻傻地将它读作“C井号”...</dd>
+						<dd class="price">定价：￥<span>188</span>.00</dd>
+					</dl>
+					<div class="icon-del del-item"><a href="#"></a></div>
+				</div>
+				<div class="subtotal">
+					<span class="total-price">小计：<em>￥188.00</em></span>
+					<span class="count">
+						<a href="#" class="icon-minus minus"></a><input type="number" name="" id="num" value="1" /><a href="#" class="icon-add add"></a>
+					</span>
+				</div>
+			</div>
+			
+			<div class="cart-list">
+				<div class="cart-hd">
+					<input type="checkbox" name="" id="" value="" />
+					<em>C#编程基础</em>
+				</div>
+				<div class="cart-items">
+					<dl>
+						<dt><img src="img/book1.png"/></dt>
+						<dd>名称：C#编程基础</dd>
+						<dd>编著：武汉格莱科技有限公司</dd>
+						<dd>出版：中国地质大学出版社</dd>
+						<dd>简介：当你第一次见到C#时，千万不要傻傻地将它读作“C井号”...</dd>
+						<dd class="price">定价：￥<span>88</span>.00</dd>
+					</dl>
+					<div class="icon-del del-item"><a href="#"></a></div>
+				</div>
+				<div class="subtotal">
+					<span class="total-price">小计：<em>￥<span class="subtotalcon">88.00</span></em></span>
+					<span class="count">
+						<a href="#" class="icon-minus minus"></a><input type="number" name="" id="" value="1" /><a href="#" class="icon-add add"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+			<footer>
+				<label><input type="checkbox" name="" id="allCheck" value="" />全选</label>
+				<em>总计：￥<span id="totaprice">980</span>.00</em>
+				<a href="#">去结算</a>
+			</footer>
+			<!--模态框-->
+			<div class="modals">
+				<div class="dialog">
+					<h4>您确定要删除此商品吗？</h4>
+					<span class="ok">确定</span>
+					<span class="cancel">取消</span>
+				</div>
+			</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/galaxy.js"></script>
+	<script src="js/cart.js"></script>	
+	<script src="js/url.js"></script>	
+	</body>
+</html>

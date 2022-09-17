@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        let div = document.querySelectorAll('div');
+        //传统方式删除事件
+        console.log(div.length)
+        div[0].onclick = function() {
+            alert("传统方式删除事件")
+            div[0].onclick = null;
+
+        }
+        div[1].addEventListener('click', function fn() {
+            alert("remove移除")
+            div[1].removeEventListener('click', fn)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>添加类别样式</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				font-weight: bold;
+				color: red;
+			}
+			.add{
+				background: yellow;
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button">添加样式</button>
+		<button type="button">删除样式</button>
+		<button type="button">删除全部样式</button>
+		<button type="button">无则加,有则除</button>
+		<p class="test">你喜欢的运动是：</p>
+		<ul>
+			<li>足球</li>
+			<li>羽毛球</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		$("button:nth-child(1)").bind("click",()=>{
+			$("p").addClass("add")
+		})
+		$("button:nth-child(2)").bind("click",()=>{
+			$("p").removeClass("add")
+		})
+		$("button:nth-child(3)").bind("click",()=>{
+			$("p").removeClass("test");
+			$("p").removeClass("add");
+			//或
+			// $("p").removeClass("test add");
+			//或
+			// $("p").removeClass();
+		})
+		$("button:last").bind("click",()=>{
+			$("p").toggleClass("add")
+		})
+	})
+</script>
+

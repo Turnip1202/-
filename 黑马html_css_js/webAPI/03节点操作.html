@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">×</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. 父节点 parentNode
+       let erweima = document.querySelector('.erweima')
+	   // parentNode得到的是最近的父节点
+	   // 若找不到,则返回空
+	   let box = erweima.parentNode;
+	   console.log(box)
+	   
+	   // 2.获取子元素节点children
+	   let ul = document.querySelector('ul');
+	   let li = ul.children;
+	   console.log(li);
+	   
+	   //3.获取首尾节点
+	   //ie9以上版本
+	   let firstli = ul.firstElementChild;
+	   let lastli = ul.lastElementChild;
+	   console.log(firstli,lastli);
+	   // 解决方案
+	   console.log(ul.children[0])
+	   console.log(ul.children[ul.children.length - 1])
+    </script>
+</body>
+
+</html>

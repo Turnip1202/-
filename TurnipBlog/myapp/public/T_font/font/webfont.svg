@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+
+<svg>
+<metadata>
+Created by webfont
+</metadata>
+<defs>
+
+<font id="AlibabaPuHuiTiM" horiz-adv-x="1306" vert-adv-y="1306" >
+  <font-face
+    
+    font-family="AlibabaPuHuiTiM"
+    
+    font-weight="400"
+    
+    font-stretch="normal"
+    
+    units-per-em="1000"
+    
+    ascent="1128"
+    
+    descent="-310"
+    
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="uni54" unicode="&#x54;" d="M526 694L526 579L337 579L337 0L206 0L206 579L18 579L18 694L526 694Z"  horiz-adv-x="543" vert-adv-y="1000"  />
+
+    
+    <glyph glyph-name="uni69" unicode="&#x69;" d="M197 635Q197 635 190 629Q183 623 140 623Q97 623 83 635Q69 647 69 691Q69 735 82.50 746.50Q96 758 140 758Q184 758 197.50 746.50Q211 735 211 691Q211 647 197 635M77 0L77 540L202 540L202 0L77 0Z"  horiz-adv-x="280" vert-adv-y="1000"  />
+
+    
+    <glyph glyph-name="uni6e" unicode="&#x6e;" d="M374 550Q472 550 513 505Q554 460 554 370L554 0L429 0L429 335Q429 395 410 420.50Q391 446 336 446Q284 446 252 427Q220 408 204 360L204 0L79 0L79 540L204 540L204 472Q247 550 374 550Z"  horiz-adv-x="630" vert-adv-y="1000"  />
+
+    
+    <glyph glyph-name="uni70" unicode="&#x70;" d="M371 550Q436 550 479.50 530.50Q523 511 546.50 472.50Q570 434 579.50 386Q589 338 589 270Q589 208 579.50 161Q570 114 547 73.50Q524 33 479.50 11.50Q435-10 371-10Q300-10 261.50 12Q223 34 204 77L204-200L79-200L79 540L204 540L204 464Q245 550 371 550M337 87Q369 87 391.50 97Q414 107 427 123Q440 139 448 164Q456 189 458 213Q460 237 460 270Q460 361 435.50 407.50Q411 454 337 454Q259 454 228 408.50Q197 363 197 270Q197 180 228.50 133.50Q260 87 337 87Z"  horiz-adv-x="639" vert-adv-y="1000"  />
+
+    
+    <glyph glyph-name="uni72" unicode="&#x72;" d="M366 550L377 550L373 438L360 438Q228 438 204 321L204 0L79 0L79 540L204 540L204 443Q242 550 366 550Z"  horiz-adv-x="394" vert-adv-y="1000"  />
+
+    
+    <glyph glyph-name="uni75" unicode="&#x75;" d="M421 540L546 540L546 0L434 0L423 69Q381-10 256-10Q158-10 116.50 35Q75 80 75 169L75 540L200 540L200 205Q200 146 219.50 120Q239 94 294 94Q343 94 374.50 112.50Q406 131 421 180L421 540Z"  horiz-adv-x="625" vert-adv-y="1000"  />
+
+    
+
+  </font>
+</defs></svg>

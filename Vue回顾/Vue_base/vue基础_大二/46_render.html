@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip :level="6">
+            萝卜
+        </turnip>
+
+
+    </div>
+    <template id="tem">
+			<div id="">
+			
+			</div>
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: "#tem",
+            //render函数内有创建元素的动名函数，可以创建元素，及各种属性
+            render(createElement) {
+                return createElement(
+                    "h" + this.level,
+                    // $slots.default即为子组件内的所有非插槽元素，这里是  “萝卜”
+                    this.$slots.default
+                )
+            },
+            props: {
+                level: {
+                    type: Number
+                }
+            },
+            mounted() {
+                console.log(this.$slots.default)
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "萝卜"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

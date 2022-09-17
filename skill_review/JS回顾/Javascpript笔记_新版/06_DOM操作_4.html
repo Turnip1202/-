@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM操作</title>
+		<style type="text/css">
+			.menu{
+				cursor:pointer;
+			}
+		</style>
+		<script type="text/javascript">
+			function dian(thiss){
+				nextNode = thiss.nextElementSibling;//获取当前节点的下一个节点
+				if(nextNode.style.display=="none"){//如果下一节点为隐藏状态
+					nextNode.style.display="block";//显示节点
+				}
+				else{
+					nextNode.style.display='none';//否则隐藏
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<li class="menu" onclick="dian(this)">导航一</li>
+		<li style="display:none;">
+			<a href="JavaScript:void();">菜单一</a><br/>
+			<a href="JavaScript:void();">菜单二</a><br/>
+			<a href="JavaScript:void();">菜单三</a><br/>
+		</li>
+		<li class="menu" onclick="dian(this)">导航二</li>
+		<li style="display:none;">
+			<a href="JavaScript:void();">菜单一</a><br/>
+			<a href="JavaScript:void();">菜单二</a><br/>
+			<a href="JavaScript:void();">菜单三</a><br/>
+		</li>
+		<li class="menu" onclick="dian(this)">导航三</li>
+		<li style="display:none;">
+			<a href="JavaScript:void();">菜单一</a><br/>
+			<a href="JavaScript:void();">菜单二</a><br/>
+			<a href="JavaScript:void();">菜单三</a><br/>
+		</li>
+	</body>
+</html>

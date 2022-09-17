@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>	
+	</head>
+	<body>
+		<div id="app">
+			<!-- 通过val将数据传入组件 -->
+				<turnip :val="user" @tur="changeEvent"></turnip>
+				<turnip :val="user" @tur="user=$event"></turnip>
+			<p>{{user}}</p>
+		</div>
+		<script type="text/javascript">
+			Vue.component("turnip",{
+				props:['user'],//组件接收数据，并渲染到input
+				//利用v-model的原理，即input事件实时执行，实现主子组件数据关联
+				//利用@input触发tur事件,并将动态value传入
+				template:`<input type="text" @input="$emit('tur',$event.target.value)" :value="user" />`
+			})
+			let app = new Vue({
+				el:"#app",
+				data:{
+					user:""
+				},
+				methods:{
+					changeEvent(val) {
+						this.user = val;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

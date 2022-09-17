@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>位置选择器</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h2>位置筛选器</h2>
+		<h3>$("selector:first")、$("slelector:last")、
+		$("selector:odd")、$("selector:even")
+		</h3>
+		<div class="div">
+			<p>第一个:first</p>
+			<p>偶数：even</p>
+		</div>
+		<div class="div">
+			<p>奇数：odd</p>
+		</div>
+		<div class="div">
+			<p>偶数：even</p>
+		</div>
+		<div class="div">
+			<p>奇数：odd</p>
+		</div>
+		<div class="div">
+			<p>偶数：even</p>
+		</div>
+		<div class="div">
+			<p>最后一个：last</p>
+			<p>奇数：odd</p>
+		</div>
+		
+		
+		<h1>位置筛选器</h1>
+		<h2>$("selector:eq(n)")、$("selector:gt(n)")
+		$("selector:lt(n)")</h2>
+		<div class="test">
+			<p>索引值为0：lt(3)</p>
+		</div>
+		<div class="test">
+			<p>索引值为1:lt(3)</p>
+		</div>
+		<div class="test">
+			<p>索引值为2:eq(2)和lt(3)</p>
+		</div>
+		<div class="test">
+			<p>索引值为3:eq(3)</p>
+		</div>
+		<div class="test">
+			<p>索引值为4:gt(3)</p>
+		</div>
+		<script type="text/javascript">
+			//eq选择单个
+			$(".test:eq(2)").css("border","5px groove green")
+			//：gt选择匹配集合中索引值大于给定index参数的元素
+			$(".test:gt(3)").css("background","red")
+			//:lt选择集合中所有索引值小于给定index参数的集合
+			$(".test:lt(3)").css("background","pink")
+		</script>
+
+	</body>
+</html>
+<script type="text/javascript">
+	//找到第一个div
+	$(".div:first").css("color","blue");
+	//找到最后一个div
+	$(".div:last").css("color","red")
+	//:even选择偶数，从零开始计算
+	$(".div:even").css("background","pink");
+	//：odd选择索引值为奇数的元素，从零开始
+	$(".div:odd").css("background","yellow");
+</script>

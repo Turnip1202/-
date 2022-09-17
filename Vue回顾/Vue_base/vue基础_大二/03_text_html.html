@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}+++</p>
+        <p>{{msg1}}</p>
+        <p v-text="msg">+++</p>
+        <p v-html="msg1">+++</p>
+       <p>{{msg2?"登录成功":"登录失败"}}</p>
+    </div>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello",
+                msg1: "<h1>world<h1>",
+				msg2:true
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{a+b}}</p>
+			<p>{{c}}</p>
+			<p>{{a.split("").reverse().join("")}}</p>
+			<p>{{d}}</p>
+		</div>
+		<script type="text/javascript">
+			let app = new Vue({
+				el:"#app",
+				data:{
+					a:"Turnip",
+					b:"萝卜"
+				},
+				computed:{
+					c:function(){
+						//会监听a和b的值，只要a和b不变，就不会重新计算
+						//会将计算结果进行缓存
+						return this.a+this.b;
+					},
+					d:function(){
+						return this.a.split("").reverse().join("")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

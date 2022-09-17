@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				position: relative;
+				width: 400px;
+				border-bottom: 1px solid #ccc;
+				margin: 100px auto;
+			}
+			.box input {
+				width: 370px;
+				height: 30px;
+				border: 0;
+				outline: none;
+			}
+			.box label img {
+				position: absolute;
+				top: 2px;
+				right: 2px;
+				width: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<label for="">
+				<img id="img" src="img/close.png" >
+			</label>
+			<input type="password" name="" id="input" value="" />
+		</div>
+		<script type="text/javascript">
+			document.querySelector('#input').onblur = function(){
+				let node = document.createElement('p');
+				let text = document.createTextNode('失去焦点')
+				node.appendChild(text);
+				document.querySelector("body").appendChild(node);
+				
+			}
+			document.querySelector('#input').onfocus = function(){
+				let node = document.createElement('p');
+				let text = document.createTextNode('获取焦点')
+				node.appendChild(text);
+				document.querySelector("body").appendChild(node);
+			}
+			document.querySelector('label').onclick = function(){
+				if(document.querySelector('#input').type=='text'){
+					document.querySelector('#input').type='password';
+					document.querySelector('#img').src='img/close.png'
+				}else{
+					document.querySelector('#input').type='text';
+					document.querySelector('#img').src='img/open.png'
+				}
+				
+			}
+		</script>
+	</body>
+</html>

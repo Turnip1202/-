@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>窗口事件</title>
+		<style type="text/css">
+		html,body{/* 必须加上css样式 */
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body onresize="winChange()" onscroll="scrollChange()">
+		<div style="height: 3000%;" id="">
+			<input type="text" name="" id="in1" value="" />
+			<input type="text" name="" id="p" value="" />
+			<p>asd</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=()=>{
+	
+		alert("页面已加载完成");
+		document.getElementById("in1").onblur=function(){
+	document.getElementsByTagName("p")[0].innerHTML="失去焦点"
+		}
+		document.getElementById("in1").onfocus=function(){
+		document.getElementsByTagName("p")[0].innerHTML="获得焦点"
+			}
+		
+	}
+	function winChange(){
+		winWidth = document.body.clientWidth;
+		winHeight = document.body.clientHeight;
+		alert("宽"+winWidth+",高"+winHeight)
+	}
+	function scrollChange(){
+		alert("滚动"+document.documentElement.scrollTop)
+	}
+	
+</script>

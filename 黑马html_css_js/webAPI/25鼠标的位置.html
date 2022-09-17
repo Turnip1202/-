@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标的位置</title>
+		
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded',()=>{
+				document.addEventListener('click',(e)=>{
+					console.log('文档区域：X轴：'+e.pageX+',','Y轴：'+e.pageY);
+					console.log('--------分割线--------')
+					console.log(`浏览器可视区域：X轴：${e.clientX},Y轴：${e.clientY}`)
+					console.log('--------分割线--------')
+					console.log(`电脑屏幕：X轴：${e.screenX},Y轴：${e.screenY}`)
+					console.log('--------end--------')
+				})
+				
+			})
+		</script>
+	</body>
+</html>

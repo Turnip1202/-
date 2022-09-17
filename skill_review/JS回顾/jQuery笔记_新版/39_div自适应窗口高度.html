@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>div自适应窗口高度</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				padding: 0;margin: 0;
+			}
+			.header{
+				height: 100px;
+				line-height: 100px;
+				background: #abcdef;
+			}
+			.content{
+				margin-top: 10px;
+				overflow: hidden;
+			}
+			.content .left{
+				width: 20%;
+				height: 100%;
+				background: #abcdef;
+				float: left;
+			}
+			.content .right{
+				width: 80%;
+				height: 100%;
+				background-color: #fff000;
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			Header
+		</div>
+		<div class="content">
+			<div class="left">
+				Left
+			</div>
+			<div class="right">
+				Right
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function setHeight(){
+		let win_h = $(window).height();
+		$(".left").css("height",win_h+"px");//将div的高度设置成窗口的高度
+	}
+	$(document).ready(()=>{
+		setHeight();//页面加载的时候就调用
+	})
+</script>

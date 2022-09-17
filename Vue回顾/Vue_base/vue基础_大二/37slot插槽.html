@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <!-- 有插槽就是父组件填值是不会被子组件内容覆盖 -->
+
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip>123</turnip>
+
+    </div>
+    <template id="tem">
+			<div id="">
+				<p>456</p>
+				<slot>dsa</slot>
+				<slot></slot>
+			</div>
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: "#tem"
+        })
+        let app = new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>

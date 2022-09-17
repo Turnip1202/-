@@ -1,0 +1,120 @@
+.
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("button:first").click(() => {
+                $("div:first").css("background-color", "blue")
+            })
+            $("button:eq(1)").click(() => {
+                console.log($("div:last"))
+                $("div:last").css("background-color", "pink"); //不知为何没反应(解决，浏览器拓展问题，额外增加了一个div)
+            })
+            $("button:eq(2)").click(() => {
+                $("div:not(.one)").css("background-color", "brown");
+            })
+            $("button:eq(3)").click(() => {
+                $("div:even").css("background-color", "blueviolet");
+            })
+            $("button:eq(4)").click(() => {
+                $("div:odd").css("background-color", "chartreuse");
+            })
+            $("button:eq(5)").click(() => {
+                $("div:eq(3)").css("background-color", "coral");
+            })
+            $("button:eq(6)").click(() => {
+                $("div:gt(3)").css("background-color", "blue");
+            })
+            $("button:eq(7)").click(() => {
+                $("div:lt(3)").css("background-color", "blue");
+            })
+            $("button:eq(8)").click(() => {
+                $(":header").css("background-color", "blue");
+            })
+            $("button:eq(9)").click(() => {
+                $("div:contains(为)").css("background-color", "coral");
+            })
+            $("button:eq(10)").click(() => {
+                $("div:empty").css("background-color", "coral");
+            })
+            $("button:eq(11)").click(() => {
+                $("div:has(.small)").css("background-color", "coral");
+            })
+            $("button:eq(12)").click(() => {
+                $("div:parent").css("background-color", "coral");
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h3>基本选择器</h3>
+    <!-- 控制按钮 -->
+    <button type="button">1选择 第一个div元素</button>
+    <button type="button">2选择 最后一个div元素(无反应,未知原因)</button>
+    <button type="button">3选择 除class为one之外的div元</button>
+    <button type="button">4选择 偶数div(0始)</button>
+    <button type="button">5选择 奇数div(0始)</button>
+    <button type="button">6选择 指定索引3的div</button>
+    <button type="button">7选择 指定索引大于3的div</button>
+    <button type="button">8选择 指定索引小于3的div</button>
+    <button type="button">9选择 所有标题标签</button>
+    <button type="button">10选择 带有文本信息的标签</button>
+    <button type="button">11选择 不包含子元素（文本元素）的空元素</button>
+    <button type="button">12选择 含有指定 选择器 的div</button>
+    <button type="button">13选择 含有子元素(文本元素)的div</button>
+
+    <br /><br />
+    <!-- DIV元素 -->
+    <div class="one" id="one">
+        id为one<br/>class为one的div
+        <div class="small">
+            class为small
+        </div>
+    </div>
+    <div class="one" id="two" title="test">
+        id为two，class为one <br>title为test的div
+        <div class="small" title="other">
+            class为small，title为other
+        </div>
+        <div class="small" title="test">
+            class为small，title为test
+        </div>
+    </div>
+    <div class="one">
+        class为noe
+        <div class="small">
+            class为small的div
+        </div>
+        <div class="small">
+            class为small的div
+        </div>
+        <div class="small">
+            class为small的div
+        </div>
+        <div class="small" title="tesst">
+            class为small的div title为tesst
+        </div>
+        <div class="small"></div>
+    </div>
+    <div>
+        style
+    </div>
+    <div class="hide">
+        style的display为“hide”的div
+    </div>
+    <div>
+        包含input且input的type为hidden的div <input type="hidden" size="8" />
+    </div>
+    <span id="mover">
+			span元素,id为mover
+		</span>
+</body>
+
+</html>

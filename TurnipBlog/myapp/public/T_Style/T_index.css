@@ -1,0 +1,271 @@
+.T_slide {
+    width: 100%;
+    height: 420px;
+}
+
+
+/* 轮播图 */
+
+.T_slide_item_1 {
+    float: left;
+    width: 550px;
+    height: 420px;
+    border-radius: 7px;
+}
+
+.T_slide_img {
+    position: relative;
+    width: 550px;
+    height: 310px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 7px;
+}
+
+.T_weather {
+    width: 550px;
+}
+
+.T_slide_img ul {
+    position: relative;
+    width: 2200px;
+    height: 310px;
+}
+
+.T_slide_img li {
+    position: relative;
+    /* z-index: 9; */
+    float: left;
+    width: 550px;
+    height: 310px;
+    text-align: center;
+}
+
+
+/* 左箭头 */
+
+.T_slide_s_l {
+    display: none;
+    position: absolute;
+    z-index: 9;
+    left: 0;
+    width: 100px;
+    height: 310px;
+    cursor: pointer;
+    border-radius: 7px 0 0 7px;
+}
+
+.T_slide_s_l:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.T_arrows_l {
+    font-size: 30px;
+    margin: 140px 0 0 35px;
+}
+
+
+/* 右箭头 */
+
+.T_slide_s_r {
+    display: none;
+    position: absolute;
+    z-index: 9;
+    right: 0;
+    width: 100px;
+    height: 310px;
+    cursor: pointer;
+    border-radius: 7px 0 0 7px;
+}
+
+.T_slide_s_r:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.T_arrows_right {
+    font-size: 30px;
+    margin: 140px 0 0 35px;
+}
+
+
+/* 选中 */
+
+.T_slide_active {
+    position: absolute;
+    z-index: 9;
+    left: 250px;
+    top: 10px;
+}
+
+.T_slide_active svg {
+    cursor: pointer;
+    margin: 0 2px;
+    font-size: 14px;
+}
+
+.T_slide_img img {
+    width: 550px;
+    height: 310px;
+}
+
+.T_slide_a {
+    position: absolute;
+    /* 省略号 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+    left: 125px;
+    bottom: 10px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+}
+
+.T_slide_a svg {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+
+/* 推荐文章1 */
+
+.T_slide_item_2 {
+    position: relative;
+    float: right;
+    width: 310px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 1px rgba(127, 129, 129, 0.6);
+    overflow: hidden;
+}
+
+.T_slide_item_2_h3 {
+    position: absolute;
+    /* 省略号 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+    left: 5px;
+    bottom: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    text-align: center;
+}
+
+.T_slide_item_2 img {
+    width: 310px;
+    height: 200px;
+}
+
+.T_main_article {
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.T_main_article h3 {
+    padding-left: 5px;
+    margin: 10px 0;
+}
+
+.T_main_article_item_1 {
+    padding: 30px 15px;
+    height: 150px;
+    border: 1px solid #ccc;
+    background-color: rgba(214, 214, 214, 0.1);
+    box-shadow: 1px 1px 1px rgba(127, 129, 129, 0.6);
+}
+
+.T_main_article_item_1 h5 {
+    overflow: hidden;
+    float: left;
+    width: 300px;
+    height: 150px;
+    border-radius: 7px;
+}
+
+.T_main_article_item_1 h5 img {
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.T_main_article_item_1 h5:hover img {
+    width: 310px;
+    height: 160px;
+    transition: all 0.5s;
+}
+
+.T_main_article_item_1 h3 {
+    float: right;
+    /* 省略号 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 520px;
+    font-size: 2em;
+}
+
+.T_main_article_item_1 h4 {
+    float: right;
+    height: 64px;
+    width: 520px;
+    margin-bottom: 5px;
+}
+
+.T_main_article_item_1 h4 p {
+    width: 520px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.T_main_article_item_1_span {
+    float: right;
+    width: 520px;
+    font-size: 14px;
+}
+
+.T_main_article_item_1_span em {
+    float: left;
+    margin-right: 15px;
+}
+
+.T_main_article_item_1_span i {
+    float: left;
+    margin-right: 15px;
+}
+
+.T_main_article_item_1_span label {
+    float: right;
+}
+
+.T_load {
+    width: 100%;
+    height: 35px;
+}
+
+.T_load_btn {
+    display: block;
+    width: 25%;
+    height: 35px;
+    border: none;
+    background-color: #5291fe;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: 700;
+    margin: 20px auto;
+}

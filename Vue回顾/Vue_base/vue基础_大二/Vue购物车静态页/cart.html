@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/vue.js"></script>
+    <title>Vue</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hd">
+            <span>
+                <input type="checkbox" id="selectAll" v-model="selectAll"/>
+                <label for="selectAll">全选</label>
+            </span>
+            <span>商品名称</span>
+            <span>单价</span>
+            <span>数量</span>
+            <span>小计</span>
+            <span>操作</span>
+        </div>
+        <div class="goods-list" v-for="(arr,index) in goodsList">
+            <div class="check-btn"><input type="checkbox" v-model="arr.checked"></div>
+            <div class="goods-img"><img v-bind:src="arr.goodsImg" alt=""></div>
+            <div class="goods-name"><em>{{arr.goodsName}}</em></div>
+            <div class="goods-price"><em>￥{{arr.goodsPrice}}</em></div>
+            <div class="goods-quantity">
+                <button @click="sub(index)">-</button><input type="text" v-model="arr.goodsCount">
+                <button@click="add(index)">+</button>
+            </div>
+            <div class="goods-subtotal"><em>￥{{arr.price}}</em></div>
+            <div class="goods-operate" @click="del_row(index)"><a href="javascript:void(0)">删除</a></div>
+        </div>
+        <div class="clearing">
+            <span><a href="javascript:void(0)" @click="del_select()">删除选中的商品</a></span>
+            <span>已选择<em>{{allCount}}</em>件商品</span>
+            <span>总价：￥<em>{{allPrice_sum}}</em></span>
+            <span><a href="#">去结算</a></span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                goodsList: [{
+                    checked: "",
+                    goodsImg: "img/canon.jpg",
+                    goodsName: "AOC 23英寸IPS显示器",
+                    goodsPrice: "150.00",
+                    goodsCount: "1",
+                    price: "150.00"
+                }, {
+                    checked: "",
+                    goodsImg: "img/aoc.jpg",
+                    goodsName: "AOC 23英寸IPS显示器",
+                    goodsPrice: "350.00",
+                    goodsCount: "1",
+                    price: "350.00"
+                }, {
+                    checked: "",
+                    goodsImg: "img/panse.jpg",
+                    goodsName: "AOC 23英寸IPS显示器",
+                    goodsPrice: "650.00",
+                    goodsCount: "1",
+                    price: "650.00"
+                }, {
+                    checked: "",
+                    goodsImg: "img/surface.jpg",
+                    goodsName: "AOC 23英寸IPS显示器",
+                    goodsPrice: "850.00",
+                    goodsCount: "1",
+                    price: "850.00"
+                }],
+                allCount: 0
+
+
+            },
+            methods: {
+                add: function(e) {
+                    this.goodsList[e].goodsCount++;
+                    // console.log(parseFloat(this.goodsList[e].goodsCount))
+                    this.goodsList[e].price = (parseFloat((this.goodsList[e].goodsPrice) * 100) * parseFloat(this.goodsList[e].goodsCount)) / 100;
+                },
+                sub: function(e) {
+                    if (parseInt(this.goodsList[e].goodsCount)) {
+                        this.goodsList[e].price = (parseFloat(this.goodsList[e].price) - parseFloat(this.goodsList[e].goodsPrice)).toString();
+                        this.goodsList[e].goodsCount--;
+                    }
+                },
+                del_row: function(i) {
+                    if (this.goodsList[i].checked == true) {
+                        this.goodsList.splice(i, 1); //删除数组元素,即删除选中的商品
+                    } else {
+                        alert("请选中商品")
+                    }
+                },
+                del_select: function() { //删除选中元素
+                    //使用此方法删除，当删除某个元素后，数组会变成一个新的数组，其索引会发生变化，即无法一次性删除
+                    // for(var key=0;key<this.goodsList.length; key++){//记录选中的索引,并删除
+                    // 	if(this.goodsList[key].checked==true){
+                    // 		this.goodsList.splice(key,1)
+                    // 	}
+                    // }
+
+                    // // 解决方法一
+                    // //方法解释：创建新数组，将原数组中的未选中元素追加到新数组中，在将新数组赋值给原数组
+                    let arr = [];
+                    for (var key = 0; key < this.goodsList.length; key++) { //记录选中的索引,并删除
+                        if (this.goodsList[key].checked == false) {
+                            arr.push(this.goodsList[key])
+
+                        }
+                    }
+                    this.goodsList = arr;
+
+                    // //方法二
+                    // //方法解释：从后向前删除
+                    // for(var key=this.goodsList.length-1;key>=0;key--){
+                    // 	if(this.goodsList[key].checked){
+                    // 		this.goodsList.splice(key,1)
+                    // 	}
+                    // }
+
+                },
+
+            },
+            computed: {
+                selectAll: {
+                    //监控data的数据，调用函数，返回给computed内的对象
+                    get: function() {
+                        //判断有几个未选中
+                        let count = 0;
+                        for (var i = 0; i < this.goodsList.length; i++) {
+                            if (this.goodsList[i].checked == true) {
+                                count++
+                            }
+                        }
+                        //选中的数量
+                        this.allCount = count;
+
+                        //全选功能
+                        for (var i = 0; i < this.goodsList.length; i++) {
+                            if (this.goodsList[i].checked == "") {
+                                return this.goodsList[i].checked; //有未选中的，就返回其值
+                            }
+                        }
+                        //会先调用get，若没有返回值，貌似默认返回值为false，set还未将全部check设置完成。
+                        //而此时get也对goodsList内进行了遍历。得到未选中的数据，从而把全选设置了未选中
+                        //这会造成全选按钮需要点两次
+                        // 同时也可以使得当全部选中的时候,全选框变为选中
+                        return true; //遍历完后，返回		
+                    },
+                    //获取computed内的对象，设置到data内
+                    set: function(val) {
+                        for (var key in this.goodsList) {
+                            this.goodsList[key].checked = val;
+                        }
+                        let count = 0;
+                        for (key in this.goodsList) {
+                            if (this.goodsList[key].checked) {
+                                count++;
+                            }
+                        }
+                        this.allCount = count;
+                    }
+
+                },
+                allPrice_sum: function() {
+                    //原本想直接使用data内的数据，
+                    //每次改变data的数据会触发下面的循环，这会导致数据会一直增加，
+
+                    //因此采用局部变量的方式，让数值不保留，每次触发均重新计算，并重新返回数值
+                    let price = 0; //初始化值
+                    for (key in this.goodsList) {
+                        if (this.goodsList[key].checked == true) {
+                            price += parseFloat(this.goodsList[key].price);
+                        }
+
+                    }
+
+                    return price
+
+
+                }
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>

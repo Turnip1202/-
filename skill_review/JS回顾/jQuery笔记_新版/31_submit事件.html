@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单提交时</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p></p>
+		<form action="" method="">
+				First  name:<input type="text" id="" value="" /><br>
+				Last  name:<input type="text" id="" value="" /><br>
+				<input type="submit" id="" name="" />
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(()=>{
+		$("p + form").submit(()=>{
+			alert("提交")
+		})
+	})
+</script>

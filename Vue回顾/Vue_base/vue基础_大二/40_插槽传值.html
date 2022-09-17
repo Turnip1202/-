@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <!-- 插槽传值，即子组件插槽使用自定义属性传递数据，父组件在模版标签上使用v-slot接收子组件数据 -->
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip v-slot:default="{temp}">
+            <!-- 对象结构，注意这里结构的对象属性名 -->
+            {{msg}}
+            <p>{{temp}}</p>
+        </turnip>
+        <p>{{msg}}</p>
+
+    </div>
+
+    <template id="tem">
+		<div>
+			<div id="">
+				<p>插槽</p>
+				<slot :temp="tem"></slot>
+			</div>
+		</div>
+			
+	</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: "#tem",
+            data() {
+                return {
+                    tem: "子组件插槽"
+                }
+            }
+        });
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                msg: "萝卜"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

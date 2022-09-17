@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<turnip></turnip>
+		</div>
+		<template id="temp">
+			<div>
+				<p>萝卜</p>
+				<p>turnip</p>
+				<p>{{msg}}</p>
+				<button type="button" @click="fn">点击</button>
+			</div>
+		</template>
+		<script type="text/javascript">
+			let ex = Vue.extend({
+				template:"#temp",
+				data:function(){
+					return {
+						msg:"kang"
+					}
+				},
+				methods:{
+					fn:function(){
+						alert("123")
+					}
+				}
+			})
+			let app= new Vue({
+				el:"#app"
+			})
+			new ex().$mount("turnip")
+		</script>
+	</body>
+</html>

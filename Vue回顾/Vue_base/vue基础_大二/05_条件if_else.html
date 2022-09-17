@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-if="msg">登录成功</h1>
+			<h1 v-else>登录失败</h1>
+			<h1 v-if="score>=90">优等</h1>
+			<h1 v-else-if="score>=80">良好</h1>
+			<h1 v-else-if="score>=90">中等</h1>
+			<h1 v-else-if="score>=90">及格</h1>
+			<h1 v-else="score>=90">不及格</h1>
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el:"#app",
+				data:{
+					msg:false,
+					score:100
+				}
+			})
+		</script>
+	</body>
+</html>

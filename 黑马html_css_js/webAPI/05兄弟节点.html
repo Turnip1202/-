@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>11</div>
+		<span>22</span>
+	</body>
+	<script type="text/javascript">
+		let div = document.querySelectorAll("div")
+		// console.log(div)
+		console.log(div[1].nextSibling)
+		console.log(div[1].previousSibling)
+		
+		//封装函数
+		function getNextElementSibling(element){
+			let el = element;
+			while (el = el.nextSibling){
+				if(el.nodeType === 1){
+					return el;
+				}
+			}
+			return null;
+		}
+		//测试调用
+		let NextElement = getNextElementSibling(div[1])
+		console.log(NextElement)
+	</script>
+</html>

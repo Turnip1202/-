@@ -1,0 +1,32 @@
+*{padding: 0;margin: 0}
+li{list-style: none}
+body{font:14px/1.5 "microsoft Yahei"}
+[v-cloak]{display: none;}
+
+#app{width: 800px;margin: 10px auto;overflow: hidden}
+
+.hd{height: 50px;background-color: #e7e7e7;border: 1px solid #ccc;line-height: 50px;padding: 0 10px}
+.hd span{text-align: center;display:inline-block;width: 100px}
+.hd span:nth-child(2){width: 255px}
+
+.goods-list{margin: 15px 0;overflow: hidden;background-color: #fafafa;padding: 5px 0;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc}
+.goods-list div:not(:first-child){float: left;line-height: 75px;text-align: center;width: 100px}
+.goods-list div:first-child{float: left;line-height: 75px;text-align: center}
+.goods-list img{width:100%;height:80px;vertical-align:middle}
+.check-btn{padding: 0 10px}
+.goods-img{width: 80px;height:80px;padding: 4px;background-color: #f4f4f4;overflow: hidden}
+.goods-name{width: 220px !important;}
+.goods-name em,.goods-price em,.goods-subtotal em{font-style: normal}
+.goods-quantity{width: 130px !important;}
+.goods-quantity input{width: 40px;text-align: center;height: 18px;outline: none;border: 1px solid #ccc}
+.goods-quantity button{width: 18px;height: 20px;font-weight:bolder}
+{font-style: normal}
+.goods-operate a{text-decoration:none;color: #333;border:1px solid #e8e8e8;padding:2px 10px;}
+
+.clearing{width: 800px;height: 50px;line-height: 50px;position: fixed;bottom:5px;z-index: 10;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;background-color: #fafafa}
+.clearing span:last-child{background-color: #f43636;display:inline-block;padding: 0 30px;float:right}
+.clearing span:last-child a{color:#fff;text-decoration: none;font-size: 16px;font-weight: bold}
+.clearing span:nth-child(1) a{text-decoration: none;color: #333;padding-left: 10px}
+.clearing span:nth-child(2){margin: 0 20%}
+.clearing span:nth-child(2) em,.clearing span:nth-child(3) em{font-style: normal;font-weight: bold;color: #f43636}
+.clearing span:nth-child(3){font-weight: bold;color: #f43636}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			a:<input type="text" v-model="a" /><br>
+			b:<input type="text" v-model="b" />
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#app",
+				data:{
+					a:13,
+					b:12
+				},
+				watch:{
+					//数据修改完之前触发，不建议多用
+					a:function(val){
+						console.log("我是a："+val)
+					},
+					b:function(val){
+						console.log("我是b："+val)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

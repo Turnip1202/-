@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>属性选择器</title>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h2>属性选择器</h2>
+		<h3>[属性名]、[属性名='值']、[属性名='值']</h3>
+		<div class="div" testattr="true" name="p1">
+			<a href="">[属性名='值']</a>
+		</div></br>
+		<div class="div" testattr="true" name="p2">
+			<a href="">[属性名!='值']</a>
+		</div></br>
+		<div class="div" testattr="true" name="p3s">
+			<a href="">[属性名!='值']</a>
+		</div></br>
+		<div class="div" testatrr="true">
+			<a href="">没有name属性</a>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//查找所有div中，属性name=p1的div元素，加红色边框
+	$("div[name='p1']").css("border","5px groove red");
+	//查找所有div中属性名name！=p1的div元素，加蓝色框
+	$("div[name!=p1]").css("border","5px groove blue");
+	//查找所有div中，有name属性的div元素，背景变为黄色
+	$("div[name]").css("background","yellow");
+	//name属性以p开头的字体大小50px
+	$("div[name^='p']").css("font-size","50px")
+	//name属性以s结尾的
+	$("div[name$='s']").css("font-size","70px")
+	//匹配name属性包含2的div
+	$("div[name*='2']").css("font-size","90px")
+
+</script>

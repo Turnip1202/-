@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .font {
+            color: #FF0000;
+        }
+        
+        #main {
+            width: 660px;
+            margin: 0 auto;
+        }
+        
+        #header {
+            border: 1px solid #282c35;
+        }
+        
+        #body {
+            border: 1px solid #282c35;
+        }
+        
+        h2 {
+            border-top: 1px solid #282c35;
+        }
+    </style>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="main">
+            <div id="header">
+                <h2>星座分析器</h2>
+            </div>
+            <div id="body">
+                <h3>请选择星座</h3>
+                <input type="checkbox" v-model="checkbox1" /><span :class="{font:checkbox1}">狮子座</span>
+                <input type="checkbox" v-model="checkbox2" /><span :class="{font:checkbox2}">魔羯座</span>
+                <input type="checkbox" v-model="checkbox3" /><span :class="{font:checkbox3}">处女座</span>
+                <input type="checkbox" v-model="checkbox4" /><span :class="{font:checkbox4}">天秤座</span>
+                <h2 v-if="checkbox1">
+                    <p>狮子座</p>狮子座有理想</h2>
+                <h2 v-if="checkbox2">
+                    <p>魔羯座</p>魔羯座有理想</h2>
+                <h2 v-if="checkbox3">
+                    <p>处女座</p>处女座有理想</h2>
+                <h2 v-if="checkbox4">
+                    <p>天秤座</p>天秤座有理想</h2>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                checkbox1: false,
+                checkbox2: false,
+                checkbox3: false,
+                checkbox4: false,
+
+            }
+        })
+    </script>
+</body>
+
+</html>

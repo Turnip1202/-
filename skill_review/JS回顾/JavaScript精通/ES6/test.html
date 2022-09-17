@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./monokai_sublime.min.css">
+</head>
+
+<body>
+    <script src="./wangEditor.min.js"></script>
+    <script src="./highlight.min.js"></script>
+    <div id="div1">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+    <button onclick="html()">点击</button>
+    <!-- 引入 wangEditor.min.js -->
+    <script type="text/javascript">
+        const E = window.wangEditor
+        const editor = new E('#div1')
+            // 或者 const editor = new E( document.getElementById('div1') )
+
+        // 挂载highlight插件
+        editor.highlight = hljs
+
+        //插入代码语言配置
+        editor.config.languageType = [
+            'JavaScript',
+            'C',
+            'C#',
+            'C++',
+            'CSS',
+            'Java',
+            'Bash',
+            'JSON',
+            'TypeScript',
+            'Plain text',
+            'Html',
+            'XML',
+            'SQL',
+            'Go',
+            'Kotlin',
+            'Lua',
+            'Markdown',
+            'PHP',
+            'Python',
+            'Shell Session',
+            'Ruby',
+        ]
+
+
+        editor.create()
+
+        function html() {
+            console.log(editor.txt.html())
+
+        }
+    </script>
+
+</body>
+
+</html>

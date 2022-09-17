@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        span {
+            position: absolute;
+            left: 0;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        window.addEventListener("load", () => {
+            function animate(obj, target, callback) { //定义动画函数
+                //事先清除定时器
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function() {
+                    //将距离等分
+                    let step = (target - obj.offsetLeft) / 10;
+                    //以0为界分类讨论结果
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    //到达指定位置后，停止动画，并执行回调函数
+                    if (obj.offsetLeft == target) {
+                        clearInterval(obj.timer);
+                        //如果有回调函数就执行
+                        if (callback) {
+                            callback();
+                        }
+                    }
+                    // 若没到达指定位置，继续向前走
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                }, 15)
+            }
+
+            let span = document.querySelector("span");
+            let btn500 = document.querySelector('.btn500')
+            let btn800 = document.querySelector('.btn800')
+
+            btn500.addEventListener('click', () => {
+                animate(span, 500)
+            });
+            btn800.addEventListener('click', () => {
+                animate(span, 800, function() {
+                    span.style.backgroundColor = 'red';
+                })
+            })
+        })
+    </script>
+    <button class="btn500">点击到500</button>
+    <button class="btn800">点击到800</button>
+    <span>夏雨荷</span>
+</body>
+
+</html>

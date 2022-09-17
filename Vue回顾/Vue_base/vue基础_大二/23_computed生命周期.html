@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      a:
+      <input type="text" v-model="a" />
+      b:
+      <input type="text" v-model="b" />
+      {{m_f1()}} {{c_f1}} {{c_f2()}} {{c_f3}}
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: '#app',
+        data: {
+          a: 4,
+          b: 7,
+        },
+        methods: {
+          //只要对页面内的数据进行渲染就会调用
+          m_f1: function () {
+            console.log('我是methods里面的函数')
+          },
+        },
+        computed: {
+          //监听data内的数据，即将函数调用的data数据和data的数据进行了绑定，动data，则调用相应的函数
+          c_f1: function () {
+            this.a
+            console.log('我是computed内的函数1')
+          },
+          c_f2: function () {
+            this.b
+            console.log('我是computed内的函数2')
+          },
+          c_f3: function () {
+            this.a
+            this.b
+            console.log('我是computed内的函数3')
+          },
+        },
+        watch: {
+          a: function () {
+            console.log('我是watch内的函数a')
+          },
+          b: function () {
+            console.log('我是watch内的函数b')
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

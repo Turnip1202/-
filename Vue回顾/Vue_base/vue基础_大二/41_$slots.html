@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <div id="app">
+        <turnip>
+            <p>123</p>
+            <p slot="header">turnip1</p>
+            <p slot="main">turnip3</p>
+            <p slot="footer">turnip2</p>
+            <p>456</p>
+        </turnip>
+
+    </div>
+    <template id="tem">
+			<div id="">
+				<slot name="header"></slot>
+				<slot name="main"></slot>
+				<slot name="footer"></slot>
+				<p><slot></slot></p>
+			</div>
+		</template>
+    <script type="text/javascript">
+        Vue.component("turnip", {
+            template: "#tem",
+            mounted: function() { //$slots用于访问插槽内容
+                // $slots.default即为子组件内的所有非插槽元素
+                console.log(this.$slots.header[0].elm)
+                console.log(this.$slots.main[0].elm)
+                console.log(this.$slots.footer[0].elm)
+                console.log(this.$slots.default)
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>
